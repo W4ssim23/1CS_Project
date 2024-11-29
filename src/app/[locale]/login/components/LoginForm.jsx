@@ -24,7 +24,10 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="h-full text-center flex flex-col p-10 pr-36 gap-16 min-w-[40%]">
+    <div
+      data-testid="login-form"
+      className="h-full text-center flex flex-col p-10 pr-36 gap-16 min-w-[40%]"
+    >
       <h1 className="text-4xl font-semibold">Sign-in</h1>
 
       <Input

@@ -1,7 +1,7 @@
 import LoginForm from "./components/LoginForm";
 import SidePic from "./components/SidePic";
 
-export default async function Register() {
+export default async function Login() {
   // const session = await getServerSession(authOptions);
 
   // if (session) redirect("/dashboard");
