@@ -31,7 +31,7 @@ export default function LoginForm() {
       <h1 className="text-4xl font-semibold text-nowrap">Sign-in</h1>
 
       <Input
-        className="max-w-[400px]  md:min-w-[310px]"
+        className=" max-w-[360px]  md:max-w-[500px]  md:min-w-[310px]"
         key="username"
         size="lg"
         variant="bordered"
@@ -42,7 +42,7 @@ export default function LoginForm() {
       ></Input>
 
       <Input
-        className="  max-w-[400px] md:min-w-[310px]"
+        className="   max-w-[360px]  md:max-w-[500px] md:min-w-[310px]"
         key="password"
         size="lg"
         type="password"
@@ -54,7 +54,7 @@ export default function LoginForm() {
       ></Input>
 
       <Button
-        className=" bg-[#1F4690] text-white  max-w-[400px]   md:min-w-[310px]"
+        className=" bg-[#1F4690] text-white   max-w-[360px]  md:max-w-[500px]   md:min-w-[310px]"
         size="lg"
         onClick={handleSubmit}
       >
