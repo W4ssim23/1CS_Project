@@ -26,11 +26,12 @@ export default function LoginForm() {
   return (
     <div
       data-testid="login-form"
-      className="h-full text-center flex flex-col p-10 pr-36 gap-16 min-w-[40%]"
+      className="h-full text-center flex flex-col items-center justify-center py-10 md:p-10 lg:pr-36 gap-16 min-w-[47%] md:min-w-[40%]"
     >
-      <h1 className="text-4xl font-semibold">Sign-in</h1>
+      <h1 className="text-4xl font-semibold text-nowrap">Sign-in</h1>
 
       <Input
+        className="max-w-[400px]  md:min-w-[310px]"
         key="username"
         size="lg"
         variant="bordered"
@@ -41,6 +42,7 @@ export default function LoginForm() {
       ></Input>
 
       <Input
+        className="  max-w-[400px] md:min-w-[310px]"
         key="password"
         size="lg"
         type="password"
@@ -52,14 +54,14 @@ export default function LoginForm() {
       ></Input>
 
       <Button
-        className=" bg-[#1F4690] text-white"
+        className=" bg-[#1F4690] text-white  max-w-[400px]   md:min-w-[310px]"
         size="lg"
         onClick={handleSubmit}
       >
         Sign-in
       </Button>
 
-      <p>
+      <p className="sm:text-nowrap">
         Vous n’avez pas un compte?{" "}
         <Link href="/register" className="text-blue-500">
           Sign-up

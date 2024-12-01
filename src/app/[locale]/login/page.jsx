@@ -7,7 +7,7 @@ export default async function Login() {
   // if (session) redirect("/dashboard");
 
   return (
-    <div className="h-full w-full min-w-screen flex">
+    <div className="h-full w-full min-w-screen md:flex">
       <SidePic />
       <LoginForm />
     </div>
