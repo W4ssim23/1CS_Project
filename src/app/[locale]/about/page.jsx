@@ -1,7 +1,17 @@
+import { TopBar } from "@/components/layout";
+import ArtizanBlock from "./components/ArtizanBlock";
+import MissionBlock from "./components/MissionBlock";
+import VisionBlock from "./components/VisionBlock";
+
 export default async function About() {
   return (
-    <div className="h-full w-full min-w-screen md:flex">
-      <p>About page</p>
-    </div>
+    <>
+      <TopBar />
+      <main className="flex flex-col min-h-screen h-fit w-full">
+        <ArtizanBlock />
+        <MissionBlock />
+        <VisionBlock />
+      </main>
+    </>
   );
 }

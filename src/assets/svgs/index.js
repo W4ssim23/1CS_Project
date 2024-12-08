@@ -9,6 +9,9 @@ import waterpump from "./waterpump.svg";
 import comm1 from "./comm1.svg";
 import comm2 from "./comm2.svg";
 import comm3 from "./comm3.svg";
+import workman from "./workman.svg";
+import rb_33 from "./rb_33.svg";
+import vision from "./vision.svg";
 
 export {
   registerPic,
@@ -22,4 +25,7 @@ export {
   comm1,
   comm2,
   comm3,
+  workman,
+  rb_33,
+  vision,
 };

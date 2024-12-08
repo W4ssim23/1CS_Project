@@ -26,6 +26,7 @@ export default function WelcomeBlock() {
           src={welcomeGuy}
           alt="welcImg"
           className="max-h-96 md:max-h-full"
+          priority
         />
         {/* <Button
           className="text-white bg-[#1F4690] w-[180px] h-[45px] sm:hidden block"
