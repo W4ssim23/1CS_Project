@@ -1,16 +1,11 @@
+import ConnectButton from "./components/ConnectButton";
 import RegisterForm from "./components/RegisterForm";
-// import { getServerSession } from "next-auth";
-// import { redirect } from "next/navigation";
-// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default async function Home() {
-  // const session = await getServerSession(authOptions);
-
-  // if (session) redirect("/dashboard");
-
   return (
-    <main>
+    <main className="flex flex-col items-center  justify-evenly min-h-[90vh]">
       <RegisterForm />
+      <ConnectButton />
     </main>
   );
 }
