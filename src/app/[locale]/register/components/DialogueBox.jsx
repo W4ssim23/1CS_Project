@@ -50,7 +50,7 @@ const ChooseDialogue = ({ setDialogue }) => {
       </div>
       <Button
         className=" text-white text-center font-medium  bg-[#1F4690] rounded-md py-3 px-4 min-w-[222px]"
-        onClick={() => setDialogue(handleset)}
+        onClick={handleset}
       >
         Submit
       </Button>
