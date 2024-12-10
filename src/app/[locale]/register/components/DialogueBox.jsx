@@ -6,7 +6,7 @@ import ArtisanDialogue from "./artisancase/ArtizanDialogue";
 import { Button } from "@nextui-org/react";
 
 export default function DialogueBox() {
-  const [dialogue, setDialogue] = useState("");
+  const [dialogue, setDialogue] = useState(false);
   return (
     <div className="sm:min-w-[720px] mx-6 sm:mx-0 h-96 bg-[#E9E9E9] rounded-lg flex flex-col justify-center items-center">
       {!dialogue && <ChooseDialogue setDialogue={setDialogue} />}
