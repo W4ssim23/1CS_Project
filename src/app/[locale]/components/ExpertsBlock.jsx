@@ -12,10 +12,10 @@ export default function ExpertsBlock() {
 
   return (
     <main className="flex flex-col w-full h-fit min-h-lvh items-center gap-10">
-      <p className="text-[40px] text-center max-w-[588px] font-bold text-[#1F4690]">
+      <p className="text-[30px] mt-3 sm:mt-0 sm:text-[40px] text-center max-w-[588px] font-bold text-[#1F4690]">
         NOS EXPERTS
       </p>
-      <p className="text-[24px] text-center max-w-[1200px] font-semibold ">
+      <p className="text-[19px] sm:text-[24px] text-center max-w-[1200px] font-semibold ">
         Faites confiance à l'expertise de nos professionnels qualifiés, riches
         d'années d'expérience dans leurs domaines respectifs.
       </p>

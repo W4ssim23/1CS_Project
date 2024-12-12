@@ -26,9 +26,9 @@ export default function SearchBlock() {
     "menuisier",
   ];
   return (
-    <main className="flex flex-col w-full h-fit min-h-lvh">
-      <div className="h-full flex flex-col w-full items-center justify-center min-h-[80lvh] bg-[#1F4690] gap-24">
-        <p className=" text-[58px] text-center max-w-[800px] font-bold text-white">
+    <main className="flex flex-col w-full h-fit">
+      <div className="h-full flex flex-col w-full items-center justify-center min-h-[60lvh] sm:min-h-[80lvh] bg-[#1F4690] gap-24">
+        <p className=" text-[30px] mt-3 sm:mt-0 sm:text-[58px] text-center max-w-[800px] font-bold text-white">
           Trouvez et Engagez les meilleurs
           <span className="text-[#FFA500]"> Artisans </span>
           en Algérie
@@ -38,7 +38,7 @@ export default function SearchBlock() {
           placeHolder="Chercher sur DZ ARTISAN...."
         />
       </div>
-      <div className="flex w-full justify-center gap-4 xs:gap-10 sm:gap-16 md:gap-32 min-h-[40lvh]">
+      <div className="flex flex-wrap sm:flex-nowrap w-full justify-center gap-16 md:gap-32 sm:min-h-[40lvh] py-16 sm:py-0">
         {artisansPics.map((pic, index) => (
           <ArtisanBlock
             key={index}
@@ -55,7 +55,7 @@ function ArtisanBlock({ picture, label }) {
   return (
     <div className="flex flex-col gap-4 items-center justify-center">
       <Link href="#" alt={label}>
-        <div className="flex items-center justify-center h-8 w-8 xs:w-12 xs:h-12 sm:w-24 sm:h-24 bg-[#FFA500] p-1 xs:p-2 sm:p-4 rounded-xl cursor-pointer">
+        <div className="flex items-center justify-center w-12 h-12 sm:w-24 sm:h-24 bg-[#FFA500] p-2 sm:p-4 rounded-xl cursor-pointer">
           <Image src={picture} alt={label} />
         </div>
       </Link>

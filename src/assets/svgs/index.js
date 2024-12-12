@@ -12,6 +12,20 @@ import comm3 from "./comm3.svg";
 import workman from "./workman.svg";
 import rb_33 from "./rb_33.svg";
 import vision from "./vision.svg";
+import calendar from "./calendar.svg";
+import checklist from "./checklist.svg";
+import client from "./client.svg";
+import dashboard from "./dashboard.svg";
+import dataanalysics from "./dataanalysics.svg";
+import googledocs from "./googledocs.svg";
+import men from "./men.svg";
+import report from "./report.svg";
+import restore from "./restore.svg";
+import ellipse6 from "./ellipse6.svg";
+import bank from "./bank.svg";
+import profile_add from "./profile_add.svg";
+import frame30085 from "./frame30085.svg";
+import notification from "./notification.svg";
 
 export {
   registerPic,
@@ -28,4 +42,18 @@ export {
   workman,
   rb_33,
   vision,
+  calendar,
+  checklist,
+  client,
+  dashboard,
+  dataanalysics,
+  googledocs,
+  men,
+  report,
+  restore,
+  ellipse6,
+  bank,
+  profile_add,
+  frame30085,
+  notification,
 };

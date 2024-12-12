@@ -23,7 +23,26 @@ import { useRouter } from "next/navigation";
 export default function TopBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = ["Home", "Trouve un pro", "A propos", "> Language"];
+  // const menuItems = ["Home", "Trouve un pro", "A propos", "> Language"];
+
+  const menuItems = [
+    {
+      title: "Home",
+      page: "/",
+    },
+    {
+      title: "Trouve un pro",
+      page: "#",
+    },
+    {
+      title: "A propos",
+      page: "/about",
+    },
+    {
+      title: "> Language",
+      page: "/",
+    },
+  ];
 
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -124,21 +143,8 @@ export default function TopBar() {
       </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              // color={
-              //   index === 2
-              //     ? "primary"
-              //     : index === menuItems.length - 1
-              //     ? "danger"
-              //     : "foreground"
-              // }
-              // className="w-full"
-              href="#"
-              // size="lg"
-            >
-              {item}
-            </Link>
+          <NavbarMenuItem key={`${item.page}-${index}`}>
+            <Link href={item.page}>{item.title}</Link>
           </NavbarMenuItem>
         ))}
       </NavbarMenu>

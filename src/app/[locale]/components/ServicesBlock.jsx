@@ -14,8 +14,8 @@ export default function ServiceBlock() {
     "Sélectionnez un service selon les évaluations et les avis, ou affinez votre recherche avec des filtres comme « peintre ».",
   ];
   return (
-    <main className="flex flex-col w-full h-fit min-h-lvh items-center gap-28">
-      <p className="text-[40px] text-center max-w-[588px] font-bold text-[#1F4690]">
+    <main className="flex flex-col w-full h-fit min-h-lvh items-center gap-20 sm:gap-28 mb-24 sm:mb-0">
+      <p className="text-[30px] mt-3 sm:mt-0 sm:text-[40px] text-center max-w-[588px] font-bold text-[#1F4690]">
         DZ-ARTISAN, comment ça marche?
       </p>
       <div className="flex flex-col sm:flex-row gap-14 sm:gap-20">
