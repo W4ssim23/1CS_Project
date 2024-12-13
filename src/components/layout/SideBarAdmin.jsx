@@ -7,8 +7,7 @@ import { ellipse6 } from "@/assets/svgs";
 import { usePathname } from "@/i18n/routing";
 
 export default function SideBarAdmin() {
-  const pg = usePathname(); //temporary , this is the current page
-  console.log(pg);
+  const pg = usePathname();
   return (
     <nav className="min-w-[18%] bg-white shadow-md hidden sm:block ">
       <div className="h-[130px] border-b-2 w-full flex flex-col items-center justify-evenly">

@@ -26,6 +26,10 @@ import bank from "./bank.svg";
 import profile_add from "./profile_add.svg";
 import frame30085 from "./frame30085.svg";
 import notification from "./notification.svg";
+import Vector from "./Vector.svg";
+import Vector2 from "./Vector2.svg";
+import miner from "./miner.svg";
+import handshake from "./handshake.svg";
 
 export {
   registerPic,
@@ -56,4 +60,8 @@ export {
   profile_add,
   frame30085,
   notification,
+  Vector,
+  Vector2,
+  miner,
+  handshake,
 };

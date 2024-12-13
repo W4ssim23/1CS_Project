@@ -22,3 +22,12 @@ input[type="radio"]:checked::after {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+::-webkit-scrollbar {
+  background-color: #ffffff;
+  width: 0.3vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4d44b5;
+}
