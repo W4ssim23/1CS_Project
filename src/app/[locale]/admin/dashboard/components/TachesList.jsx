@@ -11,7 +11,7 @@ export default function TachesList() {
   ];
 
   return (
-    <div className="w-80 bg-white p-4 rounded-xl shadow-md hover:shadow-2xl transition-shadow hover:-translate-y-1 ease-in-out duration-700">
+    <div className="w-80 bg-white p-4 rounded-xl shadow-md hover:shadow-2xl transition-all hover:-translate-y-1 ease-in-out duration-700">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold text-[#2B3674]">Mes Taches</h2>
         <button className="text-gray-500 hover:bg-gray-200 p-2 py-3 rounded-full">

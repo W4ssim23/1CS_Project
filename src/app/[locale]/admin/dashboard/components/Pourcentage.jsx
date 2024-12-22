@@ -38,7 +38,7 @@ export default function Pourcentage() {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 border border-gray-200 font-sans flex flex-col gap-2 hover:shadow-2xl transition-shadow hover:-translate-y-1 ease-in-out duration-700">
+    <div className="bg-white rounded-lg shadow-md p-4 border border-gray-200 font-sans flex flex-col gap-2 hover:shadow-2xl transition-all hover:-translate-y-1 ease-in-out duration-700">
       <div className="flex justify-between items-center gap-2">
         <h3 className="text-lg font-bold m-0">Pourcentage des utilisateurs</h3>
         <div

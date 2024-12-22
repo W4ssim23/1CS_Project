@@ -31,7 +31,7 @@ export default function StatstCards() {
 function StatCard({ text, value, icon, bg }) {
   return (
     <div
-      className={` w-64 h-32 rounded-lg shadow-md flex flex-col items-start justify-center p-4 hover:shadow-2xl transition-shadow hover:-translate-y-1 ease-in-out duration-700`}
+      className={` w-64 h-32 rounded-lg shadow-md flex flex-col items-start justify-center p-4 hover:shadow-2xl transition-all hover:-translate-y-1 ease-in-out duration-700`}
       style={{ backgroundColor: bg }}
     >
       <Image src={icon} alt="icon" width={30} height={30} />

@@ -30,6 +30,7 @@ import Vector from "./Vector.svg";
 import Vector2 from "./Vector2.svg";
 import miner from "./miner.svg";
 import handshake from "./handshake.svg";
+import nothing from "./nothing.svg";
 
 export {
   registerPic,
@@ -64,4 +65,5 @@ export {
   Vector2,
   miner,
   handshake,
+  nothing,
 };

@@ -9,13 +9,13 @@ import { usePathname } from "@/i18n/routing";
 export default function SideBarAdmin() {
   const pg = usePathname();
   return (
-    <nav className="min-w-[18%] bg-white shadow-md hidden sm:block ">
+    <nav className="min-w-[20%] bg-white shadow-md hidden sm:block ">
       <div className="h-[130px] border-b-2 w-full flex flex-col items-center justify-evenly">
         <Image src={ellipse6} alt="ellipse" />
         {/* will be replaced with the actual account name */}
         <p>DZ-Artisan.owner</p>
       </div>
-      <ul className="flex flex-col items-center w-full gap-4 lg:gap-0">
+      <ul className="flex flex-col items-center w-full gap-4 lg:gap-0 pt-5">
         {itemsAdmin.map((item, index) => (
           <BarItem pg={pg} item={item} key={index} />
         ))}
@@ -34,11 +34,11 @@ const BarItem = ({ item, pg }) => {
       key={item.title}
     >
       <div className="flex items-center gap-4 lg:ml-[8%]">
-        <div className="flex w-[20px] h-[20px] overflow-hidden">
-          <Image src={item.svg} alt={item.title} height={20} width={20} />
+        <div className="flex w-[23px] h-[23px] overflow-hidden">
+          <Image src={item.svg} alt={item.title} height={23} width={23} />
         </div>
         <p
-          className={`text-[15px] font-[400] hidden lg:block ${
+          className={`text-[17px] font-[400] hidden lg:block ${
             pg === item.page.toLowerCase()
               ? "text-[#1F4690]"
               : "text-[#00000085]"
