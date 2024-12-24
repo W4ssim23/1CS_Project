@@ -20,7 +20,7 @@ export default function StatstCards() {
   ];
 
   return (
-    <div className="flex gap-20">
+    <div className="flex gap-14">
       {stats.map((stat, index) => (
         <StatCard key={index} {...stat} />
       ))}

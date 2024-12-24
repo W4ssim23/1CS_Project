@@ -4,7 +4,11 @@ export default function TheList({ artisans }) {
     <div className="flex flex-col w-full">
       <HeadList />
       {artisans.map((artisan, index) => (
-        <ElementList key={index} artisan={artisan} />
+        <ElementList
+          key={index}
+          artisan={artisan}
+          bg={index % 2 === 0 ? "#EFF7FE" : "#FFFFFF"}
+        />
       ))}
     </div>
   );
@@ -37,9 +41,12 @@ function HeadList() {
   );
 }
 
-function ElementList({ artisan }) {
+function ElementList({ artisan, bg }) {
   return (
-    <div className="bg-white w-full p-2 py-4 flex items-center justify-evenly text-start sm:text-center">
+    <div
+      className={`w-full p-2 py-4 flex items-center justify-evenly text-start sm:text-center`}
+      style={{ backgroundColor: bg }}
+    >
       <div className="flex gap-1 w-full items-center">
         <Avatar
           src={artisan.avatar}

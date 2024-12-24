@@ -4,7 +4,11 @@ export default function TheList({ clients }) {
     <div className="flex flex-col w-full">
       <HeadList />
       {clients.map((client, index) => (
-        <ElementList key={index} client={client} />
+        <ElementList
+          key={index}
+          client={client}
+          bg={index % 2 === 0 ? "#EFF7FE" : "#FFFFFF"}
+        />
       ))}
     </div>
   );
@@ -36,9 +40,12 @@ function HeadList() {
   );
 }
 
-function ElementList({ client }) {
+function ElementList({ client, bg }) {
   return (
-    <div className="bg-white w-full p-2 py-4 flex items-center justify-evenly text-start sm:text-center">
+    <div
+      className="w-full p-2 py-4 flex items-center justify-evenly text-start sm:text-center"
+      style={{ backgroundColor: bg }}
+    >
       <div className="flex gap-1 w-full items-center">
         <Avatar
           src={client.avatar}

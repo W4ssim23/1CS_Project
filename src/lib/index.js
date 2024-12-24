@@ -3,7 +3,6 @@ import {
   checklist,
   client,
   dashboard,
-  googledocs,
   men,
   restore,
 } from "@/assets/svgs";
@@ -18,6 +17,5 @@ export const itemsAdmin = [
   { title: "Clients", svg: client, page: "/admin/clients" },
   { title: "Artisans", svg: men, page: "/admin/artisans" },
   { title: "Services", svg: restore, page: "/admin/services" },
-  { title: "Calendrier", svg: calendar, page: "/admin/calendrier" },
-  { title: "Documents", svg: googledocs, page: "/admin/docm" },
+  { title: "Demandes", svg: calendar, page: "/admin/demandes" },
 ];

@@ -31,6 +31,8 @@ import Vector2 from "./Vector2.svg";
 import miner from "./miner.svg";
 import handshake from "./handshake.svg";
 import nothing from "./nothing.svg";
+import Options from "./Options.svg";
+import pdf from "./pdf.svg";
 
 export {
   registerPic,
@@ -66,4 +68,6 @@ export {
   miner,
   handshake,
   nothing,
+  Options,
+  pdf,
 };
