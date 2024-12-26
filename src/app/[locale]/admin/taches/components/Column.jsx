@@ -12,8 +12,8 @@ import {
 
 export default function Column({ id, title, tasks }) {
   return (
-    <div className="bg-white  rounded-lg w-72 overflow-hidden shadow flex flex-col items-center">
-      <h2 className=" text-base text-[#223759] bg-[#F0F6FF] w-full h-14 mb-2 p-4 font-semibold">
+    <div className="bg-white  rounded-lg w-72  shadow flex flex-col items-center">
+      <h2 className=" text-base rounded-t-lg text-[#223759] bg-[#F0F6FF] w-full h-14 mb-2 p-4 font-semibold">
         {title}
       </h2>
       <button className="text-white w-[90%] h-10 flex items-center justify-center rounded-xl border-2 border-dashed border-[#1F4690]">

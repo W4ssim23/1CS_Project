@@ -25,8 +25,6 @@ export default function SideBarAdmin() {
 }
 
 const BarItem = ({ item, pg }) => {
-  console.log("selected", item.svgSelected);
-  console.log("not", item.svg);
   return (
     <Link
       href={item.page}

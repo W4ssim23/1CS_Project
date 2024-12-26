@@ -3,20 +3,17 @@
 import React, { useState } from "react";
 import {
   DndContext,
+  DragOverlay,
   KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
-  closestCorners,
+  closestCenter,
 } from "@dnd-kit/core";
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-  arrayMove,
-  sortableKeyboardCoordinates,
-} from "@dnd-kit/sortable";
+import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
 import Column from "./Column";
+import Task from "./Task";
 
 const KanbanBoard = () => {
   const [columns, setColumns] = useState({
@@ -82,6 +79,8 @@ const KanbanBoard = () => {
     ],
   });
 
+  const [activeTask, setActiveTask] = useState(null);
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -96,8 +95,19 @@ const KanbanBoard = () => {
     return null;
   };
 
+  const handleDragStart = (event) => {
+    const { active } = event;
+    const activeContainer = findContainer(active.id);
+    if (!activeContainer) return;
+
+    const task = columns[activeContainer].find((task) => task.id === active.id);
+    setActiveTask(task);
+  };
+
   const handleDragEnd = (event) => {
     const { active, over } = event;
+    setActiveTask(null);
+
     if (!over) return;
 
     const activeId = active.id;
@@ -151,7 +161,8 @@ const KanbanBoard = () => {
 
       <DndContext
         sensors={sensors}
-        collisionDetection={closestCorners}
+        collisionDetection={closestCenter}
+        onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
         <div className="flex gap-8">
@@ -159,6 +170,17 @@ const KanbanBoard = () => {
           <Column id="inProgress" title="En cours" tasks={columns.inProgress} />
           <Column id="done" title="Terminée" tasks={columns.done} />
         </div>
+
+        <DragOverlay>
+          {activeTask ? (
+            <Task
+              id={activeTask.id}
+              title={activeTask.title}
+              discription={activeTask.discription}
+              nmbr={activeTask.nmbr}
+            />
+          ) : null}
+        </DragOverlay>
       </DndContext>
     </div>
   );
