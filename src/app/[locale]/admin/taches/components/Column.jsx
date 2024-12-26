@@ -10,7 +10,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
-export default function Column({ id, title, tasks }) {
+export default function Column({ id, title, tasks, activeTaskId }) {
   return (
     <div className="bg-white  rounded-lg w-72  shadow flex flex-col items-center">
       <h2 className=" text-base rounded-t-lg text-[#223759] bg-[#F0F6FF] w-full h-14 mb-2 p-4 font-semibold">
@@ -22,7 +22,11 @@ export default function Column({ id, title, tasks }) {
       <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
         <div className="space-y-3 flex flex-col items-center py-4 w-full">
           {tasks.map((task) => (
-            <Task key={task.id} {...task} />
+            <Task
+              key={task.id}
+              {...task}
+              isDragging={task.id === activeTaskId}
+            />
           ))}
         </div>
       </SortableContext>

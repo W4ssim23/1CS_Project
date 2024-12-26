@@ -166,9 +166,24 @@ const KanbanBoard = () => {
         onDragEnd={handleDragEnd}
       >
         <div className="flex gap-8">
-          <Column id="backlog" title="Backlog" tasks={columns.backlog} />
-          <Column id="inProgress" title="En cours" tasks={columns.inProgress} />
-          <Column id="done" title="Terminée" tasks={columns.done} />
+          <Column
+            id="backlog"
+            title="Backlog"
+            tasks={columns.backlog}
+            activeTaskId={activeTask?.id}
+          />
+          <Column
+            id="inProgress"
+            title="En cours"
+            tasks={columns.inProgress}
+            activeTaskId={activeTask?.id}
+          />
+          <Column
+            id="done"
+            title="Terminée"
+            tasks={columns.done}
+            activeTaskId={activeTask?.id}
+          />
         </div>
 
         <DragOverlay>

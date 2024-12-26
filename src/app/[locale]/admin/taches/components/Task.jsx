@@ -3,13 +3,14 @@ import { CSS } from "@dnd-kit/utilities";
 import { Options, Note } from "@/assets/svgs";
 import Image from "next/image";
 
-export default function Task({ id, title, discription, nmbr }) {
+export default function Task({ id, title, discription, nmbr, isDragging }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    opacity: isDragging ? 0 : 1,
   };
 
   return (
