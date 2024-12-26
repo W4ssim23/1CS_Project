@@ -1,0 +1,167 @@
+"use client";
+
+import React, { useState } from "react";
+import {
+  DndContext,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  closestCorners,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+  arrayMove,
+  sortableKeyboardCoordinates,
+} from "@dnd-kit/sortable";
+
+import Column from "./Column";
+
+const KanbanBoard = () => {
+  const [columns, setColumns] = useState({
+    backlog: [
+      {
+        id: 1,
+        title: "Ajouter un artisan",
+        discription: "Ajouter un nouveau profil artisan manuellement",
+        nmbr: 3,
+      },
+      {
+        id: 2,
+        title: "Profile des artisans",
+        discription: "Vérifier et approuver les profils des artisans",
+        nmbr: 1,
+      },
+      {
+        id: 3,
+        title: "Services",
+        discription: "Vérifier les services proposés par les artisans",
+        nmbr: 4,
+      },
+    ],
+    inProgress: [
+      {
+        id: 4,
+        title: "services",
+        discription: "Design new user interface design for food delivery app",
+        nmbr: 7,
+      },
+      {
+        id: 5,
+        title: "Gestion des réclamations",
+        discription: "lorem epseum lorem epseum",
+        nmbr: 2,
+      },
+      {
+        id: 6,
+        title: "Artisans",
+        discription: "supprimer des profils d’artisans non conformes",
+        nmbr: 3,
+      },
+    ],
+    done: [
+      {
+        id: 7,
+        title: "Supprimer un utilisateur",
+        discription: "lorem epseum lorem epseum",
+        nmbr: 2,
+      },
+      {
+        id: 8,
+        title: "Service",
+        discription: "lorem epseum lorem epseum",
+        nmbr: 6,
+      },
+      {
+        id: 9,
+        title: "Ajouter un client",
+        discription: "lorem epseum lorem epseum",
+        nmbr: 5,
+      },
+    ],
+  });
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const findContainer = (id) => {
+    if (columns.backlog.find((task) => task.id === id)) return "backlog";
+    if (columns.inProgress.find((task) => task.id === id)) return "inProgress";
+    if (columns.done.find((task) => task.id === id)) return "done";
+    return null;
+  };
+
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+    if (!over) return;
+
+    const activeId = active.id;
+    const overId = over.id;
+
+    const activeContainer = findContainer(activeId);
+    const overContainer = findContainer(overId);
+
+    if (!activeContainer || !overContainer) return;
+
+    if (activeContainer === overContainer) {
+      // Same container sorting
+      const items = [...columns[activeContainer]];
+      const oldIndex = items.findIndex((item) => item.id === activeId);
+      const newIndex = items.findIndex((item) => item.id === overId);
+
+      setColumns({
+        ...columns,
+        [activeContainer]: arrayMove(items, oldIndex, newIndex),
+      });
+    } else {
+      // Moving between containers
+      const sourceItems = [...columns[activeContainer]];
+      const destinationItems = [...columns[overContainer]];
+
+      const [movedItem] = sourceItems.splice(
+        sourceItems.findIndex((item) => item.id === activeId),
+        1
+      );
+
+      destinationItems.splice(
+        destinationItems.findIndex((item) => item.id === overId),
+        0,
+        movedItem
+      );
+
+      setColumns({
+        ...columns,
+        [activeContainer]: sourceItems,
+        [overContainer]: destinationItems,
+      });
+    }
+  };
+
+  return (
+    <div className="p-8">
+      <h1 className="text-2xl font-semibold mb-8">Tâches</h1>
+      <div className="text-sm text-gray-500 mb-8 pb-8 border-b-1 border-[#1F4690]">
+        Ajoutez, modifiez ou supprimez vos tâches
+      </div>
+
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCorners}
+        onDragEnd={handleDragEnd}
+      >
+        <div className="flex gap-8">
+          <Column id="backlog" title="Backlog" tasks={columns.backlog} />
+          <Column id="inProgress" title="En cours" tasks={columns.inProgress} />
+          <Column id="done" title="Terminée" tasks={columns.done} />
+        </div>
+      </DndContext>
+    </div>
+  );
+};
+
+export default KanbanBoard;

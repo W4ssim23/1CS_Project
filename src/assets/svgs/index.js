@@ -33,6 +33,15 @@ import handshake from "./handshake.svg";
 import nothing from "./nothing.svg";
 import Options from "./Options.svg";
 import pdf from "./pdf.svg";
+import Plus from "./Plus.svg";
+import Note from "./Note.svg";
+
+import dashSelected from "./dashSelected.svg";
+import tachSelected from "./tachSelected.svg";
+import clientSelected from "./clientSelected.svg";
+import artisanSelected from "./artisanSelected.svg";
+import serviceSelected from "./serviceSelected.svg";
+import demandeSelected from "./demandeSelected.svg";
 
 export {
   registerPic,
@@ -70,4 +79,12 @@ export {
   nothing,
   Options,
   pdf,
+  Plus,
+  Note,
+  dashSelected,
+  tachSelected,
+  clientSelected,
+  artisanSelected,
+  serviceSelected,
+  demandeSelected,
 };
