@@ -28,7 +28,7 @@ export default function SearchBlock() {
   return (
     <main className="flex flex-col w-full h-fit">
       <div className="h-full flex flex-col w-full items-center justify-center min-h-[60lvh] sm:min-h-[80lvh] bg-[#1F4690] gap-24">
-        <p className=" text-[30px] mt-3 sm:mt-0 sm:text-[58px] text-center max-w-[800px] font-bold text-white">
+        <p className=" text-[30px] mt-3 sm:mt-0 sm:text-[58px] text-center max-w-[800px] font-bold text-white motion-preset-blur-right motion-duration-900">
           Trouvez et Engagez les meilleurs
           <span className="text-[#FFA500]"> Artisans </span>
           en Algérie
