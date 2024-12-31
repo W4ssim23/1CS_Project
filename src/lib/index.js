@@ -11,11 +11,21 @@ import {
   artisanSelected,
   serviceSelected,
   demandeSelected,
+  profile,
+  deals,
+  devis,
+  pannier,
+  chat,
+  profileSelected,
+  dealsSelected,
+  devisSelected,
+  pannierSelected,
+  chatSelected,
 } from "@/assets/svgs";
+
 export const itemsAdmin = [
   {
     title: "Tableau de bord",
-    link: "#",
     svg: dashboard,
     page: "/admin/dashboard",
     svgSelected: dashSelected,
@@ -49,5 +59,38 @@ export const itemsAdmin = [
     svg: calendar,
     svgSelected: demandeSelected,
     page: "/admin/demandes",
+  },
+];
+
+export const itemsClient = [
+  {
+    title: "Modifier mon profile",
+    svg: profile,
+    page: "/client/profile",
+    svgSelected: profileSelected,
+  },
+  {
+    title: "Suivi des travaux",
+    svg: deals,
+    svgSelected: dealsSelected,
+    page: "/client/deals",
+  },
+  {
+    title: "Demande de devis",
+    svg: devis,
+    svgSelected: devisSelected,
+    page: "/client/devis",
+  },
+  {
+    title: "Mon pannier",
+    svg: pannier,
+    svgSelected: pannierSelected,
+    page: "/client/pannier",
+  },
+  {
+    title: "Ma messagerie",
+    svg: chat,
+    svgSelected: chatSelected,
+    page: "/client/chat",
   },
 ];

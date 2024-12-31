@@ -1,4 +1,4 @@
-import { TopBar } from "@/components/layout";
+import { Footer, TopBar } from "@/components/layout";
 import ArtizanBlock from "./components/ArtizanBlock";
 import MissionBlock from "./components/MissionBlock";
 import VisionBlock from "./components/VisionBlock";
@@ -11,6 +11,7 @@ export default async function About() {
         <ArtizanBlock />
         <MissionBlock />
         <VisionBlock />
+        <Footer />
       </main>
     </>
   );

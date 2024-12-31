@@ -2,15 +2,17 @@
 
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { itemsAdmin } from "@/lib";
+import { itemsClient } from "@/lib";
 import { usePathname } from "@/i18n/routing";
+import { Avatar } from "@nextui-org/react";
 import { useContext } from "react";
 import { GlobalContext } from "@/app/[locale]/context";
-import { Avatar } from "@nextui-org/react";
 
-export default function SideBarAdmin() {
+export default function SideBarClient() {
   const pg = usePathname();
+
   const { userData } = useContext(GlobalContext);
+
   return (
     <nav className="min-w-[20%] bg-[#3A5BA0] shadow-md hidden sm:block ">
       <div className="h-[130px] border-b-[0.25px] border-[#BDBDBD] w-full flex flex-col items-center justify-evenly">
@@ -20,7 +22,7 @@ export default function SideBarAdmin() {
         </p>
       </div>
       <ul className="flex flex-col items-center w-full gap-4 lg:gap-0 pt-5">
-        {itemsAdmin.map((item, index) => (
+        {itemsClient.map((item, index) => (
           <BarItem pg={pg} item={item} key={index} />
         ))}
       </ul>

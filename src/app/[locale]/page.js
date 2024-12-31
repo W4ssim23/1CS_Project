@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-import { TopBar } from "@/components/layout";
+import { TopBar, Footer } from "@/components/layout";
 import WelcomeBlock from "./components/WelcomeBlock";
 import SearchBlock from "./components/SearchBlock";
 import ServiceBlock from "./components/ServicesBlock";
@@ -16,6 +16,7 @@ export default function Home() {
         <SearchBlock />
         <ServiceBlock />
         <ExpertsBlock />
+        <Footer />
       </main>
     </>
   );

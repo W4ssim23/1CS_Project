@@ -43,6 +43,17 @@ import artisanSelected from "./artisanSelected.svg";
 import serviceSelected from "./serviceSelected.svg";
 import demandeSelected from "./demandeSelected.svg";
 
+import profile from "./profile.svg";
+import deals from "./deals.svg";
+import devis from "./devis.svg";
+import pannier from "./pannier.svg";
+import chat from "./chat.svg";
+import profileSelected from "./profileSelected.svg";
+import dealsSelected from "./dealsSelected.svg";
+import devisSelected from "./devisSelected.svg";
+import pannierSelected from "./pannierSelected.svg";
+import chatSelected from "./chatSelected.svg";
+
 export {
   registerPic,
   Logo,
@@ -87,4 +98,14 @@ export {
   artisanSelected,
   serviceSelected,
   demandeSelected,
+  profile,
+  deals,
+  devis,
+  pannier,
+  chat,
+  profileSelected,
+  dealsSelected,
+  devisSelected,
+  pannierSelected,
+  chatSelected,
 };

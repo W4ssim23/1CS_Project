@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Logo } from "@/assets/svgs";
+import { Link } from "@/i18n/routing";
 
 export const metadata = {
   title: "Register",
@@ -9,7 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <main className="h-full w-full  min-w-screen min-h-screen">
-      <Image src={Logo} alt="Logo" className="ml-7 mt-5" />
+      <Link href={"/"}>
+        <Image src={Logo} alt="Logo" className="ml-7 mt-5" />
+      </Link>
       {children}
     </main>
   );
