@@ -5,7 +5,7 @@ export default function Number({ setStep, setData }) {
   const [phone, setPhone] = useState("");
   const handleNext = () => {
     if (!phone) return;
-    setData((prev) => ({ ...prev, phone }));
+    setData((prev) => ({ ...prev, phone_number: phone }));
     setStep(3);
   };
   return (

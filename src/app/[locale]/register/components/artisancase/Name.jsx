@@ -6,7 +6,7 @@ export default function Name({ setStep, setData }) {
   const [prenom, setPrenom] = useState("");
   const handleNext = () => {
     if (!name || !prenom) return;
-    setData((prev) => ({ ...prev, name, prenom }));
+    setData((prev) => ({ ...prev, first_name: name, last_name: prenom }));
     setStep(2);
   };
   return (

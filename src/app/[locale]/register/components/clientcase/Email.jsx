@@ -29,7 +29,12 @@ export default function Email({ setStep, setData }) {
       setError("Password must be at least 8 characters long");
       return;
     }
-    setData((prev) => ({ ...prev, email, password }));
+    setData((prev) => ({
+      ...prev,
+      email,
+      password1: password,
+      password2: confirmPassword,
+    }));
     setStep(4);
   };
 

@@ -9,11 +9,11 @@ import Number from "./Number";
 export default function ClientDialogue() {
   const [step, setStep] = useState(1);
   const [data, setData] = useState({
-    name: "",
-    prenom: "",
+    first_name: "",
+    last_name: "",
     email: "",
-    number: "",
-    password: "",
+    password1: "",
+    password2: "",
   });
   return (
     <>

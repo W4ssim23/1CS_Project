@@ -12,15 +12,16 @@ import Assurence from "./Assurence";
 export default function ArtisanDialogue() {
   const [step, setStep] = useState(1);
   const [data, setData] = useState({
-    name: "",
-    prenom: "",
+    first_name: "",
+    last_name: "",
     email: "",
-    number: "",
-    password: "",
+    password1: "",
+    password2: "",
     job: "",
-    certificated: false,
-    certificate: "",
-    assurence: "",
+    is_certified: false,
+    is_assured: false, //->true
+    certification_files: [],
+    insurance_files: [],
   });
   return (
     <>

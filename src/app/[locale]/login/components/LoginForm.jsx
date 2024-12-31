@@ -2,13 +2,14 @@
 
 import { Link } from "@/i18n/routing";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { Input, Button } from "@nextui-org/react";
 
 export default function LoginForm() {
-  const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [errorName, setErrorName] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
 
@@ -16,11 +17,40 @@ export default function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log("submitting credentials");
-    //     const form = e.target;
-    //     form.reset();
-    router.push("/");
+    if (!userName) {
+      setErrorName("Please enter your username");
+      return;
+    }
+    if (!password) {
+      setErrorEmail("Please enter your password");
+      return;
+    }
+    setErrorName("");
+    setErrorEmail("");
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:8000/app/user-login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email_or_username: userName, password }),
+      });
+      const data = await response.json();
+      if (data.error) {
+        setError(data.error);
+        setLoading(false);
+        return;
+      } else {
+        setLoading(false);
+        console.log(data);
+        document.cookie = `userData=${JSON.stringify(data.data)}; path=/;`;
+        console.log(data, data.data.role);
+        router.push(`/${data.data.role}`);
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -57,6 +87,7 @@ export default function LoginForm() {
         className=" bg-[#1F4690] text-white   max-w-[360px]  md:max-w-[500px]   md:min-w-[310px]"
         size="lg"
         onClick={handleSubmit}
+        isLoading={loading}
       >
         Sign-in
       </Button>

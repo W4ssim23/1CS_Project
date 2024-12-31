@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { GlobalContext } from "@/app/[locale]/context";
 import {
   Navbar,
   NavbarBrand,
@@ -15,9 +16,37 @@ import { Logo, notification, ellipse6 } from "@/assets/svgs";
 import { Link } from "@/i18n/routing.js";
 import Image from "next/image";
 import { itemsAdmin } from "@/lib";
+import { useRouter } from "@/i18n/routing";
 
 export default function TopBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // const { userData, setUserData } = useContext(GlobalContext);
+
+  // console.log(userData);
+
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    setLoading(true);
+    const response = await fetch("http://localhost:8000/app/user-logout/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    if (data.error) {
+      console.log(data.error);
+      setLoading(false);
+      return;
+    } else {
+      setLoading(false);
+      document.cookie = `userData=; path=/;`;
+      router.push(`/`);
+    }
+  };
 
   return (
     <Navbar
@@ -60,9 +89,8 @@ export default function TopBar() {
             href="#"
             variant="flat"
             radius="sm"
-            onClick={() => {
-              console.log("Deconnecter");
-            }}
+            onClick={() => handleLogout()}
+            isLoading={loading}
           >
             Deconnecter
           </Button>
