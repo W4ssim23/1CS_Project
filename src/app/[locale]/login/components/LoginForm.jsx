@@ -41,18 +41,19 @@ export default function LoginForm() {
       );
       const data = await response.json();
       if (data.error) {
-        setError(data.error);
+        setError(data.message);
         setLoading(false);
         return;
       } else {
         setLoading(false);
-        console.log(data);
+        // console.log(data);
         document.cookie = `userData=${JSON.stringify(data.data)}; path=/;`;
         console.log(data, data.data.role);
         router.push(`/${data.data.role}`);
       }
     } catch (e) {
       console.log(e);
+      setLoading(false);
     }
   };
 

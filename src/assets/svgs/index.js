@@ -54,6 +54,8 @@ import devisSelected from "./devisSelected.svg";
 import pannierSelected from "./pannierSelected.svg";
 import chatSelected from "./chatSelected.svg";
 
+import Send from "./Send.svg";
+
 export {
   registerPic,
   Logo,
@@ -108,4 +110,5 @@ export {
   devisSelected,
   pannierSelected,
   chatSelected,
+  Send,
 };

@@ -40,7 +40,11 @@ const BarItem = ({ item, pg }) => {
       <div className="flex items-center gap-4 lg:ml-[8%]">
         <div className="flex w-[23px] h-[23px] overflow-hidden">
           <Image
-            src={pg === item.page.toLowerCase() ? item.svgSelected : item.svg}
+            src={
+              pg.startsWith(item.page.toLowerCase())
+                ? item.svgSelected
+                : item.svg
+            }
             alt={item.title}
             height={23}
             width={23}
@@ -48,7 +52,9 @@ const BarItem = ({ item, pg }) => {
         </div>
         <p
           className={`text-[17px] font-[400]  hidden lg:block ${
-            pg === item.page.toLowerCase() ? "text-[#FFA500]" : "text-white"
+            pg.startsWith(item.page.toLowerCase())
+              ? "text-[#FFA500]"
+              : "text-white"
           }`}
         >
           {item.title}

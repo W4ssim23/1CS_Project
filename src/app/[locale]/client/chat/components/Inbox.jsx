@@ -1,44 +1,55 @@
 "use client";
 
-import { useEffect, useState, useContext } from "react";
-// import FetchingContext from "@/app/context";
-// import SearchBar from "@/app/components/ui/SearchBar";
+import { useEffect, useState } from "react";
 import Conversation from "./Conversation";
+import SearchBar from "./SearchBar";
+
+const exampleRooms = [
+  {
+    id: 1, //conversation id and not the user id
+    name: "Kanye West",
+    pfp: "https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2022/10/kanye-west-triste.jpg",
+  },
+  {
+    id: 2,
+    name: "Frankou",
+    pfp: "https://lastfm.freetls.fastly.net/i/u/ar0/c727ac2a12a296b7f62549def8d6b537.jpg",
+  },
+];
 
 const Inbox = () => {
-  // const { rooms, setRooms } = useContext(FetchingContext);
-  const [rooms, setRooms] = useState([]);
-  const [roomsId, setRoomsId] = useState(null);
+  //rooms will be passed as an argument and fetched in the layout instead
+  const [rooms, setRooms] = useState(exampleRooms);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchRooms = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch("/api/chat", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+  // useEffect(() => {
+  //   const fetchRooms = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const response = await fetch("/api/chat", {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       });
 
-        if (!response.ok) {
-          console.log("Failed to fetch rooms");
-          setRooms([]);
-          return;
-        }
+  //       if (!response.ok) {
+  //         console.log("Failed to fetch rooms");
+  //         setRooms([]);
+  //         return;
+  //       }
 
-        const data = await response.json();
-        setRooms(data.rooms);
-        setRoomsId(data.roomsId);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchRooms();
-  }, []);
+  //       const data = await response.json();
+  //       setRooms(data.rooms);
+  //       setRoomsId(data.roomsId);
+  //     } catch (error) {
+  //       console.error(error);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+  //   fetchRooms();
+  // }, []);
 
   if (isLoading || !rooms) return <SkeletonInbox />;
 
@@ -48,36 +59,17 @@ const Inbox = () => {
         Messages
       </h1>
       <div className="hidden sm:block">
-        {/* <SearchBar /> */}search bar holder
+        <SearchBar />
       </div>
       {Boolean(rooms.length) && (
         <div className="flex flex-col gap-3 bg-bgfakeWhite rounded-tl-xl rounded-bl-xl items-center sm:items-start p-2 sm:bg-white">
-          <p className="text-[19px] text-[#A098AE] font-[500] hidden sm:block">
-            Groups
-          </p>
           <div className="flex flex-col">
-            {rooms.map((name, index) => (
-              <Conversation
-                data={name}
-                id={roomsId ? roomsId[index] : ""}
-                key={index}
-              />
+            {rooms.map((room, index) => (
+              <Conversation data={room} key={index} />
             ))}
           </div>
         </div>
       )}
-      {/* {Boolean(Chats.length) && (
-        <div className="flex flex-col gap-3 bg-bgfakeWhite rounded-tl-xl rounded-bl-xl items-center sm:items-start p-2 sm:bg-white">
-          <p className="text-[19px] text-[#A098AE] font-[500] hidden sm:block">
-            Chats
-          </p>
-          <div className="flex flex-col">
-            {Chats.map((data, index) => (
-              <Conversation data={data} conversationId={data.unreadMessages} />
-            ))}
-          </div>
-        </div>
-      )} */}
       <div className="sm:hidden">
         <br />
         <br />
@@ -88,8 +80,6 @@ const Inbox = () => {
 };
 
 export default Inbox;
-
-const Chats = [];
 
 const SkeletonInbox = () => {
   return (

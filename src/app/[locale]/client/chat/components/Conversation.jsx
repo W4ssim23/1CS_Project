@@ -1,17 +1,17 @@
-import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { Avatar } from "@nextui-org/react";
 
-const Conversation = ({ data, pfp, id }) => {
+const Conversation = ({ data }) => {
   return (
-    <Link href={`/chat/${id}?title=${data.split(":")[1]}`}>
+    <Link href={`/client/chat/${data.id}?title=${data.name}&pfp=${data.pfp}`}>
       <div className=" cursor-pointer hover:bg-bgfakeWhite p-3  md:border-b-[2px] flex gap-2 py-4 justify-between  w-full">
-        {pfp ? (
-          <Image src={pfp} alt="" />
+        {data.pfp ? (
+          <Avatar src={data.pfp} alt={data.name} size="md" />
         ) : (
           <div className="w-[45px] h-[45px] bg-primary rounded-full"></div>
         )}
         <div className="flex-1 sm:flex flex-col gap-1 hidden">
-          <p className="text-[#303972] text-[16px] font-[600]">{data}</p>
+          <p className="text-[#303972] text-[16px] font-[600]">{data.name}</p>
           <p className="text-[#A098AE] text-[12px] font-[400]">
             {"click to get to the chat ...."}
           </p>
