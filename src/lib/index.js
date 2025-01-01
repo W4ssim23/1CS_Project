@@ -64,7 +64,7 @@ export const itemsAdmin = [
 
 export const itemsClient = [
   {
-    title: "Modifier mon profile",
+    title: "Modifier mon profil",
     svg: profile,
     page: "/client/profile",
     svgSelected: profileSelected,
@@ -86,6 +86,33 @@ export const itemsClient = [
     svg: pannier,
     svgSelected: pannierSelected,
     page: "/client/pannier",
+  },
+  {
+    title: "Ma messagerie",
+    svg: chat,
+    svgSelected: chatSelected,
+    page: "/client/chat",
+  },
+];
+
+export const itemsArtisan = [
+  {
+    title: "Modifier mon profil",
+    svg: profile,
+    page: "/client/profile",
+    svgSelected: profileSelected,
+  },
+  {
+    title: "Taches",
+    svg: deals,
+    svgSelected: dealsSelected,
+    page: "/client/deals",
+  },
+  {
+    title: "Demandes des clients",
+    svg: devis,
+    svgSelected: devisSelected,
+    page: "/client/devis",
   },
   {
     title: "Ma messagerie",
