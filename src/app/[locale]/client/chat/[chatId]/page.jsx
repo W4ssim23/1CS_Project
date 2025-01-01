@@ -37,7 +37,7 @@ export default function Chat({ params }) {
         "https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2022/10/kanye-west-triste.jpg",
     },
     {
-      message: "nice hh",
+      message: "ok hh",
       senderId: userData?.id,
       senderName: "alright",
       senderPfp:
