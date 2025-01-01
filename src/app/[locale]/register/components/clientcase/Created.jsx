@@ -12,13 +12,16 @@ export default function Created({ data }) {
     setHasRegistered(true);
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:8000/app/client-signup/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://dzartisan-app.onrender.com/app/client-signup/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       if (response.ok) {
         console.log("success");
       } else {

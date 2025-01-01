@@ -29,13 +29,16 @@ export default function LoginForm() {
     setErrorEmail("");
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:8000/app/user-login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email_or_username: userName, password }),
-      });
+      const response = await fetch(
+        "https://dzartisan-app.onrender.com/app/user-login/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email_or_username: userName, password }),
+        }
+      );
       const data = await response.json();
       if (data.error) {
         setError(data.error);

@@ -27,18 +27,19 @@ export default function TopBarClient() {
 
   const { userData } = useContext(GlobalContext);
 
-  console.log(userData);
-
   const router = useRouter();
 
   const handleLogout = async () => {
     setLoading(true);
-    const response = await fetch("http://localhost:8000/app/user-logout/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://dzartisan-app.onrender.com/app/user-logout/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await response.json();
     if (data.error) {
       console.log(data.error);
@@ -83,7 +84,7 @@ export default function TopBarClient() {
           src={userData?.pfp}
           width={30}
           height={30}
-          className="cursor-pointer"
+          className="cursor-pointer min-w-[35px] min-h-[35px]"
         />
         <NavbarItem></NavbarItem>
         <NavbarItem>

@@ -13,7 +13,7 @@ export default function Created({ data }) {
     setLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:8000/app/artisan-signup/",
+        "https://dzartisan-app.onrender.com/app/artisan-signup/",
         {
           method: "POST",
           headers: {
