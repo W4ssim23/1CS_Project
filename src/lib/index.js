@@ -97,7 +97,7 @@ export const itemsClient = [
 
 export const itemsArtisan = [
   {
-    title: "Modifier mon profil",
+    title: "Profil",
     svg: profile,
     page: "/client/profile",
     svgSelected: profileSelected,

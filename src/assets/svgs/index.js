@@ -55,6 +55,7 @@ import pannierSelected from "./pannierSelected.svg";
 import chatSelected from "./chatSelected.svg";
 
 import Send from "./Send.svg";
+import paying from "./paying.svg";
 
 export {
   registerPic,
@@ -111,4 +112,5 @@ export {
   pannierSelected,
   chatSelected,
   Send,
+  paying,
 };

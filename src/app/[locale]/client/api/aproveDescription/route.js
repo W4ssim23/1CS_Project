@@ -29,7 +29,8 @@ export async function POST(req) {
       `Title: ${title}\n` +
       `Description: ${description}\n\n` +
       `Your response should be in the following format:\n` +
-      `{"description":"<description string>"}`;
+      `{"description":"<description string>"}\n` +
+      `And the response should be with the same language as the description sent by the client.`;
 
     const result = await model.generateContent(prompt);
     let responseText = result.response.text();
