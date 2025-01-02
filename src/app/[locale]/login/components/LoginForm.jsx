@@ -1,9 +1,10 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from "@/i18n/routing";
 import { Input, Button } from "@nextui-org/react";
+import { GlobalContext } from "../../context";
 
 export default function LoginForm() {
   const [userName, setUserName] = useState("");
@@ -12,6 +13,8 @@ export default function LoginForm() {
   const [error, setError] = useState("");
   const [errorName, setErrorName] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
+
+  const { setUserData } = useContext(GlobalContext);
 
   const router = useRouter();
 
@@ -39,6 +42,12 @@ export default function LoginForm() {
           body: JSON.stringify({ email_or_username: userName, password }),
         }
       );
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.message);
+        setLoading(false);
+        return;
+      }
       const data = await response.json();
       if (data.error) {
         setError(data.message);
@@ -46,9 +55,9 @@ export default function LoginForm() {
         return;
       } else {
         setLoading(false);
-        // console.log(data);
         document.cookie = `userData=${JSON.stringify(data.data)}; path=/;`;
         console.log(data, data.data.role);
+        setUserData(data.data);
         router.push(`/${data.data.role}`);
       }
     } catch (e) {
