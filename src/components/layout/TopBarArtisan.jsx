@@ -21,7 +21,7 @@ import { useRouter } from "@/i18n/routing";
 
 import { GlobalContext } from "@/app/[locale]/context";
 
-export default function TopBarClient() {
+export default function TopBarArtisan() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 

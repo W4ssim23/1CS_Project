@@ -3,7 +3,7 @@ import { Avatar } from "@nextui-org/react";
 
 const Conversation = ({ data }) => {
   return (
-    <Link href={`/client/chat/${data.id}?title=${data.name}&pfp=${data.pfp}`}>
+    <Link href={`/artisan/chat/${data.id}?title=${data.name}&pfp=${data.pfp}`}>
       <div className=" cursor-pointer hover:bg-bgfakeWhite p-3  md:border-b-[2px] flex gap-2 py-4 justify-between  w-full">
         {data.pfp ? (
           <Avatar src={data.pfp} alt={data.name} size="md" />

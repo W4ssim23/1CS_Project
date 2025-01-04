@@ -57,6 +57,9 @@ import chatSelected from "./chatSelected.svg";
 import Send from "./Send.svg";
 import paying from "./paying.svg";
 
+import consult from "./consult.svg";
+import port from "./port.svg";
+
 export {
   registerPic,
   Logo,
@@ -113,4 +116,6 @@ export {
   chatSelected,
   Send,
   paying,
+  consult,
+  port,
 };

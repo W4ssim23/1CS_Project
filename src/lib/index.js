@@ -99,25 +99,25 @@ export const itemsArtisan = [
   {
     title: "Profil",
     svg: profile,
-    page: "/client/profile",
+    page: "/artisan/profile",
     svgSelected: profileSelected,
   },
   {
-    title: "Taches",
+    title: "Deals",
     svg: deals,
     svgSelected: dealsSelected,
-    page: "/client/deals",
+    page: "/artisan/deals",
   },
   {
     title: "Demandes des clients",
     svg: devis,
     svgSelected: devisSelected,
-    page: "/client/devis",
+    page: "/artisan/devis",
   },
   {
     title: "Ma messagerie",
     svg: chat,
     svgSelected: chatSelected,
-    page: "/client/chat",
+    page: "/artisan/chat",
   },
 ];

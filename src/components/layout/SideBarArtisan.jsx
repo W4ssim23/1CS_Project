@@ -8,7 +8,7 @@ import { Avatar } from "@nextui-org/react";
 import { useContext } from "react";
 import { GlobalContext } from "@/app/[locale]/context";
 
-export default function SideBarClient() {
+export default function SideBarArtisan() {
   const pg = usePathname();
 
   const { userData } = useContext(GlobalContext);

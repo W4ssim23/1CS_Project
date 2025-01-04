@@ -50,7 +50,7 @@ const MobileInbox = () => {
 
   // console.log(pathname);
 
-  if (pathname && pathname !== "/client/chat") return null;
+  if (pathname && pathname !== "/artisan/chat") return null;
 
   if (isLoading || !rooms) return <SkeletonInbox />;
 
