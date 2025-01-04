@@ -2,7 +2,7 @@ import { Link } from "@/i18n/routing";
 
 export default function BackButton() {
   return (
-    <Link href="/chat">
+    <Link href="/client/chat">
       <div className="flex items-center gap-2 sm:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"

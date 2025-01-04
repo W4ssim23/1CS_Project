@@ -87,7 +87,10 @@ import { Avatar } from "@nextui-org/react";
 //read and last message hour will be added later
 const Conversation = ({ data }) => {
   return (
-    <Link href={`chat/${data.id}?title=${data.name}`} className="w-full">
+    <Link
+      href={`chat/${data.id}?title=${data.name}&pfp=${data.pfp}`}
+      className="w-full"
+    >
       <div className=" cursor-pointer hover:bg-bgfakeWhite p-3  md:border-b-[2px] flex gap-2 py-4 justify-between  w-full">
         {data.pfp ? (
           <Avatar src={data.pfp} alt={data.name} size="md" />

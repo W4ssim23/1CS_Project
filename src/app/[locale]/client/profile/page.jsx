@@ -15,8 +15,8 @@ export default function Profile() {
 
 function ProfileForm() {
   return (
-    <div className="flex flex-col gap-8 bg-[#E9E9E9] px-16 py-8 items-center justify-center rounded-2xl">
-      <h2 className="text-xl font-bold">
+    <div className="flex flex-col gap-8 bg-[#E9E9E9] sm:px-16 py-8 items-center justify-center rounded-2xl">
+      <h2 className="text-xl font-bold text-center">
         Modification des information de profil
       </h2>
       <div className="flex sm:flex-row flex-col-reverse w-full items-center">
@@ -75,7 +75,7 @@ function Pfp() {
 
 function PasswordForm() {
   return (
-    <div className="flex flex-col gap-12 bg-[#E9E9E9] px-16 py-8 items-start justify-center rounded-2xl">
+    <div className="flex flex-col gap-12 bg-[#E9E9E9] sm:px-16 py-8 items-start justify-center rounded-2xl">
       <h2 className="text-xl font-bold w-full text-center">
         Modification du mot de passe
       </h2>

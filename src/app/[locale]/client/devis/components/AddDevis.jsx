@@ -3,7 +3,7 @@ import { Link } from "@/i18n/routing";
 
 export default function AddDevis() {
   return (
-    <div className="w-full flex items-center justify-between p-3 px-5 text-center ">
+    <div className="w-full flex flex-col sm:flex-row items-center justify-between p-3 px-5 text-center gap-4 sm:gap-0 ">
       <p className=" text-[24px] font-semibold">
         Resultat de mes{" "}
         <span className=" text-[#FFA500]">demande de devis</span>

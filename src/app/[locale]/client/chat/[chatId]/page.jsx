@@ -83,10 +83,8 @@ const Head = ({ title, pfp }) => {
   return (
     <div className="flex items-center gap-3 px-6 py-7 w-full shadow-sm rounded-sm">
       <BackButton />
-      {/* pfp instead */}
       <Avatar fallback src={pfp} size="md" className="w-[45px] h-[45px]" />
       <p className="text-[#303972] text-[19px] font-[600] flex-1">{title}</p>
-      {/* <img className="cursor-pointer" src={dots} alt="" /> */}
       <div className="cursor-pointer">
         <DotsIcon />
       </div>

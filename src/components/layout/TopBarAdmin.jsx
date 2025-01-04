@@ -11,6 +11,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Button,
+  Avatar,
 } from "@nextui-org/react";
 import { Logo, notification, ellipse6 } from "@/assets/svgs";
 import { Link } from "@/i18n/routing.js";
@@ -22,7 +23,7 @@ export default function TopBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // const { userData, setUserData } = useContext(GlobalContext);
+  const { userData } = useContext(GlobalContext);
 
   // console.log(userData);
 
@@ -78,12 +79,12 @@ export default function TopBar() {
             className="cursor-pointer"
           />
         </NavbarItem>
-        <Image
-          src={ellipse6}
-          alt="ellipse"
+        <Avatar
+          size="sm"
+          src={userData?.pfp}
           width={30}
           height={30}
-          className="cursor-pointer"
+          className="cursor-pointer min-w-[35px] min-h-[35px]"
         />
         <NavbarItem></NavbarItem>
         <NavbarItem>

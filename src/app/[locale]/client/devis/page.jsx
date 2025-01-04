@@ -5,6 +5,7 @@ import AddDevis from "./components/AddDevis";
 import Image from "next/image";
 import { paying } from "@/assets/svgs";
 import { Button } from "@nextui-org/react";
+import { Link } from "@/i18n/routing";
 
 const devis = [
   {
@@ -109,8 +110,11 @@ function Item({ data }) {
   return (
     <div className="w-full flex items-center justify-between px-2 ">
       <div className="flex items-center gap-2 w-1/3 text-center">
-        <Image src={paying} width={25} height={25} />
-        <h1 className="text-lg font-semibold">{data.name}</h1>
+        <Image src={paying} width={25} height={25} alt="a" />
+        {/* redirect on click to the artisan portfolio */}
+        <Link href={"#"}>
+          <h1 className="text-lg font-semibold">{data.name}</h1>
+        </Link>
       </div>
       <h1 className="text-lg font-semibold text-blue-800  w-1/3 text-center">
         {data.price}

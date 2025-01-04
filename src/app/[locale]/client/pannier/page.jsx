@@ -49,7 +49,7 @@ function Item({ data }) {
   return (
     <div className="w-full flex items-center justify-between px-2 ">
       <div className="flex items-center gap-2 w-1/4 text-center">
-        <Image src={paying} width={25} height={25} />
+        <Image src={paying} width={25} height={25} alt="b" />
         <h1 className="text-lg font-semibold">{data.name}</h1>
       </div>
       <h1 className="text-lg font-semibold w-1/4 text-center">{data.title}</h1>

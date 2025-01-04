@@ -15,7 +15,7 @@ export default function Footer() {
         </div>
 
         <div className=" w-1/3 flex flex-col items-center text-center">
-          <h3 className="text-lg font-semibold text-blue-900">
+          <h3 className="text-lg font-semibold text-blue-900 text-nowrap">
             QUELQUES LIENS
           </h3>
           <ul className="mt-4 space-y-2 text-sm text-gray-700 font-bold">
@@ -42,7 +42,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className=" w-1/3 flex flex-col items-center text-center gap-3">
-          <h3 className="text-lg font-semibold text-blue-900">
+          <h3 className="text-lg font-semibold text-blue-900 text-nowrap">
             CONTACTER-NOUS
           </h3>
           <p className="text-sm text-gray-700 mt-4">031773311</p>
