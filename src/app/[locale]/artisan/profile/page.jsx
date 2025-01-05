@@ -17,13 +17,13 @@ export default function Profile() {
       <div className="flex sm:flex-row flex-col items-center w-full justify-center gap-10">
         <Link href="profile/portfolio">
           <div className="bg-[#E3EDF9] rounded-xl sm:p-6 p-3 shadow-xl flex items-center font-semibold gap-3 text-center text-[#1F4690] hover:-translate-y-1 transition-all">
-            <Image src={port} className="" />
+            <Image src={port} className="" alt="a" />
             <h1>Voir le portfolio</h1>
           </div>
         </Link>
         <Link href="profile/edit-profile">
           <div className="bg-[#E3EDF9] rounded-xl sm:p-6 p-3 shadow-xl flex items-center font-semibold gap-3 text-center text-[#1F4690] hover:-translate-y-1 transition-all">
-            <Image src={consult} />
+            <Image src={consult} alt="b" />
             <h1 className="max-w-[125px] text-wrap">Consulter vos infos</h1>
           </div>
         </Link>
