@@ -85,6 +85,7 @@ export default function TopBarArtisan() {
           width={30}
           height={30}
           className="cursor-pointer min-w-[35px] min-h-[35px]"
+          fallback
         />
         <NavbarItem></NavbarItem>
         <NavbarItem>

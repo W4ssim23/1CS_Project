@@ -13,7 +13,7 @@ import {
   Button,
   Avatar,
 } from "@nextui-org/react";
-import { Logo, notification, ellipse6 } from "@/assets/svgs";
+import { Logo, notification } from "@/assets/svgs";
 import { Link } from "@/i18n/routing.js";
 import Image from "next/image";
 import { itemsAdmin } from "@/lib";
@@ -85,6 +85,7 @@ export default function TopBar() {
           width={30}
           height={30}
           className="cursor-pointer min-w-[35px] min-h-[35px]"
+          fallback
         />
         <NavbarItem></NavbarItem>
         <NavbarItem>

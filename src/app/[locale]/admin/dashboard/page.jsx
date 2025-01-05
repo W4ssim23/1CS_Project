@@ -8,12 +8,12 @@ export default function DashboardPage() {
   return (
     <div className="w-full min-h-[90vh] flex flex-col items-center justify-center py-2 gap-6">
       <StatstCards />
-      <div className="flex gap-14">
-        <div className="flex flex-col items-start justify-start gap-4">
+      <div className="flex md:flex-row flex-col gap-8 sm:gap-14">
+        <div className="flex flex-col items-start justify-center sm:justify-start gap-4">
           <Visitors />
           <RecentRequests />
         </div>
-        <div className="flex flex-col items-center justify-start gap-4">
+        <div className="flex flex-col items-center justify-center sm:justify-start gap-4">
           <Pourcentage />
           <TachesList />
         </div>

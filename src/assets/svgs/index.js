@@ -60,6 +60,9 @@ import paying from "./paying.svg";
 import consult from "./consult.svg";
 import port from "./port.svg";
 
+import clientb from "./clientb.svg";
+import menb from "./menb.svg";
+
 export {
   registerPic,
   Logo,
@@ -118,4 +121,6 @@ export {
   paying,
   consult,
   port,
+  clientb,
+  menb,
 };

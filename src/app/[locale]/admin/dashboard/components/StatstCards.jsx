@@ -1,14 +1,19 @@
 import Image from "next/image";
-import { client, men, handshake } from "@/assets/svgs";
+import { clientb, menb, handshake } from "@/assets/svgs";
 
 export default function StatstCards() {
   // values would be fetched from the server
   const stats = [
-    { text: "Le total des Artisans", value: "120", icon: men, bg: "#FFF7C294" },
+    {
+      text: "Le total des Artisans",
+      value: "120",
+      icon: menb,
+      bg: "#FFF7C294",
+    },
     {
       text: "Le total des Clients",
       value: "340",
-      icon: client,
+      icon: clientb,
       bg: "#8FB6FF73",
     },
     {
@@ -20,7 +25,7 @@ export default function StatstCards() {
   ];
 
   return (
-    <div className="flex gap-14">
+    <div className="flex md:flex-row flex-col sm:gap-14 gap-4">
       {stats.map((stat, index) => (
         <StatCard key={index} {...stat} />
       ))}

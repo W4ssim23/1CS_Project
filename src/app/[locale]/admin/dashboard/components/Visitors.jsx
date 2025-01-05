@@ -63,7 +63,7 @@ const options = {
 
 export default function Visitors() {
   return (
-    <div className="border border-gray-300 rounded-lg bg-white w-[500px] p-4 shadow-md hover:shadow-2xl transition-all hover:-translate-y-1 ease-in-out duration-700">
+    <div className="border border-gray-300 rounded-lg bg-white sm:w-[500px] w-full p-4 shadow-md hover:shadow-2xl transition-all hover:-translate-y-1 ease-in-out duration-700">
       <h3 className="text-lg font-medium text-[#787878] mb-2">Aujourd'hui</h3>
       <p className="text-2xl font-bold text-black">
         {VisitorsNumber} Visiteurs{" "}

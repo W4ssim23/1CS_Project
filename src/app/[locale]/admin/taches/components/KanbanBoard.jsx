@@ -165,7 +165,7 @@ const KanbanBoard = () => {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
-        <div className="flex gap-8">
+        <div className="flex gap-8 flex-wrap justify-center">
           <Column
             id="backlog"
             title="Backlog"

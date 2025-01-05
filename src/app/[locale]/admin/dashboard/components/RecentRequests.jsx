@@ -13,7 +13,7 @@ export default function RecentRequests() {
   ];
 
   return (
-    <div className="p-6 pl-0 rounded-lg  w-full  mx-auto ml-0 ">
+    <div className="sm:p-6 pl-0 rounded-lg  w-full  mx-auto ml-0 ">
       <h2 className="text-xl font-bold text-[#1F4690] mb-6">
         Des demandes Récentes
       </h2>
