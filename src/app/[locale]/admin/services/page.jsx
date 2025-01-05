@@ -67,13 +67,13 @@ export default async function ServicesPage() {
       </h1>
       <div className="w-full flex flex-col items-center justify-center">
         <div className="w-full flex sm:w-[90%] justify-between p-4 items-center text-gray-500 font-semibold text-center">
-          <p className="">artisan</p>
-          <p className="">client</p>
-          <p className="">service</p>
-          <p className="hidden sm:block">price</p>
-          <p className="hidden sm:block">pourcentage</p>
-          <p className="hidden md:block">payed</p>
-          <p className=" w-[70px] sm:w-[81px]"></p>
+          <p className=" w-full">artisan</p>
+          <p className=" w-full">client</p>
+          <p className=" w-full">service</p>
+          <p className="hidden sm:block w-full">price</p>
+          <p className="hidden sm:block w-full">pourcentage</p>
+          <p className="hidden md:block w-full">payed</p>
+          <div className=" w-[70px] sm:w-[500px]"></div>
         </div>
         <div className="w-full flex flex-col items-center gap-5 text-center max-h-[70vh] overflow-y-auto pb-1">
           {data.map((item) => (
