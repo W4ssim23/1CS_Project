@@ -1,6 +1,542 @@
 {
-  "HomePage": {
-    "title": "Hello world in fr!",
-    "about": "Go to the about page fr"
+  "/": {
+    "title": "Trouver les meilleurs Artisans pour tous vos services",
+    "enderTitle": "Trouvez un constructeur, un plombier, un peintre et plus encore.",
+    "button": "Decouvrir Plus",
+    "search": "Trouvez et Engagez les meilleurs Artisans en Algérie",
+    "searchButton": "Chercher sur DZ ARTISAN...",
+    "jobs": ["menuisier", "electrécien", "maçon", "peintre", "plombier"],
+    "question": "DZ-ARTISAN, comment ça marche?",
+    "services": {
+      "titles": ["Recherche simple", "Messagerie integree", "Selection simple"],
+      "descriptions": [
+        "Utilisez la barre de recherche ou explorez les catégories du menu de navigation pour accéder à votre service.",
+        "Contactez des professionnels directement grâce à la messagerie intégrée.",
+        "Sélectionnez un service selon les évaluations et les avis, ou affinez votre recherche avec des filtres comme « peintre »."
+      ]
+    },
+    "expertBlock": {
+      "title1": "NOS EXPERTS",
+      "title2": "Faites confiance à l'expertise de nos professionnels qualifiés, riches d'années d'expérience dans leurs domaines respectifs.",
+      "experts": ["Ahmed Muli", "Adem Bell", "Maria Jhon"],
+      "descriptions": [
+        "Un menuisier professionnel doté de plus de 10 ans d'expérience dans le domaine.",
+        "Un électricien qualifié avec 7 ans d'expérience dans le domaine.",
+        "Un plombier certifié, fort de 9 ans d'expérience dans le métier."
+      ]
+    }
+  },
+  "/login": {
+    "LoginForm": {
+      "signInTitle": "Se connecter",
+      "usernameLabel": "Nom d'utilisateur",
+      "usernamePlaceholder": "Entrez votre nom d'utilisateur...",
+      "passwordLabel": "Mot de passe",
+      "passwordPlaceholder": "Entrez votre mot de passe...",
+      "signInButton": "Se connecter",
+      "noAccountText": "Vous n’avez pas un compte?",
+      "signUpLink": "S'inscrire",
+      "usernameError": "Veuillez entrer votre nom d'utilisateur",
+      "passwordError": "Veuillez entrer votre mot de passe"
+    },
+    "SidePic": {
+      "welcomeText": "BIENVENUE SUR DZ-ARTISAN!",
+      "supportText": "Rejoignez-nous, nous apprécions votre soutien."
+    },
+    "RootLayout": {
+      "logoAlt": "Logo"
+    }
+  },
+  "/register": {
+    "RegisterForm": {
+      "nameTitle": "Enter votre nom et votre prenom",
+      "nameLabel": "name",
+      "prenomLabel": "prénom",
+      "phoneTitle": "Entrer votre numéro de téléphone",
+      "phoneLabel": "numéro de téléphone",
+      "emailTitle": "Entrer votre email et crée un mot de passe",
+      "emailLabel": "email",
+      "passwordLabel": "mot de passe",
+      "confirmPasswordLabel": "coonfirmé le mot de passe",
+      "jobTitle": "quel est votre metier?",
+      "jobLabel": "Metier",
+      "jobPlaceholder": "Selectionner votre metier",
+      "certificateTitle": "étes vous certifié?",
+      "certificateYes": "Oui",
+      "certificateNo": "Non",
+      "certificateUpload": "ajouté une certification",
+      "assurenceTitle": "Veuillez entrez votre justificatif d’assurance",
+      "assurenceUpload": "ajouté une certification",
+      "createdSuccess": "votre compte a été crée avec succès.",
+      "createdPending": "votre demande de création de compte a été envoyer, vous allez recevoir un email quand ce dernier sera crée.",
+      "createdError": "we couldn't create your account !!",
+      "tryAgain": "try again ?",
+      "okButton": "OK",
+      "nextButton": "suivant",
+      "laterButton": "plus tard"
+    }
+  },
+  "/client": {
+    "ClientPage": {
+      "welcomeBack": "welcome back !"
+    },
+    "Profile": {
+      "modifyProfile": "Modifier mon profil"
+    },
+    "ProfileForm": {
+      "profileInfoTitle": "Modification des information de profil",
+      "nameLabel": "nom",
+      "prenomLabel": "prénom",
+      "phoneLabel": "numero de telephone",
+      "emailLabel": "email",
+      "cancelButton": "Annuler",
+      "saveButton": "enregistrer"
+    },
+    "PasswordForm": {
+      "passwordTitle": "Modification du mot de passe",
+      "currentPasswordLabel": "mot de passe actuel",
+      "newPasswordLabel": "nouveau mot de passe",
+      "confirmNewPasswordLabel": "confirmation du nouveau mot de passe",
+      "cancelButton": "Annuler",
+      "saveButton": "enregistrer"
+    },
+    "Pannier": {
+      "title": "Mon pannier",
+      "artisan": "artisan",
+      "workToDo": "travail a faire",
+      "cost": "cout",
+      "buyButton": "acheter"
+    },
+    "Devis": {
+      "title": "Resultat de mes demande de devis",
+      "newDevisButton": "Nouveau Devis",
+      "offersTitle": "Les reponse aux demande de",
+      "validateOfferButton": "Validé l’offre"
+    },
+    "NewDevis": {
+      "title": "Demande de devis",
+      "devisTitleLabel": "Titre de la demande de devis",
+      "artisanTypeLabel": "selectionnée le type d’artisan que vous voulez solicité",
+      "descriptionLabel": "veuillez decrir votre besoin",
+      "enhanceDescriptionButton": "enchancer la description ?",
+      "estimatePriceButton": "estimer le prix",
+      "cancelButton": "Annuler",
+      "sendButton": "envoyer"
+    },
+    "GotNothing": {
+      "noDevis": "Aucun Devis en ce moment",
+      "noDevisDescription": "Les devis apparaîtront ici une fois qu'ils se seront ajoutés à votre compte."
+    },
+    "AddDevis": {
+      "title": "Resultat de mes demande de devis",
+      "newDevisButton": "Nouveau Devis"
+    },
+    "Deals": {
+      "title": "Mes Travaux",
+      "artisan": "artisan",
+      "workToDo": "travail a faire",
+      "percentage": "pourcentage",
+      "detailsButton": "Details"
+    },
+    "DealProcess": {
+      "title": "Detail du suivi de",
+      "remainingTasks": "tranches restantes",
+      "ongoingTasks": "tranches en cours",
+      "completedTasks": "tranches terminées"
+    },
+    "Tasks": {
+      "remainingTasks": "tranches restantes",
+      "ongoingTasks": "tranches en cours",
+      "completedTasks": "tranches terminées"
+    },
+    "OneTask": {
+      "description": "description",
+      "startDate": "startDate",
+      "endDate": "endDate"
+    },
+    "Chat": {
+      "selectChatRoom": "Select a chat room"
+    },
+    "BackButton": {
+      "backButton": "Back"
+    },
+    "ChatPage": {
+      "title": "Chat",
+      "sendButton": "Send"
+    },
+    "Inbox": {
+      "messages": "Messages",
+      "searchPlaceholder": "Search...",
+      "clickToChat": "click to get to the chat ...."
+    },
+    "MobileInbox": {
+      "searchPlaceholder": "Search...",
+      "clickToChat": "click to get to the chat ...."
+    },
+    "Conversation": {
+      "clickToChat": "click to get to the chat ...."
+    },
+    "Send": {
+      "sendButton": "Send"
+    },
+    "SearchBar": {
+      "searchPlaceholder": "Search..."
+    }
+  },
+  "/artisan": {
+    "ClientPage": {
+      "welcomeBack": "welcome back !"
+    },
+    "Profile": {
+      "modifyProfile": "Modifier mon profil"
+    },
+    "ProfileForm": {
+      "profileInfoTitle": "Modification des information de profil",
+      "nameLabel": "nom",
+      "prenomLabel": "prénom",
+      "phoneLabel": "numero de telephone",
+      "emailLabel": "email",
+      "cancelButton": "Annuler",
+      "saveButton": "enregistrer"
+    },
+    "PasswordForm": {
+      "passwordTitle": "Modification du mot de passe",
+      "currentPasswordLabel": "mot de passe actuel",
+      "newPasswordLabel": "nouveau mot de passe",
+      "confirmNewPasswordLabel": "confirmation du nouveau mot de passe",
+      "cancelButton": "Annuler",
+      "saveButton": "enregistrer"
+    },
+    "Pannier": {
+      "title": "Mon pannier",
+      "artisan": "artisan",
+      "workToDo": "travail a faire",
+      "cost": "cout",
+      "buyButton": "acheter"
+    },
+    "Devis": {
+      "title": "Resultat de mes demande de devis",
+      "newDevisButton": "Nouveau Devis",
+      "offersTitle": "Les reponse aux demande de",
+      "validateOfferButton": "Validé l’offre"
+    },
+    "NewDevis": {
+      "title": "Demande de devis",
+      "devisTitleLabel": "Titre de la demande de devis",
+      "artisanTypeLabel": "selectionnée le type d’artisan que vous voulez solicité",
+      "descriptionLabel": "veuillez decrir votre besoin",
+      "enhanceDescriptionButton": "enchancer la description ?",
+      "estimatePriceButton": "estimer le prix",
+      "cancelButton": "Annuler",
+      "sendButton": "envoyer"
+    },
+    "GotNothing": {
+      "noDevis": "Aucun Devis en ce moment",
+      "noDevisDescription": "Les devis apparaîtront ici une fois qu'ils se seront ajoutés à votre compte."
+    },
+    "AddDevis": {
+      "title": "Resultat de mes demande de devis",
+      "newDevisButton": "Nouveau Devis"
+    },
+    "Deals": {
+      "title": "Mes Travaux",
+      "artisan": "artisan",
+      "workToDo": "travail a faire",
+      "percentage": "pourcentage",
+      "detailsButton": "Details"
+    },
+    "DealProcess": {
+      "title": "Detail du suivi de",
+      "remainingTasks": "tranches restantes",
+      "ongoingTasks": "tranches en cours",
+      "completedTasks": "tranches terminées"
+    },
+    "Tasks": {
+      "remainingTasks": "tranches restantes",
+      "ongoingTasks": "tranches en cours",
+      "completedTasks": "tranches terminées"
+    },
+    "OneTask": {
+      "description": "description",
+      "startDate": "startDate",
+      "endDate": "endDate"
+    },
+    "Chat": {
+      "selectChatRoom": "Select a chat room"
+    },
+    "BackButton": {
+      "backButton": "Back"
+    },
+    "ChatPage": {
+      "title": "Chat",
+      "sendButton": "Send"
+    },
+    "Inbox": {
+      "messages": "Messages",
+      "searchPlaceholder": "Search...",
+      "clickToChat": "click to get to the chat ...."
+    },
+    "MobileInbox": {
+      "searchPlaceholder": "Search...",
+      "clickToChat": "click to get to the chat ...."
+    },
+    "Conversation": {
+      "clickToChat": "click to get to the chat ...."
+    },
+    "Send": {
+      "sendButton": "Send"
+    },
+    "SearchBar": {
+      "searchPlaceholder": "Search..."
+    },
+    "DemandesPage": {
+      "title": "Demandes de devis",
+      "noDemandes": "Aucune demande de devis en ce moment",
+      "noDemandesDescription": "Les demandes de devis apparaîtront ici une fois qu'elles se seront ajoutées à votre compte."
+    },
+    "DemandesList": {
+      "noDemandes": "Aucune demande de devis en ce moment",
+      "noDemandesDescription": "Les demandes de devis apparaîtront ici une fois qu'elles se seront ajoutées à votre compte."
+    },
+    "Demande": {
+      "userName": "Nom d'utilisateur",
+      "title": "Titre",
+      "files": "Fichiers",
+      "detailsButton": "Détails"
+    },
+    "DealsPage": {
+      "title": "Mes Travaux",
+      "noDeals": "Aucune tâche en ce moment",
+      "noDealsDescription": "Les tâches apparaîtront ici une fois qu'elles se seront ajoutées à votre compte."
+    },
+    "DealsList": {
+      "noDeals": "Aucune tâche en ce moment",
+      "noDealsDescription": "Les tâches apparaîtront ici une fois qu'elles se seront ajoutées à votre compte."
+    },
+    "Deal": {
+      "client": "Client",
+      "workToDo": "Travail à faire",
+      "percentage": "Pourcentage",
+      "detailsButton": "Détails"
+    },
+    "KanbanBoard": {
+      "title": "Tâches",
+      "description": "Ajoutez, modifiez ou supprimez vos tâches",
+      "backlog": "Backlog",
+      "inProgress": "En cours",
+      "done": "Terminée"
+    },
+    "Task": {
+      "title": "Titre",
+      "description": "Description",
+      "number": "Numéro"
+    },
+    "Column": {
+      "addTaskButton": "Ajouter une tâche"
+    }
+  },
+  "/about": {
+    "ArtizanBlock": {
+      "title": "DZ-ARTISAN!",
+      "description": "Votre passerelle vers l'excellence de l'artisanat algérien."
+    },
+    "MissionBlock": {
+      "title": "Notre mission",
+      "description": "Notre mission chez DZ Artisan est de renforcer le lien entre les artisans algériens et leurs clients en offrant une plateforme transparente, fiable et accessible. Nous visons à soutenir les artisans locaux en leur offrant une visibilité accrue tout en simplifiant l'expérience des clients à la recherche de services artisanaux de qualité. À travers notre application, nous nous engageons à promouvoir l'authenticité, l'excellence et le respect des traditions, tout en créant une communauté dynamique et solidaire."
+    },
+    "VisionBlock": {
+      "title": "Notre vision",
+      "description": "Chez DZ Artisan, notre vision est de créer un pont solide entre les clients et les artisans de toute l'Algérie. Nous aspirons à valoriser l'artisanat local en offrant une plateforme intuitive où les utilisateurs peuvent facilement découvrir et collaborer avec des artisans talentueux. Nous sommes déterminés à promouvoir le savoir-faire traditionnel tout en facilitant l'accès aux services artisanaux, contribuant ainsi à un avenir prospère pour l'artisanat algérien."
+    },
+    "AboutPage": {
+      "title": "À propos de nous"
+    }
+  },
+  "/admin": {
+    "AddArtisan": {
+      "title": "Artisans",
+      "button": "Nouveau Artisan"
+    },
+    "AdminPage": {
+      "welcome": "Bienvenue sur le tableau de bord de l'administrateur de DZ-Artisan !",
+      "email": "admin@dzartisan.com",
+      "addClient": {
+        "title": "Ajouter un client",
+        "text": "Ajoutez un nouveau client en remplissant les informations nécessaires pour faciliter la gestion et le suivi de leurs demandes."
+      },
+      "addArtisan": {
+        "title": "Ajouter un artisan",
+        "text": "Ajoutez un nouvel artisan en renseignant ses informations pour l'intégrer à notre réseau et faciliter la gestion de ses services."
+      },
+      "addService": {
+        "title": "Ajouter un service",
+        "text": "Ajoutez un nouveau service en précisant les détails nécessaires pour le rendre disponible et accessible à nos clients."
+      }
+    },
+    "AdminLayout": {
+      "sidebar": "SideBarAdmin",
+      "topbar": "TopBarAdmin"
+    },
+    "ServicesPage": {
+      "title": "Mes Services",
+      "artisan": "artisan",
+      "client": "client",
+      "service": "service",
+      "price": "price",
+      "pourcentage": "pourcentage",
+      "payed": "payed",
+      "detailsButton": "Details"
+    },
+    "Task": {
+      "title": "Titre",
+      "description": "Description",
+      "number": "Numéro"
+    },
+    "KanbanBoard": {
+      "title": "Tâches",
+      "description": "Ajoutez, modifiez ou supprimez vos tâches",
+      "backlog": "Backlog",
+      "inProgress": "En cours",
+      "done": "Terminée"
+    },
+    "GotNothing": {
+      "noTasks": "Aucune Tache en ce moment",
+      "noTasksDescription": "Les taches apparaîtront ici une fois qu'ils se seront ajoutés à votre site."
+    },
+    "Column": {
+      "addTaskButton": "Ajouter une tâche"
+    },
+    "DealProcess": {
+      "title": "Detail du suivi de",
+      "remainingTasks": "tranches restantes",
+      "ongoingTasks": "tranches en cours",
+      "completedTasks": "tranches terminées"
+    },
+    "Tasks": {
+      "remainingTasks": "tranches restantes",
+      "ongoingTasks": "tranches en cours",
+      "completedTasks": "tranches terminées"
+    },
+    "OneTask": {
+      "description": "description",
+      "startDate": "startDate",
+      "endDate": "endDate"
+    },
+    "DemandesPage": {
+      "title": "Demandes de devis",
+      "noDemandes": "Aucune demande de devis en ce moment",
+      "noDemandesDescription": "Les demandes de devis apparaîtront ici une fois qu'elles se seront ajoutées à votre compte."
+    },
+    "DemandesList": {
+      "noDemandes": "Aucune demande de devis en ce moment",
+      "noDemandesDescription": "Les demandes de devis apparaîtront ici une fois qu'elles se seront ajoutées à votre compte."
+    },
+    "Demande": {
+      "userName": "Nom d'utilisateur",
+      "title": "Titre",
+      "files": "Fichiers",
+      "detailsButton": "Détails"
+    },
+    "DemandeDetailsPage": {
+      "title": "Detail du suivi de",
+      "remainingTasks": "tranches restantes",
+      "ongoingTasks": "tranches en cours",
+      "completedTasks": "tranches terminées"
+    },
+    "DashboardPage": {
+      "title": "Tableau de bord",
+      "visitors": "Visiteurs",
+      "recentRequests": "Des demandes Récentes",
+      "tasks": "Mes Taches",
+      "stats": {
+        "totalArtisans": "Le total des Artisans",
+        "totalClients": "Le total des Clients",
+        "totalServices": "Le total des services"
+      }
+    },
+    "Visitors": {
+      "title": "Aujourd'hui",
+      "visitors": "Visiteurs",
+      "percentage": "+1.75%"
+    },
+    "TachesList": {
+      "title": "Mes Taches",
+      "tasks": [
+        "Verifier les assurances",
+        "Verifier les services",
+        "Ajouter des artisans",
+        "les rapports",
+        "verifier les messages"
+      ]
+    },
+    "StatstCards": {
+      "totalArtisans": "Le total des Artisans",
+      "totalClients": "Le total des Clients",
+      "totalServices": "Le total des services"
+    },
+    "RecentRequests": {
+      "title": "Des demandes Récentes",
+      "viewMore": "Voir Plus"
+    },
+    "Pourcentage": {
+      "title": "Pourcentage des utilisateurs",
+      "artisans": "Artisans",
+      "clients": "Clients"
+    },
+    "ClientPage": {
+      "title": "Clients",
+      "addClientButton": "Nouveau Client"
+    },
+    "TheList": {
+      "name": "Nom",
+      "clientId": "Client Id",
+      "email": "Email",
+      "phone": "Telephone",
+      "genre": "Genre",
+      "action": "Action",
+      "deleteButton": "Suprimer"
+    },
+    "SearchClient": {
+      "search": "chercher",
+      "placeholder": "chercher les client par leurs noms"
+    },
+    "ListClient": {
+      "noClients": "Aucun Client en ce moment",
+      "noClientsDescription": "Les clients apparaîtront ici une fois qu'ils se seront ajoutés à votre site."
+    },
+    "Client": {
+      "searchClient": "chercher",
+      "listClient": "Liste des clients"
+    },
+    "AddClient": {
+      "title": "Clients",
+      "button": "Nouveau Client"
+    },
+    "ArtisansPage": {
+      "title": "Artisans",
+      "addArtisanButton": "Nouveau Artisan"
+    },
+    "TheListArtisan": {
+      "name": "Nom",
+      "artisanId": "Artisan Id",
+      "email": "Email",
+      "phone": "Telephone",
+      "genre": "Genre",
+      "status": "Status",
+      "action": "Action",
+      "deleteButton": "Suprimer"
+    },
+    "SearchArtisan": {
+      "search": "chercher",
+      "placeholder": "chercher les artisans par leurs noms"
+    },
+    "ListArtisan": {
+      "noArtisans": "Aucun Artisan en ce moment",
+      "noArtisansDescription": "Les artisans apparaîtront ici une fois qu'ils se seront ajoutés à votre site."
+    },
+    "Artisan": {
+      "searchArtisan": "chercher",
+      "listArtisan": "Liste des artisans"
+    }
   }
 }

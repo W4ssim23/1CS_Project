@@ -1,6 +1,542 @@
 {
-  "HomePage": {
-    "title": "Hello world in ar!",
-    "about": "Go to the about page ar"
+  "/": {
+    "title": "ابحث عن أفضل الحرفيين لجميع خدماتك",
+    "enderTitle": "ابحث عن بناء، سباك، رسام والمزيد.",
+    "button": "اكتشف المزيد",
+    "search": "ابحث ووظف أفضل الحرفيين في الجزائر",
+    "searchButton": "ابحث في DZ ARTISAN...",
+    "jobs": ["نجار", "كهربائي", "بناء", "رسام", "سباك"],
+    "question": "DZ-ARTISAN، كيف يعمل؟",
+    "services": {
+      "titles": ["بحث بسيط", "مراسلة مدمجة", "اختيار بسيط"],
+      "descriptions": [
+        "استخدم شريط البحث أو استكشف الفئات في قائمة التنقل للوصول إلى خدمتك.",
+        "تواصل مع المحترفين مباشرة من خلال نظام المراسلة المدمج.",
+        "اختر خدمة بناء على التقييمات والمراجعات، أو قم بتصفية البحث باستخدام عوامل مثل «رسام»."
+      ]
+    },
+    "expertBlock": {
+      "title1": "خبراؤنا",
+      "title2": "ثق بخبرة محترفينا المؤهلين، الذين يتمتعون بسنوات من الخبرة في مجالاتهم.",
+      "experts": ["أحمد مولاي", "آدم بل", "ماريا جون"],
+      "descriptions": [
+        "نجار محترف يتمتع بأكثر من 10 سنوات من الخبرة في المجال.",
+        "كهربائي مؤهل مع 7 سنوات من الخبرة في المجال.",
+        "سباك معتمد، يتمتع بـ 9 سنوات من الخبرة في المهنة."
+      ]
+    }
+  },
+  "/login": {
+    "LoginForm": {
+      "signInTitle": "تسجيل الدخول",
+      "usernameLabel": "اسم المستخدم",
+      "usernamePlaceholder": "أدخل اسم المستخدم...",
+      "passwordLabel": "كلمة المرور",
+      "passwordPlaceholder": "أدخل كلمة المرور...",
+      "signInButton": "تسجيل الدخول",
+      "noAccountText": "ليس لديك حساب؟",
+      "signUpLink": "سجل هنا",
+      "usernameError": "يرجى إدخال اسم المستخدم",
+      "passwordError": "يرجى إدخال كلمة المرور"
+    },
+    "SidePic": {
+      "welcomeText": "مرحبًا بك في DZ-ARTISAN!",
+      "supportText": "انضم إلينا، نقدر دعمك."
+    },
+    "RootLayout": {
+      "logoAlt": "الشعار"
+    }
+  },
+  "/register": {
+    "RegisterForm": {
+      "nameTitle": "أدخل اسمك واسم العائلة",
+      "nameLabel": "الاسم",
+      "prenomLabel": "اسم العائلة",
+      "phoneTitle": "أدخل رقم هاتفك",
+      "phoneLabel": "رقم الهاتف",
+      "emailTitle": "أدخل بريدك الإلكتروني وأنشئ كلمة مرور",
+      "emailLabel": "البريد الإلكتروني",
+      "passwordLabel": "كلمة المرور",
+      "confirmPasswordLabel": "تأكيد كلمة المرور",
+      "jobTitle": "ما هي مهنتك؟",
+      "jobLabel": "المهنة",
+      "jobPlaceholder": "اختر مهنتك",
+      "certificateTitle": "هل أنت معتمد؟",
+      "certificateYes": "نعم",
+      "certificateNo": "لا",
+      "certificateUpload": "إضافة شهادة",
+      "assurenceTitle": "يرجى إدخال وثيقة التأمين الخاصة بك",
+      "assurenceUpload": "إضافة وثيقة تأمين",
+      "createdSuccess": "تم إنشاء حسابك بنجاح.",
+      "createdPending": "تم إرسال طلب إنشاء حسابك، ستتلقى بريدًا إلكترونيًا عند إنشائه.",
+      "createdError": "تعذر إنشاء حسابك!",
+      "tryAgain": "حاول مرة أخرى؟",
+      "okButton": "موافق",
+      "nextButton": "التالي",
+      "laterButton": "لاحقًا"
+    }
+  },
+  "/client": {
+    "ClientPage": {
+      "welcomeBack": "مرحبًا بعودتك!"
+    },
+    "Profile": {
+      "modifyProfile": "تعديل الملف الشخصي"
+    },
+    "ProfileForm": {
+      "profileInfoTitle": "تعديل معلومات الملف الشخصي",
+      "nameLabel": "الاسم",
+      "prenomLabel": "اسم العائلة",
+      "phoneLabel": "رقم الهاتف",
+      "emailLabel": "البريد الإلكتروني",
+      "cancelButton": "إلغاء",
+      "saveButton": "حفظ"
+    },
+    "PasswordForm": {
+      "passwordTitle": "تعديل كلمة المرور",
+      "currentPasswordLabel": "كلمة المرور الحالية",
+      "newPasswordLabel": "كلمة المرور الجديدة",
+      "confirmNewPasswordLabel": "تأكيد كلمة المرور الجديدة",
+      "cancelButton": "إلغاء",
+      "saveButton": "حفظ"
+    },
+    "Pannier": {
+      "title": "سلة المشتريات",
+      "artisan": "الحرفي",
+      "workToDo": "العمل المطلوب",
+      "cost": "التكلفة",
+      "buyButton": "شراء"
+    },
+    "Devis": {
+      "title": "نتائج طلبات التسعير",
+      "newDevisButton": "طلب تسعير جديد",
+      "offersTitle": "الردود على طلبات",
+      "validateOfferButton": "قبول العرض"
+    },
+    "NewDevis": {
+      "title": "طلب تسعير",
+      "devisTitleLabel": "عنوان طلب التسعير",
+      "artisanTypeLabel": "اختر نوع الحرفي الذي تريد التواصل معه",
+      "descriptionLabel": "يرجى وصف احتياجاتك",
+      "enhanceDescriptionButton": "تحسين الوصف؟",
+      "estimatePriceButton": "تقدير السعر",
+      "cancelButton": "إلغاء",
+      "sendButton": "إرسال"
+    },
+    "GotNothing": {
+      "noDevis": "لا توجد طلبات تسعير في الوقت الحالي",
+      "noDevisDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+    },
+    "AddDevis": {
+      "title": "نتائج طلبات التسعير",
+      "newDevisButton": "طلب تسعير جديد"
+    },
+    "Deals": {
+      "title": "أعمالي",
+      "artisan": "الحرفي",
+      "workToDo": "العمل المطلوب",
+      "percentage": "النسبة المئوية",
+      "detailsButton": "تفاصيل"
+    },
+    "DealProcess": {
+      "title": "تفاصيل متابعة",
+      "remainingTasks": "المهام المتبقية",
+      "ongoingTasks": "المهام الجارية",
+      "completedTasks": "المهام المكتملة"
+    },
+    "Tasks": {
+      "remainingTasks": "المهام المتبقية",
+      "ongoingTasks": "المهام الجارية",
+      "completedTasks": "المهام المكتملة"
+    },
+    "OneTask": {
+      "description": "الوصف",
+      "startDate": "تاريخ البدء",
+      "endDate": "تاريخ الانتهاء"
+    },
+    "Chat": {
+      "selectChatRoom": "اختر غرفة دردشة"
+    },
+    "BackButton": {
+      "backButton": "رجوع"
+    },
+    "ChatPage": {
+      "title": "الدردشة",
+      "sendButton": "إرسال"
+    },
+    "Inbox": {
+      "messages": "الرسائل",
+      "searchPlaceholder": "بحث...",
+      "clickToChat": "انقر للدردشة..."
+    },
+    "MobileInbox": {
+      "searchPlaceholder": "بحث...",
+      "clickToChat": "انقر للدردشة..."
+    },
+    "Conversation": {
+      "clickToChat": "انقر للدردشة..."
+    },
+    "Send": {
+      "sendButton": "إرسال"
+    },
+    "SearchBar": {
+      "searchPlaceholder": "بحث..."
+    }
+  },
+  "/artisan": {
+    "ClientPage": {
+      "welcomeBack": "مرحبًا بعودتك!"
+    },
+    "Profile": {
+      "modifyProfile": "تعديل الملف الشخصي"
+    },
+    "ProfileForm": {
+      "profileInfoTitle": "تعديل معلومات الملف الشخصي",
+      "nameLabel": "الاسم",
+      "prenomLabel": "اسم العائلة",
+      "phoneLabel": "رقم الهاتف",
+      "emailLabel": "البريد الإلكتروني",
+      "cancelButton": "إلغاء",
+      "saveButton": "حفظ"
+    },
+    "PasswordForm": {
+      "passwordTitle": "تعديل كلمة المرور",
+      "currentPasswordLabel": "كلمة المرور الحالية",
+      "newPasswordLabel": "كلمة المرور الجديدة",
+      "confirmNewPasswordLabel": "تأكيد كلمة المرور الجديدة",
+      "cancelButton": "إلغاء",
+      "saveButton": "حفظ"
+    },
+    "Pannier": {
+      "title": "سلة المشتريات",
+      "artisan": "الحرفي",
+      "workToDo": "العمل المطلوب",
+      "cost": "التكلفة",
+      "buyButton": "شراء"
+    },
+    "Devis": {
+      "title": "نتائج طلبات التسعير",
+      "newDevisButton": "طلب تسعير جديد",
+      "offersTitle": "الردود على طلبات",
+      "validateOfferButton": "قبول العرض"
+    },
+    "NewDevis": {
+      "title": "طلب تسعير",
+      "devisTitleLabel": "عنوان طلب التسعير",
+      "artisanTypeLabel": "اختر نوع الحرفي الذي تريد التواصل معه",
+      "descriptionLabel": "يرجى وصف احتياجاتك",
+      "enhanceDescriptionButton": "تحسين الوصف؟",
+      "estimatePriceButton": "تقدير السعر",
+      "cancelButton": "إلغاء",
+      "sendButton": "إرسال"
+    },
+    "GotNothing": {
+      "noDevis": "لا توجد طلبات تسعير في الوقت الحالي",
+      "noDevisDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+    },
+    "AddDevis": {
+      "title": "نتائج طلبات التسعير",
+      "newDevisButton": "طلب تسعير جديد"
+    },
+    "Deals": {
+      "title": "أعمالي",
+      "artisan": "الحرفي",
+      "workToDo": "العمل المطلوب",
+      "percentage": "النسبة المئوية",
+      "detailsButton": "تفاصيل"
+    },
+    "DealProcess": {
+      "title": "تفاصيل متابعة",
+      "remainingTasks": "المهام المتبقية",
+      "ongoingTasks": "المهام الجارية",
+      "completedTasks": "المهام المكتملة"
+    },
+    "Tasks": {
+      "remainingTasks": "المهام المتبقية",
+      "ongoingTasks": "المهام الجارية",
+      "completedTasks": "المهام المكتملة"
+    },
+    "OneTask": {
+      "description": "الوصف",
+      "startDate": "تاريخ البدء",
+      "endDate": "تاريخ الانتهاء"
+    },
+    "Chat": {
+      "selectChatRoom": "اختر غرفة دردشة"
+    },
+    "BackButton": {
+      "backButton": "رجوع"
+    },
+    "ChatPage": {
+      "title": "الدردشة",
+      "sendButton": "إرسال"
+    },
+    "Inbox": {
+      "messages": "الرسائل",
+      "searchPlaceholder": "بحث...",
+      "clickToChat": "انقر للدردشة..."
+    },
+    "MobileInbox": {
+      "searchPlaceholder": "بحث...",
+      "clickToChat": "انقر للدردشة..."
+    },
+    "Conversation": {
+      "clickToChat": "انقر للدردشة..."
+    },
+    "Send": {
+      "sendButton": "إرسال"
+    },
+    "SearchBar": {
+      "searchPlaceholder": "بحث..."
+    },
+    "DemandesPage": {
+      "title": "طلبات التسعير",
+      "noDemandes": "لا توجد طلبات تسعير في الوقت الحالي",
+      "noDemandesDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+    },
+    "DemandesList": {
+      "noDemandes": "لا توجد طلبات تسعير في الوقت الحالي",
+      "noDemandesDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+    },
+    "Demande": {
+      "userName": "اسم المستخدم",
+      "title": "العنوان",
+      "files": "الملفات",
+      "detailsButton": "تفاصيل"
+    },
+    "DealsPage": {
+      "title": "أعمالي",
+      "noDeals": "لا توجد مهام في الوقت الحالي",
+      "noDealsDescription": "ستظهر المهام هنا بمجرد إضافتها إلى حسابك."
+    },
+    "DealsList": {
+      "noDeals": "لا توجد مهام في الوقت الحالي",
+      "noDealsDescription": "ستظهر المهام هنا بمجرد إضافتها إلى حسابك."
+    },
+    "Deal": {
+      "client": "العميل",
+      "workToDo": "العمل المطلوب",
+      "percentage": "النسبة المئوية",
+      "detailsButton": "تفاصيل"
+    },
+    "KanbanBoard": {
+      "title": "المهام",
+      "description": "أضف، عدل، أو احذف مهامك",
+      "backlog": "قيد الانتظار",
+      "inProgress": "قيد التنفيذ",
+      "done": "مكتمل"
+    },
+    "Task": {
+      "title": "العنوان",
+      "description": "الوصف",
+      "number": "الرقم"
+    },
+    "Column": {
+      "addTaskButton": "إضافة مهمة"
+    }
+  },
+  "/about": {
+    "ArtizanBlock": {
+      "title": "DZ-ARTISAN!",
+      "description": "بوابتك نحو التميز في الحرف الجزائرية."
+    },
+    "MissionBlock": {
+      "title": "مهمتنا",
+      "description": "مهمتنا في DZ Artisan هي تعزيز الرابط بين الحرفيين الجزائريين وعملائهم من خلال تقديم منصة شفافة وموثوقة وسهلة الوصول. نهدف إلى دعم الحرفيين المحليين من خلال توفير المزيد من الرؤية لهم، مع تبسيط تجربة العملاء الذين يبحثون عن خدمات حرفية عالية الجودة. من خلال تطبيقنا، نلتزم بتعزيز الأصالة والتميز واحترام التقاليد، مع إنشاء مجتمع ديناميكي ومتضامن."
+    },
+    "VisionBlock": {
+      "title": "رؤيتنا",
+      "description": "في DZ Artisan، نهدف إلى إنشاء جسر قوي بين العملاء والحرفيين في جميع أنحاء الجزائر. نسعى إلى تعزيز الحرف المحلية من خلال تقديم منصة سهلة الاستخدام حيث يمكن للمستخدمين اكتشاف والتعاون مع الحرفيين الموهوبين. نحن ملتزمون بتعزيز الحرف التقليدية مع تسهيل الوصول إلى الخدمات الحرفية، مما يساهم في مستقبل مزدهر للحرف الجزائرية."
+    },
+    "AboutPage": {
+      "title": "من نحن"
+    }
+  },
+  "/admin": {
+    "AddArtisan": {
+      "title": "الحرفيون",
+      "button": "حرفي جديد"
+    },
+    "AdminPage": {
+      "welcome": "مرحبًا بك في لوحة تحكم مشرف DZ-Artisan!",
+      "email": "admin@dzartisan.com",
+      "addClient": {
+        "title": "إضافة عميل",
+        "text": "أضف عميلًا جديدًا عن طريق ملء المعلومات اللازمة لتسهيل إدارة ومتابعة طلباتهم."
+      },
+      "addArtisan": {
+        "title": "إضافة حرفي",
+        "text": "أضف حرفيًا جديدًا عن طريق إدخال معلوماته لدمجه في شبكتنا وتسهيل إدارة خدماته."
+      },
+      "addService": {
+        "title": "إضافة خدمة",
+        "text": "أضف خدمة جديدة عن طريق تحديد التفاصيل اللازمة لجعلها متاحة ويمكن الوصول إليها لعملائنا."
+      }
+    },
+    "AdminLayout": {
+      "sidebar": "الشريط الجانبي للمشرف",
+      "topbar": "الشريط العلوي للمشرف"
+    },
+    "ServicesPage": {
+      "title": "خدماتي",
+      "artisan": "الحرفي",
+      "client": "العميل",
+      "service": "الخدمة",
+      "price": "السعر",
+      "pourcentage": "النسبة المئوية",
+      "payed": "تم الدفع",
+      "detailsButton": "تفاصيل"
+    },
+    "Task": {
+      "title": "العنوان",
+      "description": "الوصف",
+      "number": "الرقم"
+    },
+    "KanbanBoard": {
+      "title": "المهام",
+      "description": "أضف، عدل، أو احذف مهامك",
+      "backlog": "قيد الانتظار",
+      "inProgress": "قيد التنفيذ",
+      "done": "مكتمل"
+    },
+    "GotNothing": {
+      "noTasks": "لا توجد مهام في الوقت الحالي",
+      "noTasksDescription": "ستظهر المهام هنا بمجرد إضافتها إلى موقعك."
+    },
+    "Column": {
+      "addTaskButton": "إضافة مهمة"
+    },
+    "DealProcess": {
+      "title": "تفاصيل متابعة",
+      "remainingTasks": "المهام المتبقية",
+      "ongoingTasks": "المهام الجارية",
+      "completedTasks": "المهام المكتملة"
+    },
+    "Tasks": {
+      "remainingTasks": "المهام المتبقية",
+      "ongoingTasks": "المهام الجارية",
+      "completedTasks": "المهام المكتملة"
+    },
+    "OneTask": {
+      "description": "الوصف",
+      "startDate": "تاريخ البدء",
+      "endDate": "تاريخ الانتهاء"
+    },
+    "DemandesPage": {
+      "title": "طلبات التسعير",
+      "noDemandes": "لا توجد طلبات تسعير في الوقت الحالي",
+      "noDemandesDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+    },
+    "DemandesList": {
+      "noDemandes": "لا توجد طلبات تسعير في الوقت الحالي",
+      "noDemandesDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+    },
+    "Demande": {
+      "userName": "اسم المستخدم",
+      "title": "العنوان",
+      "files": "الملفات",
+      "detailsButton": "تفاصيل"
+    },
+    "DemandeDetailsPage": {
+      "title": "تفاصيل متابعة",
+      "remainingTasks": "المهام المتبقية",
+      "ongoingTasks": "المهام الجارية",
+      "completedTasks": "المهام المكتملة"
+    },
+    "DashboardPage": {
+      "title": "لوحة التحكم",
+      "visitors": "الزوار",
+      "recentRequests": "الطلبات الأخيرة",
+      "tasks": "مهامي",
+      "stats": {
+        "totalArtisans": "إجمالي الحرفيين",
+        "totalClients": "إجمالي العملاء",
+        "totalServices": "إجمالي الخدمات"
+      }
+    },
+    "Visitors": {
+      "title": "اليوم",
+      "visitors": "الزوار",
+      "percentage": "+1.75%"
+    },
+    "TachesList": {
+      "title": "مهامي",
+      "tasks": [
+        "التحقق من التأمينات",
+        "التحقق من الخدمات",
+        "إضافة حرفيين",
+        "التقارير",
+        "التحقق من الرسائل"
+      ]
+    },
+    "StatstCards": {
+      "totalArtisans": "إجمالي الحرفيين",
+      "totalClients": "إجمالي العملاء",
+      "totalServices": "إجمالي الخدمات"
+    },
+    "RecentRequests": {
+      "title": "الطلبات الأخيرة",
+      "viewMore": "عرض المزيد"
+    },
+    "Pourcentage": {
+      "title": "نسبة المستخدمين",
+      "artisans": "الحرفيون",
+      "clients": "العملاء"
+    },
+    "ClientPage": {
+      "title": "العملاء",
+      "addClientButton": "عميل جديد"
+    },
+    "TheList": {
+      "name": "الاسم",
+      "clientId": "معرف العميل",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "genre": "النوع",
+      "action": "الإجراء",
+      "deleteButton": "حذف"
+    },
+    "SearchClient": {
+      "search": "بحث",
+      "placeholder": "ابحث عن العملاء بأسمائهم"
+    },
+    "ListClient": {
+      "noClients": "لا يوجد عملاء في الوقت الحالي",
+      "noClientsDescription": "ستظهر العملاء هنا بمجرد إضافتها إلى موقعك."
+    },
+    "Client": {
+      "searchClient": "بحث",
+      "listClient": "قائمة العملاء"
+    },
+    "AddClient": {
+      "title": "العملاء",
+      "button": "عميل جديد"
+    },
+    "ArtisansPage": {
+      "title": "الحرفيون",
+      "addArtisanButton": "حرفي جديد"
+    },
+    "TheListArtisan": {
+      "name": "الاسم",
+      "artisanId": "معرف الحرفي",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "genre": "النوع",
+      "status": "الحالة",
+      "action": "الإجراء",
+      "deleteButton": "حذف"
+    },
+    "SearchArtisan": {
+      "search": "بحث",
+      "placeholder": "ابحث عن الحرفيين بأسمائهم"
+    },
+    "ListArtisan": {
+      "noArtisans": "لا يوجد حرفيون في الوقت الحالي",
+      "noArtisansDescription": "ستظهر الحرفيون هنا بمجرد إضافتها إلى موقعك."
+    },
+    "Artisan": {
+      "searchArtisan": "بحث",
+      "listArtisan": "قائمة الحرفيين"
+    }
   }
 }
