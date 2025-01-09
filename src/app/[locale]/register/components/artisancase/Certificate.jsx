@@ -1,8 +1,10 @@
 import { Button } from "@nextui-org/react";
 import { FileUploader } from "react-drag-drop-files";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Certificate({ setStep, setData }) {
+  const t = useTranslations("/register.RegisterForm");
   const [isCertified, setIsCertified] = useState("notYet");
   const [file, setFile] = useState(null);
   const handleNext = () => {
@@ -16,7 +18,7 @@ export default function Certificate({ setStep, setData }) {
   };
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
-      <h1 className="text-center font-medium text-lg">étes vous certifié?</h1>
+      <h1 className="text-center font-medium text-lg">{t("certifiedTitle")}</h1>
       <div className="flex flex-col gap-1">
         <label>
           <input
@@ -26,7 +28,7 @@ export default function Certificate({ setStep, setData }) {
             value="certified"
             onChange={(e) => setIsCertified("true")}
           />
-          Oui
+          {t("yes")}
         </label>
         <label>
           <input
@@ -36,7 +38,7 @@ export default function Certificate({ setStep, setData }) {
             value="notCertified"
             onChange={(e) => setIsCertified("false")}
           />
-          Non
+          {t("no")}
         </label>
       </div>
       {isCertified === "true" && (
@@ -46,7 +48,7 @@ export default function Certificate({ setStep, setData }) {
           children={
             <div className="w-full h-full flex items-center justify-evenly min-w-[222px] rounded-md shadow-md bg-white p-2">
               <h1 className="text-center font-medium">
-                ajouté une certification
+                {t("addCertification")}
               </h1>
             </div>
           }
@@ -58,7 +60,7 @@ export default function Certificate({ setStep, setData }) {
         radius="sm"
         onClick={handleNext}
       >
-        suivant
+        {t("nextButton")}
       </Button>
     </div>
   );

@@ -5,6 +5,8 @@ import ClientDialogue from "./clientcase/ClientDialogue";
 import ArtisanDialogue from "./artisancase/ArtizanDialogue";
 import { Button } from "@nextui-org/react";
 
+import { useTranslations } from "next-intl";
+
 export default function DialogueBox() {
   const [dialogue, setDialogue] = useState(false);
   return (
@@ -17,15 +19,14 @@ export default function DialogueBox() {
 }
 
 const ChooseDialogue = ({ setDialogue }) => {
+  const t = useTranslations("/register.RegisterForm");
   const [selectedDialogue, setSelectedDialogue] = useState("");
   const handleset = () => {
     setDialogue(selectedDialogue);
   };
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly">
-      <h1 className="text-center font-semibold text-lg">
-        choisissez le type de compte que vous vouliez crée
-      </h1>
+      <h1 className="text-center font-semibold text-lg">{t("typeAccount")}</h1>
       <div className="flex flex-col gap-1">
         <label>
           <input
@@ -35,7 +36,7 @@ const ChooseDialogue = ({ setDialogue }) => {
             value="artisan"
             onChange={(e) => setSelectedDialogue(e.target.value)}
           />
-          Artisan
+          {t("Artisan")}
         </label>
         <label>
           <input
@@ -45,14 +46,14 @@ const ChooseDialogue = ({ setDialogue }) => {
             value="client"
             onChange={(e) => setSelectedDialogue(e.target.value)}
           />
-          Client
+          {t("Client")}
         </label>
       </div>
       <Button
         className=" text-white text-center font-medium  bg-[#1F4690] rounded-md py-3 px-4 min-w-[222px]"
         onClick={handleset}
       >
-        Submit
+        {t("nextButton")}
       </Button>
     </div>
   );

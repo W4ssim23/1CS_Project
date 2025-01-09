@@ -19,27 +19,27 @@ import { Logo } from "@/assets/svgs";
 import { Link } from "@/i18n/routing.js";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function TopBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // const menuItems = ["Home", "Trouve un pro", "A propos", "> Language"];
+  const t = useTranslations("topBar");
 
   const menuItems = [
     {
-      title: "Home",
+      title: t("home"),
       page: "/",
     },
     {
-      title: "Trouve un pro",
+      title: t("findPro"),
       page: "#",
     },
     {
-      title: "A propos",
+      title: t("about"),
       page: "/about",
     },
     {
-      title: "> Language",
+      title: t("language"),
       page: "/",
     },
   ];
@@ -51,7 +51,7 @@ export default function TopBar() {
     <Navbar
       shouldHideOnScroll
       onMenuOpenChange={setIsMenuOpen}
-      className=" bg-[#DDDDDD] shadow-xl"
+      className="bg-[#DDDDDD] shadow-xl"
     >
       <NavbarContent>
         <NavbarMenuToggle
@@ -60,19 +60,18 @@ export default function TopBar() {
         />
         <NavbarBrand>
           <Image src={Logo} alt="logo" className="" />
-          {/* <p className="font-bold text-inherit">Dz-Artisan</p> */}
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-8" justify="center">
         <NavbarItem>
-          <Link href="/">Home</Link>
+          <Link href="/">{t("home")}</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="#">Trouver un Pro</Link>
+          <Link href="#">{t("findPro")}</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/about">A Propos</Link>
+          <Link href="/about">{t("about")}</Link>
         </NavbarItem>
         <Dropdown>
           <NavbarItem>
@@ -82,7 +81,7 @@ export default function TopBar() {
                 className="p-0 bg-transparent data-[hover=true]:bg-transparent text-[15px]"
                 variant="light"
               >
-                {" > Language"}
+                {t("language")}
               </Button>
             </DropdownTrigger>
           </NavbarItem>
@@ -93,24 +92,24 @@ export default function TopBar() {
             }}
           >
             <DropdownItem
-              key="Français"
+              key="french"
               onClick={() => {
                 startTransition(() => {
                   router.replace("/fr");
                 });
               }}
             >
-              Français
+              {t("languageMenu.french")}
             </DropdownItem>
             <DropdownItem
-              key="Arabe"
+              key="arabic"
               onClick={() => {
                 startTransition(() => {
                   router.replace("/ar");
                 });
               }}
             >
-              Arabe
+              {t("languageMenu.arabic")}
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
@@ -124,7 +123,7 @@ export default function TopBar() {
               variant="flat"
               radius="sm"
             >
-              se connecté
+              {t("login")}
             </Button>
           </Link>
         </NavbarItem>
@@ -136,7 +135,7 @@ export default function TopBar() {
               variant="flat"
               radius="sm"
             >
-              s’inscrir
+              {t("register")}
             </Button>
           </Link>
         </NavbarItem>

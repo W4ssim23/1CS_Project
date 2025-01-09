@@ -7,10 +7,12 @@ import {
   paintbrush02,
   waterpump,
 } from "@/assets/svgs";
-
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 export default function SearchBlock() {
+  const t = useTranslations("/");
+
   const artisansPics = [
     elements,
     electrichome01,
@@ -19,23 +21,24 @@ export default function SearchBlock() {
     waterpump,
   ];
   const artisansLabels = [
-    "maçon",
-    "peintre",
-    "electrécien",
-    "plombier",
-    "menuisier",
+    t("menuisier"),
+    t("electrécien"),
+    t("maçon"),
+    t("peintre"),
+    t("plombier"),
   ];
+
   return (
     <main className="flex flex-col w-full h-fit">
       <div className="h-full flex flex-col w-full items-center justify-center min-h-[60lvh] sm:min-h-[80lvh] bg-[#1F4690] gap-24">
         <p className=" text-[30px] mt-3 sm:mt-0 sm:text-[58px] text-center max-w-[800px] font-bold text-white motion-preset-blur-right motion-duration-900">
-          Trouvez et Engagez les meilleurs
-          <span className="text-[#FFA500]"> Artisans </span>
-          en Algérie
+          {t("search")}
+          <span className="text-[#FFA500]"> {t("colored2")} </span>
+          {t("continue2")}
         </p>
         <SearchInput
           styling="max-w-[750px] min-w-[60%] md:min-w-[55%]  md:w-full"
-          placeHolder="Chercher sur DZ ARTISAN...."
+          placeHolder={t("searchButton")}
         />
       </div>
       <div className="flex flex-wrap sm:flex-nowrap w-full justify-center gap-16 md:gap-32 sm:min-h-[40lvh] py-16 sm:py-0">

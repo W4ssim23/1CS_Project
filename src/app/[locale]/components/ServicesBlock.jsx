@@ -1,22 +1,26 @@
 import { comm1, comm2, comm3 } from "@/assets/svgs";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 export default function ServiceBlock() {
+  const t = useTranslations("/");
+
   const pics = [comm1, comm2, comm3];
   const titles = [
-    "Recherche simple",
-    "Messagerie integree",
-    "Selection simple",
+    t("services.title1"),
+    t("services.title2"),
+    t("services.title3"),
   ];
   const descriptions = [
-    "Utilisez la barre de recherche ou explorez les catégories du menu de navigation pour accéder à votre service.",
-    "Contactez des professionnels directement grâce à la messagerie intégrée.",
-    "Sélectionnez un service selon les évaluations et les avis, ou affinez votre recherche avec des filtres comme « peintre ».",
+    t("services.text1"),
+    t("services.text2"),
+    t("services.text3"),
   ];
+
   return (
     <main className="flex flex-col w-full h-fit min-h-lvh items-center gap-20 sm:gap-28 mb-24 sm:mb-0">
       <p className="text-[30px] mt-3 sm:mt-0 sm:text-[40px] text-center max-w-[588px] font-bold text-[#1F4690]">
-        DZ-ARTISAN, comment ça marche?
+        {t("question")}
       </p>
       <div className="flex flex-col sm:flex-row gap-14 sm:gap-20">
         {pics.map((pic, index) => (
@@ -29,12 +33,11 @@ export default function ServiceBlock() {
         ))}
       </div>
       <p className="text-center max-w-[480px] text-[18px] font-semibold text-[#00000052]">
-        En cas de problème, n'hésitez pas à{" "}
+        {t("contactText")}{" "}
         <Link href="#" alt="contact" className="text-[#1F4690] underline">
-          {" "}
-          nous contacter
+          {t("contactLink")}
         </Link>{" "}
-        pour obtenir de l'aide.
+        {t("helpText")}
       </p>
     </main>
   );

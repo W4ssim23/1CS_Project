@@ -1,23 +1,29 @@
 import Image from "next/image";
 import { adembell, ahmadmuli, mariajhon } from "@/assets/images";
+import { useTranslations } from "next-intl";
 
 export default function ExpertsBlock() {
+  const t = useTranslations("/");
+
   const pics = [ahmadmuli, adembell, mariajhon];
-  const experts = ["Ahmed Muli", "Adem Bell", "Maria Jhon"];
+  const experts = [
+    t("expertBlock.expert1"),
+    t("expertBlock.expert2"),
+    t("expertBlock.expert3"),
+  ];
   const descriptions = [
-    "Un menuisier professionnel doté de plus de 10 ans d'expérience dans le domaine.",
-    "Un électricien qualifié avec 7 ans d'expérience dans le domaine.",
-    "Un plombier certifié, fort de 9 ans d'expérience dans le métier.",
+    t("expertBlock.descriptions1"),
+    t("expertBlock.descriptions2"),
+    t("expertBlock.descriptions3"),
   ];
 
   return (
     <main className="flex flex-col w-full h-fit min-h-lvh items-center gap-10">
       <p className="text-[30px] mt-3 sm:mt-0 sm:text-[40px] text-center max-w-[588px] font-bold text-[#1F4690]">
-        NOS EXPERTS
+        {t("expertBlock.title1")}
       </p>
       <p className="text-[19px] sm:text-[24px] text-center max-w-[1200px] font-semibold ">
-        Faites confiance à l'expertise de nos professionnels qualifiés, riches
-        d'années d'expérience dans leurs domaines respectifs.
+        {t("expertBlock.title2")}
       </p>
       <div className="flex flex-col sm:flex-row gap-20">
         {pics.map((pic, index) => (

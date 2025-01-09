@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Input, Button } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
 
 export default function Name({ setStep, setData }) {
+  const t = useTranslations("/register.RegisterForm");
   const [name, setName] = useState("");
   const [prenom, setPrenom] = useState("");
   const handleNext = () => {
@@ -11,16 +13,14 @@ export default function Name({ setStep, setData }) {
   };
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
-      <h1 className="text-center font-medium text-lg">
-        Enter votre nom et votre prenom
-      </h1>
+      <h1 className="text-center font-medium text-lg">{t("nameTitle")}</h1>
       <Input
         className=" max-w-[300px]  sm:max-w-[500px]  md:min-w-[310px] bg-white rounded-xl "
         key="nom"
         size="lg"
         radius="sm"
         variant="bordered"
-        label="name"
+        label={t("nameLabel")}
         labelPlacement="outside"
         onChange={(e) => setName(e.target.value)}
       />
@@ -30,7 +30,7 @@ export default function Name({ setStep, setData }) {
         size="lg"
         radius="sm"
         variant="bordered"
-        label="prénom"
+        label={t("prenomLabel")}
         labelPlacement="outside"
         onChange={(e) => setPrenom(e.target.value)}
       />
@@ -40,7 +40,7 @@ export default function Name({ setStep, setData }) {
         radius="sm"
         onClick={handleNext}
       >
-        suivant
+        {t("nextButton")}
       </Button>
     </div>
   );

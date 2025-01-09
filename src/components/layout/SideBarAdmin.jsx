@@ -7,10 +7,13 @@ import { usePathname } from "@/i18n/routing";
 import { useContext } from "react";
 import { GlobalContext } from "@/app/[locale]/context";
 import { Avatar } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
 
 export default function SideBarAdmin() {
   const pg = usePathname();
   const { userData } = useContext(GlobalContext);
+  const t = useTranslations("sideBar.admin");
+
   return (
     <nav className="min-w-[20%] bg-[#3A5BA0] shadow-md hidden sm:block ">
       <div className="h-[130px] border-b-[0.25px] border-[#BDBDBD] w-full flex flex-col items-center justify-evenly">
@@ -26,14 +29,14 @@ export default function SideBarAdmin() {
       </div>
       <ul className="flex flex-col items-center w-full gap-4 lg:gap-0 pt-5">
         {itemsAdmin.map((item, index) => (
-          <BarItem pg={pg} item={item} key={index} />
+          <BarItem pg={pg} item={item} key={index} t={t} />
         ))}
       </ul>
     </nav>
   );
 }
 
-const BarItem = ({ item, pg }) => {
+const BarItem = ({ item, pg, t }) => {
   return (
     <Link
       href={item.page}
@@ -62,7 +65,7 @@ const BarItem = ({ item, pg }) => {
               : "text-white"
           }`}
         >
-          {item.title}
+          {t(item.title.toLowerCase())}
         </p>
       </div>
     </Link>

@@ -1,29 +1,54 @@
 {
   "/": {
-    "title": "ابحث عن أفضل الحرفيين لجميع خدماتك",
+    "title": "ابحث عن أفضل ",
+    "colored": "الحرفيين",
+    "continue": "لجميع خدماتك",
     "enderTitle": "ابحث عن بناء، سباك، رسام والمزيد.",
     "button": "اكتشف المزيد",
-    "search": "ابحث ووظف أفضل الحرفيين في الجزائر",
-    "searchButton": "ابحث في DZ ARTISAN...",
-    "jobs": ["نجار", "كهربائي", "بناء", "رسام", "سباك"],
-    "question": "DZ-ARTISAN، كيف يعمل؟",
+    "search": "ابحث ووظف أفضل",
+    "colored2": "الحرفيين",
+    "continue2": "في الجزائر",
+    "searchButton": "ابحث على DZ ARTISAN...",
+    "menuisier": "نجار",
+    "electrécien": "كهربائي",
+    "maçon": "بناء",
+    "peintre": "رسام",
+    "plombier": "سباك",
+    "question": "DZ-ARTISAN، كيف تعمل؟",
     "services": {
-      "titles": ["بحث بسيط", "مراسلة مدمجة", "اختيار بسيط"],
-      "descriptions": [
-        "استخدم شريط البحث أو استكشف الفئات في قائمة التنقل للوصول إلى خدمتك.",
-        "تواصل مع المحترفين مباشرة من خلال نظام المراسلة المدمج.",
-        "اختر خدمة بناء على التقييمات والمراجعات، أو قم بتصفية البحث باستخدام عوامل مثل «رسام»."
-      ]
+      "title1": "بحث بسيط",
+      "title2": "مراسلة مدمجة",
+      "title3": "اختيار بسيط",
+      "text1": "استخدم شريط البحث أو استكشف الفئات في قائمة التنقل للوصول إلى خدمتك.",
+      "text2": "تواصل مع المحترفين مباشرة عبر المراسلة المدمجة.",
+      "text3": "اختر خدمة بناءً على التقييمات والمراجعات، أو قم بتصفية بحثك باستخدام عوامل مثل «رسام»."
     },
+    "contactText": "في حالة وجود مشكلة، لا تتردد في",
+    "contactLink": "الاتصال بنا",
+    "helpText": "للحصول على المساعدة.",
     "expertBlock": {
       "title1": "خبراؤنا",
       "title2": "ثق بخبرة محترفينا المؤهلين، الذين يتمتعون بسنوات من الخبرة في مجالاتهم.",
-      "experts": ["أحمد مولاي", "آدم بل", "ماريا جون"],
-      "descriptions": [
-        "نجار محترف يتمتع بأكثر من 10 سنوات من الخبرة في المجال.",
-        "كهربائي مؤهل مع 7 سنوات من الخبرة في المجال.",
-        "سباك معتمد، يتمتع بـ 9 سنوات من الخبرة في المهنة."
-      ]
+      "expert1": "أحمد مولاي",
+      "expert2": "جون دو",
+      "expert3": "ماريا جون",
+      "descriptions1": "نجار محترف يتمتع بأكثر من 10 سنوات من الخبرة في المجال.",
+      "descriptions2": "كهربائي مؤهل مع 7 سنوات من الخبرة في المجال.",
+      "descriptions3": "سباك معتمد، يتمتع بـ 9 سنوات من الخبرة في المهنة."
+    },
+    "footer": {
+      "title": "DZ ARTISAN",
+      "description": "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسسينغ إليت. سيد دو إيوسمود تيمبور إينسيديدونت أوت لابور إت دولور ماجنا أليكوا.",
+      "linksTitle": "بعض الروابط",
+      "home": "الرئيسية",
+      "findPro": "ابحث عن محترف",
+      "about": "من نحن",
+      "register": "تسجيل",
+      "contactTitle": "اتصل بنا",
+      "phone": "031773311",
+      "email": "INFO@DZARTISAN.com",
+      "website": "https://Dzartisan.com",
+      "rightsReserved": "جميع الحقوق محفوظة"
     }
   },
   "/login": {
@@ -35,9 +60,9 @@
       "passwordPlaceholder": "أدخل كلمة المرور...",
       "signInButton": "تسجيل الدخول",
       "noAccountText": "ليس لديك حساب؟",
-      "signUpLink": "سجل هنا",
-      "usernameError": "يرجى إدخال اسم المستخدم",
-      "passwordError": "يرجى إدخال كلمة المرور"
+      "signUpLink": "تسجيل",
+      "usernameError": "الرجاء إدخال اسم المستخدم",
+      "passwordError": "الرجاء إدخال كلمة المرور"
     },
     "SidePic": {
       "welcomeText": "مرحبًا بك في DZ-ARTISAN!",
@@ -65,15 +90,31 @@
       "certificateYes": "نعم",
       "certificateNo": "لا",
       "certificateUpload": "إضافة شهادة",
-      "assurenceTitle": "يرجى إدخال وثيقة التأمين الخاصة بك",
-      "assurenceUpload": "إضافة وثيقة تأمين",
-      "createdSuccess": "تم إنشاء حسابك بنجاح.",
-      "createdPending": "تم إرسال طلب إنشاء حسابك، ستتلقى بريدًا إلكترونيًا عند إنشائه.",
-      "createdError": "تعذر إنشاء حسابك!",
+      "assurenceTitle": "الرجاء إدخال وثيقة التأمين الخاصة بك",
+      "assurenceUpload": "إضافة وثيقة",
+      "createdSuccess": "تم إنشاء حسابك",
+      "createdSuccess2": "بنجاح",
+      "createdSuccess3": ".",
+      "createdPending1": "تم إرسال",
+      "createdPending2": "طلب",
+      "createdPending3": "إنشاء حسابك، ستتلقى",
+      "createdPending4": "بريدًا إلكترونيًا",
+      "createdPending5": "عندما يتم",
+      "createdPending6": "إنشاؤه",
+      "createdError": "لم نتمكن",
+      "createdError2": "من",
+      "createdError3": "إنشاء حسابك !!",
       "tryAgain": "حاول مرة أخرى؟",
       "okButton": "موافق",
       "nextButton": "التالي",
-      "laterButton": "لاحقًا"
+      "laterButton": "لاحقًا",
+      "loginButton": "تسجيل الدخول",
+      "typeAccount": "اختر نوع الحساب الذي تريد إنشاءه",
+      "Artisan": "حرفي",
+      "Client": "عميل",
+      "create": "إنشاء حساب",
+      "haveAccount": "هل لديك حساب بالفعل؟",
+      "connect": "تسجيل الدخول"
     }
   },
   "/client": {
@@ -81,7 +122,7 @@
       "welcomeBack": "مرحبًا بعودتك!"
     },
     "Profile": {
-      "modifyProfile": "تعديل الملف الشخصي"
+      "modifyProfile": "تعديل ملفي الشخصي"
     },
     "ProfileForm": {
       "profileInfoTitle": "تعديل معلومات الملف الشخصي",
@@ -101,39 +142,39 @@
       "saveButton": "حفظ"
     },
     "Pannier": {
-      "title": "سلة المشتريات",
-      "artisan": "الحرفي",
+      "title": "عربة التسوق الخاصة بي",
+      "artisan": "حرفي",
       "workToDo": "العمل المطلوب",
       "cost": "التكلفة",
       "buyButton": "شراء"
     },
     "Devis": {
-      "title": "نتائج طلبات التسعير",
-      "newDevisButton": "طلب تسعير جديد",
+      "title": "نتائج طلباتي للعروض",
+      "newDevisButton": "طلب عرض جديد",
       "offersTitle": "الردود على طلبات",
-      "validateOfferButton": "قبول العرض"
+      "validateOfferButton": "الموافقة على العرض"
     },
     "NewDevis": {
-      "title": "طلب تسعير",
-      "devisTitleLabel": "عنوان طلب التسعير",
+      "title": "طلب عرض",
+      "devisTitleLabel": "عنوان طلب العرض",
       "artisanTypeLabel": "اختر نوع الحرفي الذي تريد التواصل معه",
-      "descriptionLabel": "يرجى وصف احتياجاتك",
+      "descriptionLabel": "الرجاء وصف احتياجاتك",
       "enhanceDescriptionButton": "تحسين الوصف؟",
       "estimatePriceButton": "تقدير السعر",
       "cancelButton": "إلغاء",
       "sendButton": "إرسال"
     },
     "GotNothing": {
-      "noDevis": "لا توجد طلبات تسعير في الوقت الحالي",
-      "noDevisDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+      "noDevis": "لا توجد عروض في الوقت الحالي",
+      "noDevisDescription": "ستظهر العروض هنا بمجرد إضافتها إلى حسابك."
     },
     "AddDevis": {
-      "title": "نتائج طلبات التسعير",
-      "newDevisButton": "طلب تسعير جديد"
+      "title": "نتائج طلباتي للعروض",
+      "newDevisButton": "طلب عرض جديد"
     },
     "Deals": {
       "title": "أعمالي",
-      "artisan": "الحرفي",
+      "artisan": "حرفي",
       "workToDo": "العمل المطلوب",
       "percentage": "النسبة المئوية",
       "detailsButton": "تفاصيل"
@@ -158,7 +199,7 @@
       "selectChatRoom": "اختر غرفة دردشة"
     },
     "BackButton": {
-      "backButton": "رجوع"
+      "backButton": "عودة"
     },
     "ChatPage": {
       "title": "الدردشة",
@@ -167,14 +208,14 @@
     "Inbox": {
       "messages": "الرسائل",
       "searchPlaceholder": "بحث...",
-      "clickToChat": "انقر للدردشة..."
+      "clickToChat": "انقر للدخول إلى الدردشة..."
     },
     "MobileInbox": {
       "searchPlaceholder": "بحث...",
-      "clickToChat": "انقر للدردشة..."
+      "clickToChat": "انقر للدخول إلى الدردشة..."
     },
     "Conversation": {
-      "clickToChat": "انقر للدردشة..."
+      "clickToChat": "انقر للدخول إلى الدردشة..."
     },
     "Send": {
       "sendButton": "إرسال"
@@ -188,7 +229,7 @@
       "welcomeBack": "مرحبًا بعودتك!"
     },
     "Profile": {
-      "modifyProfile": "تعديل الملف الشخصي"
+      "modifyProfile": "تعديل ملفي الشخصي"
     },
     "ProfileForm": {
       "profileInfoTitle": "تعديل معلومات الملف الشخصي",
@@ -208,39 +249,39 @@
       "saveButton": "حفظ"
     },
     "Pannier": {
-      "title": "سلة المشتريات",
-      "artisan": "الحرفي",
+      "title": "عربة التسوق الخاصة بي",
+      "artisan": "حرفي",
       "workToDo": "العمل المطلوب",
       "cost": "التكلفة",
       "buyButton": "شراء"
     },
     "Devis": {
-      "title": "نتائج طلبات التسعير",
-      "newDevisButton": "طلب تسعير جديد",
+      "title": "نتائج طلباتي للعروض",
+      "newDevisButton": "طلب عرض جديد",
       "offersTitle": "الردود على طلبات",
-      "validateOfferButton": "قبول العرض"
+      "validateOfferButton": "الموافقة على العرض"
     },
     "NewDevis": {
-      "title": "طلب تسعير",
-      "devisTitleLabel": "عنوان طلب التسعير",
+      "title": "طلب عرض",
+      "devisTitleLabel": "عنوان طلب العرض",
       "artisanTypeLabel": "اختر نوع الحرفي الذي تريد التواصل معه",
-      "descriptionLabel": "يرجى وصف احتياجاتك",
+      "descriptionLabel": "الرجاء وصف احتياجاتك",
       "enhanceDescriptionButton": "تحسين الوصف؟",
       "estimatePriceButton": "تقدير السعر",
       "cancelButton": "إلغاء",
       "sendButton": "إرسال"
     },
     "GotNothing": {
-      "noDevis": "لا توجد طلبات تسعير في الوقت الحالي",
-      "noDevisDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+      "noDevis": "لا توجد عروض في الوقت الحالي",
+      "noDevisDescription": "ستظهر العروض هنا بمجرد إضافتها إلى حسابك."
     },
     "AddDevis": {
-      "title": "نتائج طلبات التسعير",
-      "newDevisButton": "طلب تسعير جديد"
+      "title": "نتائج طلباتي للعروض",
+      "newDevisButton": "طلب عرض جديد"
     },
     "Deals": {
       "title": "أعمالي",
-      "artisan": "الحرفي",
+      "artisan": "حرفي",
       "workToDo": "العمل المطلوب",
       "percentage": "النسبة المئوية",
       "detailsButton": "تفاصيل"
@@ -265,7 +306,7 @@
       "selectChatRoom": "اختر غرفة دردشة"
     },
     "BackButton": {
-      "backButton": "رجوع"
+      "backButton": "عودة"
     },
     "ChatPage": {
       "title": "الدردشة",
@@ -274,14 +315,14 @@
     "Inbox": {
       "messages": "الرسائل",
       "searchPlaceholder": "بحث...",
-      "clickToChat": "انقر للدردشة..."
+      "clickToChat": "انقر للدخول إلى الدردشة..."
     },
     "MobileInbox": {
       "searchPlaceholder": "بحث...",
-      "clickToChat": "انقر للدردشة..."
+      "clickToChat": "انقر للدخول إلى الدردشة..."
     },
     "Conversation": {
-      "clickToChat": "انقر للدردشة..."
+      "clickToChat": "انقر للدخول إلى الدردشة..."
     },
     "Send": {
       "sendButton": "إرسال"
@@ -290,13 +331,13 @@
       "searchPlaceholder": "بحث..."
     },
     "DemandesPage": {
-      "title": "طلبات التسعير",
-      "noDemandes": "لا توجد طلبات تسعير في الوقت الحالي",
-      "noDemandesDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+      "title": "طلبات العروض",
+      "noDemandes": "لا توجد طلبات عروض في الوقت الحالي",
+      "noDemandesDescription": "ستظهر الطلبات هنا بمجرد إضافتها إلى حسابك."
     },
     "DemandesList": {
-      "noDemandes": "لا توجد طلبات تسعير في الوقت الحالي",
-      "noDemandesDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+      "noDemandes": "لا توجد طلبات عروض في الوقت الحالي",
+      "noDemandesDescription": "ستظهر الطلبات هنا بمجرد إضافتها إلى حسابك."
     },
     "Demande": {
       "userName": "اسم المستخدم",
@@ -321,10 +362,10 @@
     },
     "KanbanBoard": {
       "title": "المهام",
-      "description": "أضف، عدل، أو احذف مهامك",
+      "description": "أضف، عدل أو احذف مهامك",
       "backlog": "قيد الانتظار",
       "inProgress": "قيد التنفيذ",
-      "done": "مكتمل"
+      "done": "مكتملة"
     },
     "Task": {
       "title": "العنوان",
@@ -338,15 +379,15 @@
   "/about": {
     "ArtizanBlock": {
       "title": "DZ-ARTISAN!",
-      "description": "بوابتك نحو التميز في الحرف الجزائرية."
+      "description": "بوابتك نحو تميز الحرف الجزائرية."
     },
     "MissionBlock": {
       "title": "مهمتنا",
-      "description": "مهمتنا في DZ Artisan هي تعزيز الرابط بين الحرفيين الجزائريين وعملائهم من خلال تقديم منصة شفافة وموثوقة وسهلة الوصول. نهدف إلى دعم الحرفيين المحليين من خلال توفير المزيد من الرؤية لهم، مع تبسيط تجربة العملاء الذين يبحثون عن خدمات حرفية عالية الجودة. من خلال تطبيقنا، نلتزم بتعزيز الأصالة والتميز واحترام التقاليد، مع إنشاء مجتمع ديناميكي ومتضامن."
+      "description": "مهمتنا في DZ Artisan هي تعزيز الرابط بين الحرفيين الجزائريين وعملائهم من خلال تقديم منصة شفافة وموثوقة وسهلة الوصول. نهدف إلى دعم الحرفيين المحليين من خلال منحهم المزيد من الوضوح مع تبسيط تجربة العملاء الذين يبحثون عن خدمات حرفية عالية الجودة. من خلال تطبيقنا، نلتزم بتعزيز الأصالة والتميز واحترام التقاليد، مع إنشاء مجتمع ديناميكي ومتضامن."
     },
     "VisionBlock": {
       "title": "رؤيتنا",
-      "description": "في DZ Artisan، نهدف إلى إنشاء جسر قوي بين العملاء والحرفيين في جميع أنحاء الجزائر. نسعى إلى تعزيز الحرف المحلية من خلال تقديم منصة سهلة الاستخدام حيث يمكن للمستخدمين اكتشاف والتعاون مع الحرفيين الموهوبين. نحن ملتزمون بتعزيز الحرف التقليدية مع تسهيل الوصول إلى الخدمات الحرفية، مما يساهم في مستقبل مزدهر للحرف الجزائرية."
+      "description": "في DZ Artisan، نهدف إلى إنشاء جسر قوي بين العملاء والحرفيين في جميع أنحاء الجزائر. نسعى إلى تعزيز الحرف المحلية من خلال تقديم منصة بديهية حيث يمكن للمستخدمين اكتشاف والتعاون مع الحرفيين الموهوبين بسهولة. نحن مصممون على تعزيز الحرف التقليدية مع تسهيل الوصول إلى الخدمات الحرفية، مما يساهم في مستقبل مزدهر للحرف الجزائرية."
     },
     "AboutPage": {
       "title": "من نحن"
@@ -354,11 +395,11 @@
   },
   "/admin": {
     "AddArtisan": {
-      "title": "الحرفيون",
+      "title": "الحرفيين",
       "button": "حرفي جديد"
     },
     "AdminPage": {
-      "welcome": "مرحبًا بك في لوحة تحكم مشرف DZ-Artisan!",
+      "welcome": "مرحبًا بك في لوحة تحكم مدير DZ-Artisan!",
       "email": "admin@dzartisan.com",
       "addClient": {
         "title": "إضافة عميل",
@@ -374,17 +415,17 @@
       }
     },
     "AdminLayout": {
-      "sidebar": "الشريط الجانبي للمشرف",
-      "topbar": "الشريط العلوي للمشرف"
+      "sidebar": "SideBarAdmin",
+      "topbar": "TopBarAdmin"
     },
     "ServicesPage": {
       "title": "خدماتي",
-      "artisan": "الحرفي",
-      "client": "العميل",
+      "artisan": "حرفي",
+      "client": "عميل",
       "service": "الخدمة",
       "price": "السعر",
       "pourcentage": "النسبة المئوية",
-      "payed": "تم الدفع",
+      "payed": "مدفوع",
       "detailsButton": "تفاصيل"
     },
     "Task": {
@@ -394,10 +435,10 @@
     },
     "KanbanBoard": {
       "title": "المهام",
-      "description": "أضف، عدل، أو احذف مهامك",
+      "description": "أضف، عدل أو احذف مهامك",
       "backlog": "قيد الانتظار",
       "inProgress": "قيد التنفيذ",
-      "done": "مكتمل"
+      "done": "مكتملة"
     },
     "GotNothing": {
       "noTasks": "لا توجد مهام في الوقت الحالي",
@@ -423,13 +464,13 @@
       "endDate": "تاريخ الانتهاء"
     },
     "DemandesPage": {
-      "title": "طلبات التسعير",
-      "noDemandes": "لا توجد طلبات تسعير في الوقت الحالي",
-      "noDemandesDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+      "title": "طلبات العروض",
+      "noDemandes": "لا توجد طلبات عروض في الوقت الحالي",
+      "noDemandesDescription": "ستظهر الطلبات هنا بمجرد إضافتها إلى حسابك."
     },
     "DemandesList": {
-      "noDemandes": "لا توجد طلبات تسعير في الوقت الحالي",
-      "noDemandesDescription": "ستظهر طلبات التسعير هنا بمجرد إضافتها إلى حسابك."
+      "noDemandes": "لا توجد طلبات عروض في الوقت الحالي",
+      "noDemandesDescription": "ستظهر الطلبات هنا بمجرد إضافتها إلى حسابك."
     },
     "Demande": {
       "userName": "اسم المستخدم",
@@ -480,7 +521,7 @@
     },
     "Pourcentage": {
       "title": "نسبة المستخدمين",
-      "artisans": "الحرفيون",
+      "artisans": "الحرفيين",
       "clients": "العملاء"
     },
     "ClientPage": {
@@ -513,7 +554,7 @@
       "button": "عميل جديد"
     },
     "ArtisansPage": {
-      "title": "الحرفيون",
+      "title": "الحرفيين",
       "addArtisanButton": "حرفي جديد"
     },
     "TheListArtisan": {
@@ -531,12 +572,48 @@
       "placeholder": "ابحث عن الحرفيين بأسمائهم"
     },
     "ListArtisan": {
-      "noArtisans": "لا يوجد حرفيون في الوقت الحالي",
-      "noArtisansDescription": "ستظهر الحرفيون هنا بمجرد إضافتها إلى موقعك."
+      "noArtisans": "لا يوجد حرفيين في الوقت الحالي",
+      "noArtisansDescription": "ستظهر الحرفيين هنا بمجرد إضافتها إلى موقعك."
     },
     "Artisan": {
       "searchArtisan": "بحث",
       "listArtisan": "قائمة الحرفيين"
+    }
+  },
+  "topBar": {
+    "home": "الرئيسية",
+    "findPro": "ابحث عن محترف",
+    "about": "من نحن",
+    "language": "> اللغة",
+    "login": "تسجيل الدخول",
+    "register": "تسجيل",
+    "logout": "تسجيل الخروج",
+    "languageMenu": {
+      "french": "الفرنسية",
+      "arabic": "العربية"
+    }
+  },
+  "sideBar": {
+    "client": {
+      "profile": "تعديل ملفي الشخصي",
+      "deals": "متابعة الأعمال",
+      "devis": "طلب عروض",
+      "pannier": "عربة التسوق الخاصة بي",
+      "chat": "مراسلتي"
+    },
+    "admin": {
+      "dashboard": "لوحة التحكم",
+      "tasks": "المهام",
+      "clients": "العملاء",
+      "artisans": "الحرفيين",
+      "services": "الخدمات",
+      "demandes": "الطلبات"
+    },
+    "artisan": {
+      "profile": "الملف الشخصي",
+      "deals": "الأعمال",
+      "devis": "طلبات العملاء",
+      "chat": "مراسلتي"
     }
   }
 }

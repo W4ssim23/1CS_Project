@@ -1,8 +1,10 @@
 import { Button } from "@nextui-org/react";
 import { FileUploader } from "react-drag-drop-files";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Assurence({ setStep, setData }) {
+  const t = useTranslations("/register.RegisterForm");
   const [file, setFile] = useState(null);
   const handleNext = () => {
     if (!file) return;
@@ -14,17 +16,13 @@ export default function Assurence({ setStep, setData }) {
   };
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
-      <h1 className="text-center font-medium text-lg">
-        Veuillez entrez votre justificatif d’assurance
-      </h1>
+      <h1 className="text-center font-medium text-lg">{t("insuranceTitle")}</h1>
       <FileUploader
         className="bg-white rounded-xl"
         handleChange={(file) => setFile(file)}
         children={
           <div className="w-full h-full flex items-center justify-evenly min-w-[222px] rounded-md shadow-md bg-white p-2">
-            <h1 className="text-center font-medium">
-              ajouté une certification
-            </h1>
+            <h1 className="text-center font-medium">{t("addInsurance")}</h1>
           </div>
         }
       />
@@ -34,7 +32,7 @@ export default function Assurence({ setStep, setData }) {
         radius="sm"
         onClick={handleNext}
       >
-        suivant
+        {t("nextButton")}
       </Button>
     </div>
   );

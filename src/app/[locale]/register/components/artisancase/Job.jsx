@@ -1,9 +1,11 @@
 import { Select, SelectItem, Button } from "@nextui-org/react";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 //fetshes the jobs from the api
 
 export default function Job({ setStep, setData }) {
+  const t = useTranslations("/register.RegisterForm");
   const [job, setJob] = useState("");
   const handleNext = () => {
     if (!job) return;
@@ -12,13 +14,11 @@ export default function Job({ setStep, setData }) {
   };
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
-      <h1 className="text-center font-medium text-lg">
-        quel est votre metier?
-      </h1>
+      <h1 className="text-center font-medium text-lg">{t("jobTitle")}</h1>
       <Select
         className="max-w-xs"
-        label="Metier"
-        placeholder="Selectionner votre metier"
+        label={t("jobLabel")}
+        placeholder={t("jobPlaceholder")}
         onChange={(e) => setJob(e.target.value)}
       >
         {jobs.map((job) => (
@@ -31,7 +31,7 @@ export default function Job({ setStep, setData }) {
         radius="sm"
         onClick={handleNext}
       >
-        suivant
+        {t("nextButton")}
       </Button>
     </div>
   );

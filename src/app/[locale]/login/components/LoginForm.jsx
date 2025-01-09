@@ -5,8 +5,10 @@ import { useState, useContext } from "react";
 import { useRouter } from "@/i18n/routing";
 import { Input, Button } from "@nextui-org/react";
 import { GlobalContext } from "../../context";
+import { useTranslations } from "next-intl";
 
 export default function LoginForm() {
+  const t = useTranslations("/login.LoginForm");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,11 +23,11 @@ export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!userName) {
-      setErrorName("Please enter your username");
+      setErrorName(t("usernameError"));
       return;
     }
     if (!password) {
-      setErrorEmail("Please enter your password");
+      setErrorEmail(t("passwordError"));
       return;
     }
     setErrorName("");
@@ -71,15 +73,15 @@ export default function LoginForm() {
       data-testid="login-form"
       className="h-full text-center flex flex-col items-center justify-center py-10 md:p-10 lg:pr-36 gap-16 min-w-[47%] md:min-w-[40%]"
     >
-      <h1 className="text-4xl font-semibold text-nowrap">Sign-in</h1>
+      <h1 className="text-4xl font-semibold text-nowrap">{t("signInTitle")}</h1>
 
       <Input
         className=" max-w-[360px]  md:max-w-[500px]  md:min-w-[310px]"
         key="username"
         size="lg"
         variant="bordered"
-        label="Username"
-        placeholder="Entrez votre username..."
+        label={t("usernameLabel")}
+        placeholder={t("usernamePlaceholder")}
         labelPlacement="outside"
         onChange={(e) => setUserName(e.target.value)}
       ></Input>
@@ -90,8 +92,8 @@ export default function LoginForm() {
         size="lg"
         type="password"
         variant="bordered"
-        label="Password"
-        placeholder="Entrez votre password..."
+        label={t("passwordLabel")}
+        placeholder={t("passwordPlaceholder")}
         labelPlacement="outside"
         onChange={(e) => setPassword(e.target.value)}
       ></Input>
@@ -102,13 +104,13 @@ export default function LoginForm() {
         onClick={handleSubmit}
         isLoading={loading}
       >
-        Sign-in
+        {t("signInButton")}
       </Button>
 
       <p className="sm:text-nowrap">
-        Vous n’avez pas un compte?{" "}
+        {t("noAccountText")}{" "}
         <Link href="/register" className="text-blue-500">
-          Sign-up
+          {t("signUpLink")}
         </Link>
       </p>
     </div>

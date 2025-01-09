@@ -1,11 +1,14 @@
 import { Button, Spinner } from "@nextui-org/react";
 import { Link } from "@/i18n/routing";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Created({ data }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [hasRegistered, setHasRegistered] = useState(false);
+
+  const t = useTranslations("/register.RegisterForm");
 
   const handleRegister = async () => {
     if (hasRegistered) return;
@@ -52,8 +55,9 @@ export default function Created({ data }) {
     return (
       <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
         <h1 className="text-center font-semibold text-lg">
-          we <span className=" text-red-600">couldn't</span> create your account
-          !!
+          {t("createdError")}{" "}
+          <span className=" text-red-600">{t("createdError2")}</span>{" "}
+          {t("createdError3")}
         </h1>
         <Link href="/register">
           <Button
@@ -61,7 +65,7 @@ export default function Created({ data }) {
             size="lg"
             radius="sm"
           >
-            try again ?
+            {t("tryAgain")}
           </Button>
         </Link>
       </div>
@@ -70,8 +74,9 @@ export default function Created({ data }) {
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
       <h1 className="text-center font-semibold text-lg">
-        votre compte a été <span className="text-[#FFA500]">crée</span> avec
-        succès.
+        {t(createdSuccess)}{" "}
+        <span className="text-[#FFA500]">{t(createdSuccess2)}</span>
+        {t(createdSuccess3)}
       </h1>
       <Link href="/login">
         <Button
@@ -79,7 +84,7 @@ export default function Created({ data }) {
           size="lg"
           radius="sm"
         >
-          se connecté
+          {t("connect")}
         </Button>
       </Link>
     </div>

@@ -25,37 +25,37 @@ import {
 
 export const itemsAdmin = [
   {
-    title: "Tableau de bord",
+    title: "dashboard",
     svg: dashboard,
     page: "/admin/dashboard",
     svgSelected: dashSelected,
   },
   {
-    title: "Taches",
+    title: "tasks",
     svg: checklist,
     svgSelected: tachSelected,
     page: "/admin/taches",
   },
   {
-    title: "Clients",
+    title: "clients",
     svg: client,
     svgSelected: clientSelected,
     page: "/admin/clients",
   },
   {
-    title: "Artisans",
+    title: "artisans",
     svg: men,
     svgSelected: artisanSelected,
     page: "/admin/artisans",
   },
   {
-    title: "Services",
+    title: "services",
     svg: restore,
     svgSelected: serviceSelected,
     page: "/admin/services",
   },
   {
-    title: "Demandes",
+    title: "demandes",
     svg: calendar,
     svgSelected: demandeSelected,
     page: "/admin/demandes",
@@ -64,31 +64,31 @@ export const itemsAdmin = [
 
 export const itemsClient = [
   {
-    title: "Modifier mon profil",
+    title: "profile",
     svg: profile,
     page: "/client/profile",
     svgSelected: profileSelected,
   },
   {
-    title: "Suivi des travaux",
+    title: "deals",
     svg: deals,
     svgSelected: dealsSelected,
     page: "/client/deals",
   },
   {
-    title: "Demande de devis",
+    title: "devis",
     svg: devis,
     svgSelected: devisSelected,
     page: "/client/devis",
   },
   {
-    title: "Mon pannier",
+    title: "pannier",
     svg: pannier,
     svgSelected: pannierSelected,
     page: "/client/pannier",
   },
   {
-    title: "Ma messagerie",
+    title: "chat",
     svg: chat,
     svgSelected: chatSelected,
     page: "/client/chat",
@@ -97,25 +97,25 @@ export const itemsClient = [
 
 export const itemsArtisan = [
   {
-    title: "Profil",
+    title: "profile",
     svg: profile,
     page: "/artisan/profile",
     svgSelected: profileSelected,
   },
   {
-    title: "Deals",
+    title: "deals",
     svg: deals,
     svgSelected: dealsSelected,
     page: "/artisan/deals",
   },
   {
-    title: "Demandes des clients",
+    title: "devis",
     svg: devis,
     svgSelected: devisSelected,
     page: "/artisan/devis",
   },
   {
-    title: "Ma messagerie",
+    title: "chat",
     svg: chat,
     svgSelected: chatSelected,
     page: "/artisan/chat",

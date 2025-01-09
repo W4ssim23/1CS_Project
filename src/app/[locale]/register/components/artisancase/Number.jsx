@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Input, Button } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
 
 export default function Number({ setStep, setData }) {
+  const t = useTranslations("/register.RegisterForm");
   const [phone, setPhone] = useState("");
   const handleNext = () => {
     if (!phone) return;
@@ -10,16 +12,14 @@ export default function Number({ setStep, setData }) {
   };
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
-      <h1 className="text-center font-medium text-lg">
-        Entrer votre numéro de téléphone
-      </h1>
+      <h1 className="text-center font-medium text-lg">{t("phoneTitle")}</h1>
       <Input
         className=" max-w-[300px]  sm:max-w-[500px]  md:min-w-[310px] bg-white rounded-xl "
         key="phone"
         size="lg"
         radius="sm"
         variant="bordered"
-        label="numéro de téléphone"
+        label={t("phoneLabel")}
         labelPlacement="outside"
         onChange={(e) => setPhone(e.target.value)}
       />
@@ -30,7 +30,7 @@ export default function Number({ setStep, setData }) {
           radius="sm"
           onClick={handleNext}
         >
-          suivant
+          {t("nextButton")}
         </Button>
         <Button
           className="max-w-[360px]  min-w-[222px]"
@@ -38,7 +38,7 @@ export default function Number({ setStep, setData }) {
           radius="sm"
           onClick={() => setStep(3)}
         >
-          plus tard
+          {t("laterButton")}
         </Button>
       </div>
     </div>

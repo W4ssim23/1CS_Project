@@ -1,29 +1,54 @@
 {
   "/": {
-    "title": "Trouver les meilleurs Artisans pour tous vos services",
+    "title": "Trouver les meilleurs",
+    "colored": " Artisans ",
+    "continue": "pour tous vos services",
     "enderTitle": "Trouvez un constructeur, un plombier, un peintre et plus encore.",
     "button": "Decouvrir Plus",
-    "search": "Trouvez et Engagez les meilleurs Artisans en Algérie",
+    "search": "Trouvez et Engagez les meilleurs",
+    "colored2": " Artisans ",
+    "continue2": "en Algérie",
     "searchButton": "Chercher sur DZ ARTISAN...",
-    "jobs": ["menuisier", "electrécien", "maçon", "peintre", "plombier"],
+    "menuisier": "menuisier",
+    "electrécien": "electrécien",
+    "maçon": "maçon",
+    "peintre": "peintre",
+    "plombier": "plombier",
     "question": "DZ-ARTISAN, comment ça marche?",
     "services": {
-      "titles": ["Recherche simple", "Messagerie integree", "Selection simple"],
-      "descriptions": [
-        "Utilisez la barre de recherche ou explorez les catégories du menu de navigation pour accéder à votre service.",
-        "Contactez des professionnels directement grâce à la messagerie intégrée.",
-        "Sélectionnez un service selon les évaluations et les avis, ou affinez votre recherche avec des filtres comme « peintre »."
-      ]
+      "title1": "Recherche simple",
+      "title2": "Messagerie integree",
+      "title3": "Selection simple",
+      "text1": "Utilisez la barre de recherche ou explorez les catégories du menu de navigation pour accéder à votre service.",
+      "text2": "Contactez des professionnels directement grâce à la messagerie intégrée.",
+      "text3": "Sélectionnez un service selon les évaluations et les avis, ou affinez votre recherche avec des filtres comme « peintre »."
     },
+    "contactText": "En cas de problème, n'hésitez pas à",
+    "contactLink": "nous contacter",
+    "helpText": "pour obtenir de l'aide.",
     "expertBlock": {
       "title1": "NOS EXPERTS",
       "title2": "Faites confiance à l'expertise de nos professionnels qualifiés, riches d'années d'expérience dans leurs domaines respectifs.",
-      "experts": ["Ahmed Muli", "Adem Bell", "Maria Jhon"],
-      "descriptions": [
-        "Un menuisier professionnel doté de plus de 10 ans d'expérience dans le domaine.",
-        "Un électricien qualifié avec 7 ans d'expérience dans le domaine.",
-        "Un plombier certifié, fort de 9 ans d'expérience dans le métier."
-      ]
+      "expert1": "Ahmed Muli",
+      "expert2": "Adem Bell",
+      "expert3": "Maria Jhon",
+      "descriptions1": "Un menuisier professionnel doté de plus de 10 ans d'expérience dans le domaine.",
+      "descriptions2": "Un électricien qualifié avec 7 ans d'expérience dans le domaine.",
+      "descriptions3": "Un plombier certifié, fort de 9 ans d'expérience dans le métier."
+    },
+    "footer": {
+      "title": "DZ ARTISAN",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "linksTitle": "QUELQUES LIENS",
+      "home": "HOME",
+      "findPro": "TROUVER UN PRO",
+      "about": "À PROPOS",
+      "register": "S'INSCRIRE",
+      "contactTitle": "CONTACTER-NOUS",
+      "phone": "031773311",
+      "email": "INFO@DZARTISAN.com",
+      "website": "https://Dzartisan.com",
+      "rightsReserved": "Tous les droits sont réservés"
     }
   },
   "/login": {
@@ -67,13 +92,29 @@
       "certificateUpload": "ajouté une certification",
       "assurenceTitle": "Veuillez entrez votre justificatif d’assurance",
       "assurenceUpload": "ajouté une certification",
-      "createdSuccess": "votre compte a été crée avec succès.",
-      "createdPending": "votre demande de création de compte a été envoyer, vous allez recevoir un email quand ce dernier sera crée.",
-      "createdError": "we couldn't create your account !!",
+      "createdSuccess": "votre compte a été ",
+      "createdSuccess2": "crée",
+      "createdSuccess3": " avec succès.",
+      "createdPending1": "votre",
+      "createdPending2": " demande",
+      "createdPending3": " de création de compte a été envoyer, vous allez recevoir un ",
+      "createdPending4": "email",
+      "createdPending5": " quand ce dernier sera",
+      "createdPending6": "crée",
+      "createdError": "we ",
+      "createdError2": "couldn't",
+      "createdError3": " create your account !!",
       "tryAgain": "try again ?",
       "okButton": "OK",
       "nextButton": "suivant",
-      "laterButton": "plus tard"
+      "laterButton": "plus tard",
+      "loginButton": "se connecté",
+      "typeAccount": "choisissez le type de compte que vous vouliez crée",
+      "Artisan": "Artisan",
+      "Client": "Client",
+      "create": "crée un compte",
+      "haveAccount": "vous avez déja un compte ?",
+      "connect": "se connecté"
     }
   },
   "/client": {
@@ -537,6 +578,42 @@
     "Artisan": {
       "searchArtisan": "chercher",
       "listArtisan": "Liste des artisans"
+    }
+  },
+  "topBar": {
+    "home": "Home",
+    "findPro": "Trouver un Pro",
+    "about": "A Propos",
+    "language": "> Language",
+    "login": "se connecté",
+    "register": "s’inscrir",
+    "logout": "se déconnecter",
+    "languageMenu": {
+      "french": "Français",
+      "arabic": "Arabe"
+    }
+  },
+  "sideBar": {
+    "client": {
+      "profile": "Modifier mon profil",
+      "deals": "Suivi des travaux",
+      "devis": "Demande de devis",
+      "pannier": "Mon pannier",
+      "chat": "Ma messagerie"
+    },
+    "admin": {
+      "dashboard": "Tableau de bord",
+      "tasks": "Taches",
+      "clients": "Clients",
+      "artisans": "Artisans",
+      "services": "Services",
+      "demandes": "Demandes"
+    },
+    "artisan": {
+      "profile": "Profil",
+      "deals": "Deals",
+      "devis": "Demandes des clients",
+      "chat": "Ma messagerie"
     }
   }
 }

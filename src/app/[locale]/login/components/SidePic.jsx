@@ -1,7 +1,10 @@
 import { registerPic } from "@/assets/svgs";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function SidePic() {
+  const t = useTranslations("/login.SidePic");
+
   return (
     <div
       data-testid="side-pic"
@@ -9,11 +12,9 @@ export default function SidePic() {
     >
       <div className="flex flex-col items-center justify-center sm:items-start sm:justify-normal gap-5">
         <p className=" text-center text-3xl font-semibold tracking-wide">
-          BIENVENUE SUR DZ-ARTISAN!
+          {t("welcomeText")}
         </p>
-        <p className=" text-gray-400 text-center ">
-          Rejoignez-nous, nous apprécions votre soutien.
-        </p>
+        <p className=" text-gray-400 text-center ">{t("supportText")}</p>
       </div>
 
       <Image src={registerPic} alt="Register" className="" />

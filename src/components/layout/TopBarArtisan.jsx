@@ -21,11 +21,15 @@ import { useRouter } from "@/i18n/routing";
 
 import { GlobalContext } from "@/app/[locale]/context";
 
+import { useTranslations } from "next-intl";
+
 export default function TopBarArtisan() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const { userData } = useContext(GlobalContext);
+
+  const t = useTranslations("topBar");
 
   const router = useRouter();
 
@@ -97,7 +101,7 @@ export default function TopBarArtisan() {
             onClick={() => handleLogout()}
             isLoading={loading}
           >
-            Deconnecter
+            {t("logout")}
           </Button>
         </NavbarItem>
       </NavbarContent>

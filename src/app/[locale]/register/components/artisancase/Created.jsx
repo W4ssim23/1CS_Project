@@ -1,11 +1,14 @@
 import { Button, Spinner } from "@nextui-org/react";
 import { Link } from "@/i18n/routing";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Created({ data }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [hasRegistered, setHasRegistered] = useState(false);
+
+  const t = useTranslations("/register.RegisterForm");
 
   const handleRegister = async () => {
     if (hasRegistered) return;
@@ -52,8 +55,9 @@ export default function Created({ data }) {
     return (
       <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
         <h1 className="text-center font-semibold text-lg">
-          we <span className=" text-red-600">couldn't</span> create your account
-          !!
+          {t("createdError")}{" "}
+          <span className=" text-red-600">{t("createdError2")}</span>{" "}
+          {t("createdError3")}
         </h1>
         <Link href="/register">
           <Button
@@ -61,7 +65,7 @@ export default function Created({ data }) {
             size="lg"
             radius="sm"
           >
-            try again ?
+            {t("tryAgain")}
           </Button>
         </Link>
       </div>
@@ -70,10 +74,12 @@ export default function Created({ data }) {
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
       <h1 className="text-center font-semibold text-lg max-w-[400px]">
-        votre <span className="text-[#FFA500]">demande</span> de création de
-        compte a été envoyer, vous allez recevoir un{" "}
-        <span className="text-[#FFA500]">email</span> quand ce dernier sera
-        <span className="text-[#FFA500]"> crée</span>.
+        {t("createdPending1")}{" "}
+        <span className="text-[#FFA500]">{t("createdPending2")}</span>{" "}
+        {t("createdPending3")}{" "}
+        <span className="text-[#FFA500]">{t("createdPending4")}</span>{" "}
+        {t("createdPending5")}
+        <span className="text-[#FFA500]">{t("createdPending6")}</span>.
       </h1>
       <Link href="/">
         <Button

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Input, Button } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
 
 export default function Email({ setStep, setData }) {
+  const t = useTranslations("/register.RegisterForm");
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -14,19 +16,19 @@ export default function Email({ setStep, setData }) {
 
   const handleNext = () => {
     if (!email || !password || !confirmPassword) {
-      setError("All fields are required");
+      setError(t("allFieldsRequired"));
       return;
     }
     if (!validateEmail(email)) {
-      setError("Invalid email address");
+      setError(t("invalidEmail"));
       return;
     }
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError(t("passwordsDoNotMatch"));
       return;
     }
     if (password.length < 8) {
-      setError("Password must be at least 8 characters long");
+      setError(t("passwordLength"));
       return;
     }
     setData((prev) => ({
@@ -40,16 +42,14 @@ export default function Email({ setStep, setData }) {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
-      <h1 className="text-center font-medium text-lg">
-        Entrer votre email et crée un mot de passe
-      </h1>
+      <h1 className="text-center font-medium text-lg">{t("emailTitle")}</h1>
       <Input
         className=" max-w-[300px]  sm:max-w-[500px]  md:min-w-[310px] bg-white rounded-xl "
         key="email"
         size="lg"
         radius="sm"
         variant="bordered"
-        label="email"
+        label={t("emailLabel")}
         labelPlacement="outside"
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -60,7 +60,7 @@ export default function Email({ setStep, setData }) {
         radius="sm"
         type="password"
         variant="bordered"
-        label="mot de passe"
+        label={t("passwordLabel")}
         labelPlacement="outside"
         onChange={(e) => setpassword(e.target.value)}
       />
@@ -71,7 +71,7 @@ export default function Email({ setStep, setData }) {
         radius="sm"
         type="password"
         variant="bordered"
-        label="coonfirmé le mot de passe"
+        label={t("confirmPasswordLabel")}
         labelPlacement="outside"
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
@@ -82,7 +82,7 @@ export default function Email({ setStep, setData }) {
         radius="sm"
         onClick={handleNext}
       >
-        suivant
+        {t("nextButton")}
       </Button>
     </div>
   );

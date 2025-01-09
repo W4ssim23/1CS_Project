@@ -7,11 +7,12 @@ import { usePathname } from "@/i18n/routing";
 import { Avatar } from "@nextui-org/react";
 import { useContext } from "react";
 import { GlobalContext } from "@/app/[locale]/context";
+import { useTranslations } from "next-intl";
 
 export default function SideBarClient() {
   const pg = usePathname();
-
   const { userData } = useContext(GlobalContext);
+  const t = useTranslations("sideBar.client");
 
   return (
     <nav className="min-w-[20%] bg-[#3A5BA0] shadow-md hidden sm:block ">
@@ -28,14 +29,14 @@ export default function SideBarClient() {
       </div>
       <ul className="flex flex-col items-center w-full gap-4 lg:gap-0 pt-5">
         {itemsClient.map((item, index) => (
-          <BarItem pg={pg} item={item} key={index} />
+          <BarItem pg={pg} item={item} key={index} t={t} />
         ))}
       </ul>
     </nav>
   );
 }
 
-const BarItem = ({ item, pg }) => {
+const BarItem = ({ item, pg, t }) => {
   return (
     <Link
       href={item.page}
@@ -64,7 +65,7 @@ const BarItem = ({ item, pg }) => {
               : "text-white"
           }`}
         >
-          {item.title}
+          {t(item.title.toLowerCase())}
         </p>
       </div>
     </Link>

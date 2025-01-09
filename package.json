@@ -30,6 +30,7 @@
     "react-dom": "^18",
     "react-drag-drop-files": "^2.4.0",
     "recharts": "^2.15.0",
+    "rtl-detect": "^1.1.2",
     "sharp": "^0.33.5",
     "tailwindcss-motion": "^1.0.0"
   },

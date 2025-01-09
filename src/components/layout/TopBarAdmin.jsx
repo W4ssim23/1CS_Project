@@ -18,12 +18,15 @@ import { Link } from "@/i18n/routing.js";
 import Image from "next/image";
 import { itemsAdmin } from "@/lib";
 import { useRouter } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 export default function TopBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const { userData } = useContext(GlobalContext);
+
+  const t = useTranslations("topBar");
 
   // console.log(userData);
 
@@ -97,7 +100,7 @@ export default function TopBar() {
             onClick={() => handleLogout()}
             isLoading={loading}
           >
-            Deconnecter
+            {t("logout")}
           </Button>
         </NavbarItem>
       </NavbarContent>
