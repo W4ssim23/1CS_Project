@@ -12,7 +12,7 @@ export default function Certificate({ setStep, setData }) {
     setData((prev) => ({
       ...prev,
       certificated: isCertified === "true",
-      certificate: file,
+      certification_files: [file],
     }));
     setStep(6);
   };
@@ -47,9 +47,7 @@ export default function Certificate({ setStep, setData }) {
           handleChange={(file) => setFile(file)}
           children={
             <div className="w-full h-full flex items-center justify-evenly min-w-[222px] rounded-md shadow-md bg-white p-2">
-              <h1 className="text-center font-medium">
-                {t("addCertification")}
-              </h1>
+              <h1 className="text-center font-medium">{t("upload")}</h1>
             </div>
           }
         />

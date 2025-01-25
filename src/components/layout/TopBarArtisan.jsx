@@ -36,7 +36,7 @@ export default function TopBarArtisan() {
   const handleLogout = async () => {
     setLoading(true);
     const response = await fetch(
-      "https://dzartisan-app.onrender.com/app/user-logout/",
+      process.env.NEXT_PUBLIC_API_URL + "user-logout/",
       {
         method: "POST",
         headers: {

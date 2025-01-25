@@ -8,13 +8,46 @@ export default function Email({ setStep, setData }) {
   const [password, setpassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
   };
 
-  const handleNext = () => {
+  const MailNotTaken = async (email) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_API_URL + "email-taken/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        if (data.is_used) {
+          setError(t("emailTaken"));
+        }
+        return data.is_used;
+      } else {
+        console.error("error");
+        console.error(await response.json());
+        setError(t("emailTaken"));
+      }
+    } catch (error) {
+      console.error(error);
+      setError(t("somthingWentWrong"));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleNext = async () => {
     if (!email || !password || !confirmPassword) {
       setError(t("allFieldsRequired"));
       return;
@@ -29,6 +62,9 @@ export default function Email({ setStep, setData }) {
     }
     if (password.length < 8) {
       setError(t("passwordLength"));
+      return;
+    }
+    if (await MailNotTaken(email)) {
       return;
     }
     setData((prev) => ({
@@ -80,6 +116,7 @@ export default function Email({ setStep, setData }) {
         className=" bg-[#1F4690] text-white   max-w-[360px]  min-w-[222px]"
         size="lg"
         radius="sm"
+        isLoading={loading}
         onClick={handleNext}
       >
         {t("nextButton")}

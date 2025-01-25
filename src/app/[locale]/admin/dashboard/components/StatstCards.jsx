@@ -1,24 +1,24 @@
 import Image from "next/image";
 import { clientb, menb, handshake } from "@/assets/svgs";
 
-export default function StatstCards() {
+export default function StatstCards({ data }) {
   // values would be fetched from the server
   const stats = [
     {
       text: "Le total des Artisans",
-      value: "120",
+      value: data.totalArtisans,
       icon: menb,
       bg: "#FFF7C294",
     },
     {
       text: "Le total des Clients",
-      value: "340",
+      value: data.totalClients,
       icon: clientb,
       bg: "#8FB6FF73",
     },
     {
       text: "Le total des services",
-      value: "47",
+      value: data.totalDeals,
       icon: handshake,
       bg: "#33F6562B",
     },

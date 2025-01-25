@@ -29,9 +29,6 @@ export default async function AdminPage() {
         <h1 className=" font-bold text-[22px]  sm:text-[25px] max-w-[700px] text-center">
           Bienvenue sur le tableau de bord de l'administrateur de DZ-Artisan !
         </h1>
-        <h2 className=" font-bold  text-[18px] text-center">
-          admin@dzartisan.com
-        </h2>
       </div>
       <div className="flex flex-col gap-8 sm:gap-4">
         {elements.map((element, index) => (

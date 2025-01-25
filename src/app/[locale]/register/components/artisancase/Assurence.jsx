@@ -10,7 +10,7 @@ export default function Assurence({ setStep, setData }) {
     if (!file) return;
     setData((prev) => ({
       ...prev,
-      assurence: file,
+      insurance_files: [file],
     }));
     setStep(7);
   };
@@ -22,7 +22,7 @@ export default function Assurence({ setStep, setData }) {
         handleChange={(file) => setFile(file)}
         children={
           <div className="w-full h-full flex items-center justify-evenly min-w-[222px] rounded-md shadow-md bg-white p-2">
-            <h1 className="text-center font-medium">{t("addInsurance")}</h1>
+            <h1 className="text-center font-medium">{t("upload2")}</h1>
           </div>
         }
       />

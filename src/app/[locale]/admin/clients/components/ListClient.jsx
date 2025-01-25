@@ -1,73 +1,99 @@
+"use client";
 import Image from "next/image";
 import { nothing } from "@/assets/svgs";
 import TheList from "./TheList";
+import { useState, useEffect, useContext } from "react";
+import { ClientContext } from "../clientContext";
+import { Button } from "@nextui-org/react";
+import { LoadingSpinner } from "@/components/ui";
 
 export default function ListClient() {
-  //get this variable from the locale context
-  // const clients = [];
-  const clients = [
-    {
-      name: "Cristiano Ronaldo",
-      clientId: "CLT-125",
-      email: "cr7@sports.com",
-      phone: "777777777",
-      genre: "Homme",
-      status: "Actif",
-      avatar:
-        "https://www.sportico.com/wp-content/uploads/2024/09/GettyImages-1734016483-e1726177787958.jpg?w=1280&h=719&crop=1",
-    },
-    {
-      name: "Marie Curie",
-      clientId: "CLT-126",
-      email: "marie@science.com",
-      phone: "123098765",
-      genre: "Femme",
-      status: "Actif",
-      avatar:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Marie_Curie_c1920.jpg/640px-Marie_Curie_c1920.jpg",
-    },
-    {
-      name: "Albert Einstein",
-      clientId: "CLT-127",
-      email: "einstein@physics.com",
-      phone: "987654321",
-      genre: "Homme",
-      status: "Inactif",
-      avatar:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Albert_Einstein_1947.jpg/640px-Albert_Einstein_1947.jpg",
-    },
-    {
-      name: "Frida Kahlo",
-      clientId: "CLT-128",
-      email: "frida@art.com",
-      phone: "456789123",
-      genre: "Femme",
-      status: "Actif",
-      avatar:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9oF_bbuzfs33I7f-2Dkvtw6FCNk3hKKyUXQ&s",
-    },
-    {
-      name: "Elon Musk",
-      clientId: "CLT-130",
-      email: "elon@tesla.com",
-      phone: "555123456",
-      genre: "Homme",
-      status: "Actif",
-      avatar:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg/800px-Elon_Musk_Royal_Society_%28crop2%29.jpg",
-    },
-  ];
+  const { page, setPage, clients, setClients, totalPages, setTotalPages } =
+    useContext(ClientContext);
+  const [loading, setLoading] = useState(true);
+  const [paginloading, setPaginLoading] = useState(false);
+
+  useEffect(() => {
+    const getClient = async () => {
+      setPaginLoading(true);
+      try {
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_API_URL + "admin/clients/?page=" + page,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setClients(data.clients);
+          setTotalPages(data.pagination.totalPages);
+        }
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false);
+        setPaginLoading(false);
+      }
+    };
+    getClient();
+  }, [page]);
+
+  const handleNextPage = () => {
+    if (page < totalPages) {
+      setPage(page + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   if (!clients.length) return <GotNothing />;
 
-  return <TheList clients={clients} />;
+  return (
+    <>
+      <TheList clients={clients} />
+      <div className="flex justify-center mt-4">
+        <Button
+          onClick={handlePreviousPage}
+          disabled={page === 1}
+          className="px-4 py-2 mx-2 bg-[#FFA500] text-white rounded disabled:bg-gray-300"
+          isLoading={paginloading}
+        >
+          Previous
+        </Button>
+        <span className="px-4 py-2">
+          Page {page} of {totalPages}
+        </span>
+        <Button
+          onClick={handleNextPage}
+          disabled={page === totalPages}
+          className="px-4 py-2 mx-2 bg-[#FFA500] text-white rounded disabled:bg-gray-300"
+          isLoading={paginloading}
+        >
+          Next
+        </Button>
+      </div>
+    </>
+  );
 }
 
 function GotNothing() {
   return (
-    <div className=" bg-white w-full h-full flex flex-col items-center justify-center gap-3 text-[#4F4F4F] text-center min-h-[535px] ">
+    <div className="bg-white w-full h-full flex flex-col items-center justify-center gap-3 text-[#4F4F4F] text-center min-h-[535px]">
       <Image src={nothing} alt="nothing" priority />
-      <p className=" font-semibold text-[20px]">
+      <p className="font-semibold text-[20px]">
         Aucun <span className="text-[#FFA500]">Client</span> en ce moment
       </p>
       <p>

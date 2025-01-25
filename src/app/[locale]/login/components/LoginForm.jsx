@@ -13,8 +13,6 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [errorName, setErrorName] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
 
   const { setUserData } = useContext(GlobalContext);
 
@@ -23,27 +21,29 @@ export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!userName) {
-      setErrorName(t("usernameError"));
+      setError(t("usernameError"));
       return;
     }
     if (!password) {
-      setErrorEmail(t("passwordError"));
+      setError(t("passwordError"));
       return;
     }
-    setErrorName("");
-    setErrorEmail("");
+    setError("");
+    setError("");
     setLoading(true);
     try {
       const response = await fetch(
-        "https://dzartisan-app.onrender.com/app/user-login/",
+        process.env.NEXT_PUBLIC_API_URL + "user-login/",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify({ email_or_username: userName, password }),
         }
       );
+
       if (!response.ok) {
         const data = await response.json();
         setError(data.message);
@@ -58,18 +58,18 @@ export default function LoginForm() {
       } else {
         setLoading(false);
         document.cookie = `userData=${JSON.stringify(data.data)}; path=/;`;
-        console.log(data, data.data.role);
         setUserData(data.data);
-        router.push(`/${data.data.role}`);
+        router.push(`/${data.data?.role}`);
       }
     } catch (e) {
       console.log(e);
+      setError(t("somethingWentWrong"));
       setLoading(false);
     }
   };
 
   return (
-    <div
+    <form
       data-testid="login-form"
       className="h-full text-center flex flex-col items-center justify-center py-10 md:p-10 lg:pr-36 gap-16 min-w-[47%] md:min-w-[40%]"
     >
@@ -98,6 +98,8 @@ export default function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
       ></Input>
 
+      {error && <p className="text-red-500 px-3 sm:px-0">{error}</p>}
+
       <Button
         className=" bg-[#1F4690] text-white   max-w-[360px]  md:max-w-[500px]   md:min-w-[310px]"
         size="lg"
@@ -113,6 +115,6 @@ export default function LoginForm() {
           {t("signUpLink")}
         </Link>
       </p>
-    </div>
+    </form>
   );
 }

@@ -1,66 +1,93 @@
+"use client";
 import Image from "next/image";
 import { nothing } from "@/assets/svgs";
 import TheList from "./TheList";
+import { useState, useEffect, useContext } from "react";
+import { ArtisanContext } from "../artisanContext";
+import { Button } from "@nextui-org/react";
+import { LoadingSpinner } from "@/components/ui";
 
 export default function ListArtisan() {
-  //get this variable from the locale context
-  // const artisans = [];
-  const artisans = [
-    {
-      name: "Lionel Messi",
-      artisanId: "ART-125",
-      email: "aa@c.aa",
-      phone: "101010101010",
-      genre: "Homme",
-      status: "Actif",
-      avatar:
-        "https://yop.l-frii.com/wp-content/uploads/2024/10/Le-premier-contrat-de-Lionel-Messi-avec-le-FC-Barcelone-a-ete-signe-sur-une-serviette-en-papier-retour-sur-les-debuts-incroyables-de-la-Pulga-1024x640.jpg",
-    },
-    {
-      name: "Coco Chanel",
-      artisanId: "ART-126",
-      email: "aa@a.aa",
-      phone: "123456789",
-      genre: "Femme",
-      status: "Actif",
-      avatar:
-        "https://resize.elle.fr/square/var/plain_site/storage/images/mode/les-news-mode/19-aout-1883-c-est-ce-jour-la-que-nait-coco-chanel-3140479/68578186-1-fre-FR/19-aout-1883-c-est-ce-jour-la-que-nait-Coco-Chanel.jpg",
-    },
-    {
-      name: "Kanye west",
-      artisanId: "ART-127",
-      email: "aa@a.aa",
-      phone: "123456789",
-      genre: "Homme",
-      status: "Actif",
-      avatar:
-        "https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2022/10/kanye-west-triste.jpg",
-    },
-    {
-      name: "Frankou",
-      artisanId: "ART-128",
-      email: "aa@a.aa",
-      phone: "123456789",
-      genre: "Homme",
-      status: "Inactif",
-      avatar:
-        "https://lastfm.freetls.fastly.net/i/u/ar0/c727ac2a12a296b7f62549def8d6b537.jpg",
-    },
-    {
-      name: "Akira Akao",
-      artisanId: "ART-129",
-      email: "aa@a.aa",
-      phone: "123456789",
-      genre: "Femme",
-      status: "Actif",
-      avatar:
-        "https://i.pinimg.com/474x/53/4f/29/534f2998608e8132cd84fc8c18030c77.jpg",
-    },
-  ];
+  const { page, setPage, data, setData, totalPages, setTotalPages } =
+    useContext(ArtisanContext);
+  const [loading, setLoading] = useState(true);
+  const [paginloading, setPaginLoading] = useState(false);
 
-  if (!artisans.length) return <GotNothing />;
+  useEffect(() => {
+    const getArtisan = async () => {
+      setPaginLoading(true);
+      try {
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_API_URL + "admin/artisans/?page=" + page,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          }
+        );
 
-  return <TheList artisans={artisans} />;
+        if (response.ok) {
+          const data = await response.json();
+          setData(data.artisans);
+          setTotalPages(data.pagination.totalPages);
+        }
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false);
+        setPaginLoading(false);
+      }
+    };
+
+    getArtisan();
+  }, [page, setTotalPages]);
+
+  const handleNextPage = () => {
+    if (page < totalPages) {
+      setPage(page + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  if (!data?.length) return <GotNothing />;
+
+  return (
+    <>
+      <TheList artisans={data} />
+      <div className="flex justify-center mt-4">
+        <Button
+          onClick={handlePreviousPage}
+          disabled={page === 1}
+          className="px-4 py-2 mx-2 bg-[#FFA500] text-white rounded disabled:bg-gray-300"
+          isLoading={paginloading}
+        >
+          Previous
+        </Button>
+        <span className="px-4 py-2">
+          Page {page} of {totalPages}
+        </span>
+        <Button
+          onClick={handleNextPage}
+          disabled={page === totalPages}
+          className="px-4 py-2 mx-2 bg-[#FFA500] text-white rounded disabled:bg-gray-300"
+          isLoading={paginloading}
+        >
+          Next
+        </Button>
+      </div>
+    </>
+  );
 }
 
 function GotNothing() {

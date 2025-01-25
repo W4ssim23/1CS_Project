@@ -19,7 +19,7 @@ export default function ArtisanDialogue() {
     password2: "",
     job: "",
     is_certified: false,
-    is_assured: false, //->true
+    is_assured: false,
     certification_files: [],
     insurance_files: [],
   });

@@ -62,7 +62,8 @@
       "noAccountText": "Vous n’avez pas un compte?",
       "signUpLink": "S'inscrire",
       "usernameError": "Veuillez entrer votre nom d'utilisateur",
-      "passwordError": "Veuillez entrer votre mot de passe"
+      "passwordError": "Veuillez entrer votre mot de passe",
+      "somethingWentWrong": "Quelque chose c’est mal passé"
     },
     "SidePic": {
       "welcomeText": "BIENVENUE SUR DZ-ARTISAN!",
@@ -114,7 +115,15 @@
       "Client": "Client",
       "create": "crée un compte",
       "haveAccount": "vous avez déja un compte ?",
-      "connect": "se connecté"
+      "connect": "se connecté",
+      "yes": "oui",
+      "no": "non",
+      "upload": "ajouté une certification",
+      "upload2": "ajouté une assurance",
+      "certifiedTitle": "étes vous certifié ?",
+      "insuranceTitle": "étes vous assuré ?",
+      "emailTaken": "cette email est déja utilisé",
+      "somthingWentWrong": "quelque chose c’est mal passé"
     }
   },
   "/client": {

@@ -16,7 +16,7 @@ export default function Created({ data }) {
     setLoading(true);
     try {
       const response = await fetch(
-        "https://dzartisan-app.onrender.com/app/artisan-signup/",
+        process.env.NEXT_PUBLIC_API_URL + "artisan-signup/",
         {
           method: "POST",
           headers: {

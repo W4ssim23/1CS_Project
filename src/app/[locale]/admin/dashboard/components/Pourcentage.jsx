@@ -5,13 +5,13 @@ import { Chart as ChartJS, Tooltip, Legend, ArcElement } from "chart.js";
 
 ChartJS.register(Tooltip, Legend, ArcElement);
 
-export default function Pourcentage() {
+export default function Pourcentage({ dataa }) {
   const data = [
-    { name: "Artisans", value: 26.09, color: "#E91F63" },
-    { name: "Clients", value: 73.91, color: "#73A4FF" },
+    { name: "Artisans", value: dataa.artisanPercentage, color: "#E91F63" },
+    { name: "Clients", value: dataa.clientPercentage, color: "#73A4FF" },
   ];
 
-  const totalUsers = 460;
+  const totalUsers = dataa.totalArtisans + dataa.totalClients;
 
   const chartData = {
     labels: data.map((item) => item.name),

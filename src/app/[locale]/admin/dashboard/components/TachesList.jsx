@@ -1,14 +1,8 @@
 import { Vector, Vector2 } from "@/assets/svgs";
 import Image from "next/image";
 
-export default function TachesList() {
-  const tasks = [
-    "Verifier les assurances",
-    "Verifier les services",
-    "Ajouter des artisans",
-    "les rapports",
-    "verifier les messages",
-  ];
+export default function TachesList({ data }) {
+  const tasks = data;
 
   return (
     <div className="w-80 bg-white p-4 rounded-xl shadow-md hover:shadow-2xl transition-all hover:-translate-y-1 ease-in-out duration-700">
@@ -18,6 +12,11 @@ export default function TachesList() {
           <Image src={Vector} alt="Vector" />
         </button>
       </div>
+
+      {!tasks.length && (
+        <p className="text-gray-400 text-center my-10">Aucune tache</p>
+      )}
+
       <ul>
         {tasks.map((task, index) => (
           <li
@@ -29,7 +28,7 @@ export default function TachesList() {
                 type="checkbox"
                 className="w-4 h-4 mr-2 text-blue-600 border-[#A3AED0] rounded focus:ring-blue-500"
               />
-              <span className="ml-2">{task}</span>
+              <span className="ml-2">{task.title}</span>
             </label>
             <div className="text-gray-400 cursor-pointer">
               <Image src={Vector2} alt="Vector2" />

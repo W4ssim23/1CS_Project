@@ -63,7 +63,7 @@ export default async function ServicesPage() {
   return (
     <div className="min-h-[90vh] w-full flex flex-col items-center p-2 gap-12">
       <h1 className="text-3xl font-bold w-[90%] pt-2">
-        Mes <span className="text-[#FFA500]">Services</span>
+        Les <span className="text-[#FFA500]">Services</span>
       </h1>
       <div className="w-full flex flex-col items-center justify-center">
         <div className="w-full flex sm:w-[90%] justify-between p-4 items-center text-gray-500 font-semibold text-center">
