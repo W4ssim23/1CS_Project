@@ -27,7 +27,7 @@ async function generatePriceEstimation(prompt, retries = MAX_RETRIES) {
     }
 
     // Validate the structure of the parsed JSON
-    if (!estimatedPrice || typeof estimatedPrice.price !== "string") {
+    if (!estimatedPrice || typeof estimatedPrice.price !== "number") {
       throw new Error("Invalid JSON structure in AI response.");
     }
 
@@ -68,7 +68,7 @@ export async function POST(req) {
       `Title: ${title}\n` +
       `Description: ${description}\n\n` +
       `Your response must be a valid JSON object in the following format:\n` +
-      `{"price":"<price in DA>"}`;
+      `{"price":"<price in DA , it Must be an integer>"}`;
 
     const estimatedPrice = await generatePriceEstimation(prompt);
 

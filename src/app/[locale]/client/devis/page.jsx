@@ -7,61 +7,49 @@ import { paying } from "@/assets/svgs";
 import { Button } from "@nextui-org/react";
 import { Link } from "@/i18n/routing";
 
-const devis = [
-  {
-    devisName: "reparation de table",
-    offers: [
-      {
-        name: "Kanye West",
-        price: "1500 DA",
-      },
-      {
-        name: "Frank Ocean",
-        price: "1000 DA",
-      },
-      {
-        name: "Joji",
-        price: "2000 DA",
-      },
-    ],
-  },
-  {
-    devisName: "reparation de chaise",
-    offers: [
-      {
-        name: "Kanye West",
-        price: "1500 DA",
-      },
-      {
-        name: "Frank Ocean",
-        price: "1000 DA",
-      },
-      {
-        name: "Joji",
-        price: "2000 DA",
-      },
-    ],
-  },
-  {
-    devisName: "reparation de lit",
-    offers: [
-      {
-        name: "Kanye West",
-        price: "1500 DA",
-      },
-      {
-        name: "Frank Ocean",
-        price: "1000 DA",
-      },
-      {
-        name: "Joji",
-        price: "2000 DA",
-      },
-    ],
-  },
-];
+import { redirect } from "next/navigation";
 
-export default function Devis() {
+export default async function Devis({ searchParams }) {
+  const id = searchParams?.id;
+  if (!id) {
+    redirect("/");
+  }
+  let devis = null;
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}client/current-demands/${id}/`,
+      {
+        cache: "no-cache",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
+    if (!response.ok) {
+      const data = await response.json();
+      console.log(data.message);
+    }
+    const data = await response.json();
+    console.log(data);
+    if (data.error) {
+      console.log(data.message);
+    } else {
+      devis = data.demands;
+    }
+  } catch (e) {
+    console.log(e);
+  }
+
+  if (!devis) {
+    return (
+      <div className="w-full min-h-[90vh] flex items-center justify-center">
+        <p>Failed to load data. Please try again later.</p>
+      </div>
+    );
+  }
+
   if (devis.length === 0)
     return (
       <div className="flex flex-col w-[80%] gap-4">
@@ -71,8 +59,8 @@ export default function Devis() {
     );
 
   return (
-    <div className="flex flex-col w-[80%] gap-6 pb-4">
-      <AddDevis />
+    <div className="flex flex-col w-[80%] gap-6 pb-4 h-[95vh] justify-start">
+      <AddDevis searchParams={searchParams} />
       <div className="flex flex-col w-full gap-14">
         {devis.map((item, index) => (
           <DevisItem key={index} data={item} />
@@ -87,7 +75,7 @@ function DevisItem({ data }) {
     <div className="flex flex-col items-center w-full gap-4">
       <h1 className="text-lg font-bold w-[85%] ">
         Les reponse aux demande de{" "}
-        <span className="text-[#FFA500]">{data.devisName}</span>
+        <span className="text-[#FFA500]">{data.title}</span>
       </h1>
       <Offers data={data.offers} />
     </div>
@@ -95,6 +83,14 @@ function DevisItem({ data }) {
 }
 
 function Offers({ data }) {
+  if (data.length === 0) {
+    return (
+      <div className="font-semibold text-center text-gray-500 text-lg ">
+        <p>No Offers On this Demand yet</p>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full sm:w-[80%] flex flex-col border-2 rounded-2xl overflow-hidden ">
       {data.map((item, index) => (

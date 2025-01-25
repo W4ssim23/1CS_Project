@@ -1,8 +1,47 @@
 import React from "react";
 // import GotNothing from "./components/GotNothing";
+import { redirect } from "next/navigation";
 
-export default function Devis() {
-  return <DevisList />;
+export default async function Devis({ searchParams }) {
+  const id = searchParams?.id;
+  if (!id) {
+    redirect("/");
+  }
+  let dataa = null;
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}client/${id}/deals`,
+      {
+        cache: "no-cache",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
+    if (!response.ok) {
+      const data = await response.json();
+      console.log(data.message);
+    }
+    const data = await response.json();
+    if (data.error) {
+      console.log(data.message);
+    } else {
+      dataa = data.deals;
+    }
+  } catch (e) {
+    console.log(e);
+  }
+
+  if (!dataa) {
+    return (
+      <div className="w-full min-h-[90vh] flex items-center justify-center">
+        <p>Failed to load data. Please try again later.</p>
+      </div>
+    );
+  }
+  return <DevisList data={dataa} id={id} />;
 }
 
 import Image from "next/image";
@@ -10,42 +49,7 @@ import { paying } from "@/assets/svgs";
 import { Button } from "@nextui-org/react";
 import { Link } from "@/i18n/routing";
 
-const data = [
-  {
-    id: "1",
-    name: "Kanye West",
-    title: "reparation de table",
-    pourcentage: "70",
-  },
-  {
-    id: "2",
-    name: "Frank Ocean",
-    title: "reparation de chaise",
-    pourcentage: "30",
-  },
-  {
-    id: "3",
-    name: "Joji",
-    title: "reparation de lit",
-    pourcentage: "93",
-  },
-  {
-    id: "4",
-    name: "Lionel Messi",
-    title: "fixing the sink",
-    pourcentage: "50",
-  },
-  {
-    id: "5",
-    name: "Travis Scott",
-    title: "painting the house",
-    pourcentage: "70",
-  },
-];
-
-// const data = [];
-
-function DevisList() {
+function DevisList({ data, id }) {
   if (data.length === 0) {
     return (
       <div className="w-[90%]">
@@ -68,7 +72,7 @@ function DevisList() {
         <div className="w-full sm:w-[80%] flex flex-col border-2 rounded-2xl overflow-hidden ">
           {data.map((item, index) => (
             <div className=" border-t-1 border-b-1 p-2 hover:bg-gray-200">
-              <Item key={index} data={item} />
+              <Item key={index} data={item} id={id} />
             </div>
           ))}
         </div>
@@ -77,19 +81,19 @@ function DevisList() {
   );
 }
 
-function Item({ data }) {
+function Item({ data, id }) {
   return (
     <div className="w-full flex items-center justify-between px-2 ">
       <div className="flex items-center gap-2 w-1/4 text-center">
         <Image src={paying} width={25} height={25} alt="b" />
-        <h1 className="text-lg font-semibold">{data.name}</h1>
+        <h1 className="text-lg font-semibold">{data.artisanName}</h1>
       </div>
       <h1 className="text-lg font-semibold w-1/4 text-center">{data.title}</h1>
       <h1 className="text-lg font-semibold text-[#FFA500]  w-1/4 text-center">
         {data.pourcentage} %
       </h1>
       <div className=" w-1/4 flex items-center justify-center">
-        <Link href={`deals/${data.id}`}>
+        <Link href={`deals/${data.dealId}?id=${id}&tit=${data.title}`} passHref>
           <Button
             className=" bg-transparent border-1 border-blue-700 text-blue-700  min-w-[120px]"
             size="lg"

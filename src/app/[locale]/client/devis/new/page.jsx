@@ -2,16 +2,24 @@
 
 import { Link } from "@/i18n/routing";
 import { Select, SelectItem, Button, Input, Textarea } from "@nextui-org/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default function NewDevis() {
+export default function NewDevis({ searchParams }) {
   const [job, setJob] = useState("");
+  const [jobs, setJobs] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [estimatedPrice, setEstimatedPrice] = useState(null);
 
   const [loadingPrice, setLoadingPrice] = useState(false);
   const [loadingDescription, setLoadingDescription] = useState(false);
+  const [jobLoading, setJobLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [error, setError] = useState(null);
+
+  const router = useRouter();
 
   const handlePrice = async (job, title, description) => {
     if (!job || !title || !description) {
@@ -85,6 +93,75 @@ export default function NewDevis() {
     }
   };
 
+  const handleJobs = async () => {
+    setJobLoading(true);
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}jobs/`, {
+        method: "GET",
+      });
+
+      if (!response.ok) {
+        console.log(`HTTP error! status: ${response.status}`);
+        setError("An error occurred, you might refresh the page");
+        return;
+      }
+
+      const data = await response.json();
+      setJobs(data.job_names);
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+    } finally {
+      setJobLoading(false);
+    }
+  };
+
+  const handleSend = async () => {
+    if (!job || !title || !description) {
+      setError("All fields are required");
+      return;
+    }
+
+    const requestBody = {
+      user_id: searchParams.id,
+      job: job,
+      title: title,
+      description: description,
+      estimatedPrice: estimatedPrice,
+    };
+    console.log("Request body:", requestBody);
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}client/new-demand/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        }
+      );
+
+      if (!response.ok) {
+        console.log(`HTTP error! status: ${response.status}`);
+        setError("An error occurred");
+        return;
+      }
+
+      const data = await response.json();
+      // console.log("Devis sent:", data);
+      router.back();
+    } catch (error) {
+      console.error("Error sending devis:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    handleJobs();
+  }, []);
+
   return (
     <div className="h-full w-full flex flex-col p-8 gap-4">
       <h1 className="text-3xl font-bold">
@@ -96,12 +173,13 @@ export default function NewDevis() {
           onChange={(e) => setTitle(e.target.value)}
         />
         <Select
+          isLoading={jobLoading}
           className=""
           label="selectionnée le type d’artisan que vous voulez solicité"
           onChange={(e) => setJob(e.target.value)}
         >
           {jobs.map((job) => (
-            <SelectItem key={job.key}>{job.label}</SelectItem>
+            <SelectItem key={job}>{job}</SelectItem>
           ))}
         </Select>
         <div className="flex flex-col gap-4 w-full items-center md:items-start">
@@ -124,6 +202,7 @@ export default function NewDevis() {
             </Button>
           )}
         </div>
+        {error && <p className="text-red-600 text-lg">{error}</p>}
         <div className="flex flex-col md:flex-row w-full justify-between items-center gap-4 md:gap-0">
           <div className="flex items-center">
             <Button
@@ -156,6 +235,8 @@ export default function NewDevis() {
               className=" bg-[#1F4690] text-white   max-w-[360px]  min-w-[200px]"
               size="lg"
               radius="lg"
+              onPress={handleSend}
+              isLoading={loading}
             >
               envoyer
             </Button>
@@ -165,11 +246,3 @@ export default function NewDevis() {
     </div>
   );
 }
-
-const jobs = [
-  { key: "maçon", label: "maçon" },
-  { key: "peintre", label: "peintre" },
-  { key: "éléctricien", label: "éléctricien" },
-  { key: "plombier", label: "plombier" },
-  { key: "menuisier", label: "menuisier" },
-];

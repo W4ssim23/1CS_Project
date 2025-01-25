@@ -29,17 +29,23 @@ export default function SideBarClient() {
       </div>
       <ul className="flex flex-col items-center w-full gap-4 lg:gap-0 pt-5">
         {itemsClient.map((item, index) => (
-          <BarItem pg={pg} item={item} key={index} t={t} />
+          <BarItem
+            pg={pg}
+            item={item}
+            id={userData?.idUser}
+            key={index}
+            t={t}
+          />
         ))}
       </ul>
     </nav>
   );
 }
 
-const BarItem = ({ item, pg, t }) => {
+const BarItem = ({ item, pg, t, id }) => {
   return (
     <Link
-      href={item.page}
+      href={item.page + "?id=" + id}
       className="cursor-pointer hover:scale-105 transition-all overflow-hidden select-none
                  lg:w-[98%] p-3 lg:p-5  
                  rounded-full lg:rounded-none"
