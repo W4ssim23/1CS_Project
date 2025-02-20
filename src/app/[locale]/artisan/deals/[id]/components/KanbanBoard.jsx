@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   DndContext,
   DragOverlay,
@@ -14,72 +14,45 @@ import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
 import Column from "./Column";
 import Task from "./Task";
+import { LoadingSpinner } from "@/components/ui";
+import { useTranslations } from "next-intl"; // Import useTranslations
 
-const KanbanBoard = () => {
+const KanbanBoard = ({ idArtisan, idDeal }) => {
+  const t = useTranslations("/artisan.KanbanBoard"); // Use translations for the KanbanBoard section
   const [columns, setColumns] = useState({
-    backlog: [
-      {
-        id: 1,
-        title: "Ajouter un artisan",
-        discription: "Ajouter un nouveau profil artisan manuellement",
-        nmbr: 3,
-      },
-      {
-        id: 2,
-        title: "Profile des artisans",
-        discription: "Vérifier et approuver les profils des artisans",
-        nmbr: 1,
-      },
-      {
-        id: 3,
-        title: "Services",
-        discription: "Vérifier les services proposés par les artisans",
-        nmbr: 4,
-      },
-    ],
-    inProgress: [
-      {
-        id: 4,
-        title: "services",
-        discription: "Design new user interface design for food delivery app",
-        nmbr: 7,
-      },
-      {
-        id: 5,
-        title: "Gestion des réclamations",
-        discription: "lorem epseum lorem epseum",
-        nmbr: 2,
-      },
-      {
-        id: 6,
-        title: "Artisans",
-        discription: "supprimer des profils d’artisans non conformes",
-        nmbr: 3,
-      },
-    ],
-    done: [
-      {
-        id: 7,
-        title: "Supprimer un utilisateur",
-        discription: "lorem epseum lorem epseum",
-        nmbr: 2,
-      },
-      {
-        id: 8,
-        title: "Service",
-        discription: "lorem epseum lorem epseum",
-        nmbr: 6,
-      },
-      {
-        id: 9,
-        title: "Ajouter un client",
-        discription: "lorem epseum lorem epseum",
-        nmbr: 5,
-      },
-    ],
+    backlog: [],
+    inProgress: [],
+    done: [],
   });
 
   const [activeTask, setActiveTask] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          `https://onecs-back.onrender.com/app/artisan/deals/${idArtisan}/${idDeal}/`
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setColumns({
+          backlog: data.restantes,
+          inProgress: data.encour,
+          done: data.terminer,
+        });
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTasks();
+  }, []);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -119,7 +92,6 @@ const KanbanBoard = () => {
     if (!activeContainer || !overContainer) return;
 
     if (activeContainer === overContainer) {
-      // Same container sorting
       const items = [...columns[activeContainer]];
       const oldIndex = items.findIndex((item) => item.id === activeId);
       const newIndex = items.findIndex((item) => item.id === overId);
@@ -129,7 +101,6 @@ const KanbanBoard = () => {
         [activeContainer]: arrayMove(items, oldIndex, newIndex),
       });
     } else {
-      // Moving between containers
       const sourceItems = [...columns[activeContainer]];
       const destinationItems = [...columns[overContainer]];
 
@@ -152,13 +123,17 @@ const KanbanBoard = () => {
     }
   };
 
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold mb-8">Tâches</h1>
+      <h1 className="text-2xl font-semibold mb-8">{t("title")}</h1>{" "}
+      {/* Localized title */}
       <div className="text-sm text-gray-500 mb-8 pb-8 border-b-1 border-[#1F4690]">
-        Ajoutez, modifiez ou supprimez vos tâches
+        {t("description")} {/* Localized description */}
       </div>
-
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
@@ -168,21 +143,30 @@ const KanbanBoard = () => {
         <div className="flex gap-8 flex-wrap justify-center">
           <Column
             id="backlog"
-            title="Backlog"
+            title={t("columns.backlog")} // Localized column title
             tasks={columns.backlog}
             activeTaskId={activeTask?.id}
+            setColumns={setColumns}
+            idArtisan={idArtisan}
+            idDeal={idDeal}
           />
           <Column
             id="inProgress"
-            title="En cours"
+            title={t("columns.inProgress")} // Localized column title
             tasks={columns.inProgress}
             activeTaskId={activeTask?.id}
+            setColumns={setColumns}
+            idArtisan={idArtisan}
+            idDeal={idDeal}
           />
           <Column
             id="done"
-            title="Terminée"
+            title={t("columns.done")} // Localized column title
             tasks={columns.done}
             activeTaskId={activeTask?.id}
+            setColumns={setColumns}
+            idArtisan={idArtisan}
+            idDeal={idDeal}
           />
         </div>
 
@@ -190,9 +174,9 @@ const KanbanBoard = () => {
           {activeTask ? (
             <Task
               id={activeTask.id}
-              title={activeTask.title}
-              discription={activeTask.discription}
-              nmbr={activeTask.nmbr}
+              description={activeTask.description}
+              dateDebut={activeTask.dateDebut}
+              dateFin={activeTask.dateFin}
             />
           ) : null}
         </DragOverlay>

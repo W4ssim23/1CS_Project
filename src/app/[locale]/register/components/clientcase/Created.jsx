@@ -16,7 +16,7 @@ export default function Created({ data }) {
     setLoading(true);
     try {
       const response = await fetch(
-        process.env.NEXT_PUBLIC_API_URL + "client-signup/",
+        "https://onecs-back.onrender.com/app/" + "client-signup/",
         {
           method: "POST",
           headers: {
@@ -74,9 +74,9 @@ export default function Created({ data }) {
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
       <h1 className="text-center font-semibold text-lg">
-        {t(createdSuccess)}{" "}
-        <span className="text-[#FFA500]">{t(createdSuccess2)}</span>
-        {t(createdSuccess3)}
+        {t("createdSuccess")}{" "}
+        <span className="text-[#FFA500]">{t("createdSuccess2")}</span>
+        {t("createdSuccess3")}
       </h1>
       <Link href="/login">
         <Button

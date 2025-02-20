@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { paying } from "@/assets/svgs";
-import { Button } from "@nextui-org/react";
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
-export default async function Pannier({ searchParams }) {
+export default async function Pannier({ searchParams, params }) {
+  const t = await getTranslations("/client.Pannier");
   const id = searchParams.id;
   if (!id) {
     redirect("/");
@@ -12,7 +13,7 @@ export default async function Pannier({ searchParams }) {
   let userData = null;
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}client/pannier/${id}/`,
+      `https://onecs-back.onrender.com/app/client/pannier/${id}/`,
       {
         cache: "no-cache",
         method: "GET",
@@ -31,6 +32,7 @@ export default async function Pannier({ searchParams }) {
       console.log(data.message);
     } else {
       userData = data.pannier;
+      console.log(userData);
     }
   } catch (e) {
     console.log(e);
@@ -39,7 +41,7 @@ export default async function Pannier({ searchParams }) {
   if (!userData) {
     return (
       <div className="w-full min-h-[90vh] flex items-center justify-center">
-        <p>Failed to load data. Please try again later.</p>
+        <p>{t("failedToLoad")}</p>
       </div>
     );
   }
@@ -50,19 +52,22 @@ export default async function Pannier({ searchParams }) {
 
   return (
     <div className="min-h-[90vh] w-full flex flex-col items-center p-8 gap-36">
-      <h1 className="text-3xl font-bold w-[80%] ">
-        Mon <span className="text-[#FFA500]">pannier</span>
+      <h1 className="text-3xl font-bold w-[80%]">
+        {t("title1")} <span className="text-[#FFA500]">{t("title2")}</span>
       </h1>
       <div className="w-full flex flex-col items-center justify-center">
-        <div className="w-full sm:w-[80%] text-[#8C8C8C] font-semibold text-center flex  items-center">
-          <h1 className="w-1/4">artisan</h1>
-          <h1 className="w-1/4">travail a faire</h1>
-          <h1 className="w-1/4">cout</h1>
+        <div className="w-full sm:w-[80%] text-[#8C8C8C] font-semibold text-center flex items-center">
+          <h1 className="w-1/4">{t("columns.artisan")}</h1>
+          <h1 className="w-1/4">{t("columns.workToDo")}</h1>
+          <h1 className="w-1/4">{t("columns.cost")}</h1>
         </div>
-        <div className="w-full sm:w-[80%] flex flex-col border-2 rounded-2xl overflow-hidden ">
+        <div className="w-full sm:w-[80%] flex flex-col border-2 rounded-2xl overflow-hidden">
           {userData.map((item, index) => (
-            <div className=" border-t-1 border-b-1 p-2 hover:bg-gray-200">
-              <Item key={index} data={item} />
+            <div
+              className="border-t-1 border-b-1 p-2 hover:bg-gray-200"
+              key={index}
+            >
+              <Item key={index} data={item} clientId={id} params={params} />
             </div>
           ))}
         </div>
@@ -71,39 +76,49 @@ export default async function Pannier({ searchParams }) {
   );
 }
 
-function Item({ data }) {
+function Item({ data, clientId, params }) {
+  const t = useTranslations("/client.Pannier");
   return (
-    <div className="w-full flex items-center justify-between px-2 ">
+    <div className="w-full flex items-center justify-between px-2">
       <div className="flex items-center gap-2 w-1/4 text-center">
         <Image src={paying} width={25} height={25} alt="b" />
-        <h1 className="text-lg font-semibold">{data.artisanName}</h1>
+        <h1 className="text-lg font-semibold">
+          {data.artisanFirstName + " " + data.artisanLastName}
+        </h1>
       </div>
       <h1 className="text-lg font-semibold w-1/4 text-center">{data.title}</h1>
-      <h1 className="text-lg font-semibold text-blue-800  w-1/4 text-center">
+      <h1 className="text-lg font-semibold text-blue-800 w-1/4 text-center">
         {data.price} DA
       </h1>
-      <div className=" w-1/4 flex items-center justify-center">
-        <Button
-          className=" bg-transparent border-1 border-[#FFA500] text-[#FFA500]  min-w-[120px]"
-          size="lg"
-          radius="lg"
-        >
-          acheter
-        </Button>
-      </div>
+      {data.paymentStatus === "not_paid" && (
+        <BuyModel
+          clientId={clientId}
+          travailId={data.id}
+          amount={data.price}
+          params={params}
+        />
+      )}
+      {data.paymentStatus !== "not_paid" && (
+        <h1 className="text-lg font-semibold text-green-600 w-1/4 text-center">
+          {t("paidStatus")}
+        </h1>
+      )}
     </div>
   );
 }
 
 import { nothing } from "@/assets/svgs";
+import BuyModel from "./components/BuyModel";
+import { useTranslations } from "next-intl";
 
 function GotNothing() {
+  const t = useTranslations("/client.Pannier");
   return (
-    <div className=" bg-white w-[90%] h-full flex flex-col items-center justify-center gap-3 text-[#4F4F4F] text-center min-h-[535px] ">
+    <div className="bg-white w-[90%] h-full flex flex-col items-center justify-center gap-3 text-[#4F4F4F] text-center min-h-[535px]">
       <Image src={nothing} alt="nothing" priority />
-      <p className=" font-semibold text-[20px]">
-        Aucune <span className="text-[#FFA500]">Demande</span> a acheter en ce
-        moment
+      <p className="font-semibold text-[20px]">
+        {t("noDemands.title1")}{" "}
+        <span className="text-[#FFA500]">{t("noDemands.title2")}</span>
       </p>
     </div>
   );

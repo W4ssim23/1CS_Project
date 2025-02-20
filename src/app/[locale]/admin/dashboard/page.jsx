@@ -8,7 +8,7 @@ export default async function DashboardPage() {
   let userData = null;
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + "admin/dashboard/",
+      "https://onecs-back.onrender.com/app/" + "admin/dashboard/",
       {
         cache: "no-cache",
         method: "GET",

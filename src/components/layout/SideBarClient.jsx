@@ -18,7 +18,7 @@ export default function SideBarClient() {
     <nav className="min-w-[20%] bg-[#3A5BA0] shadow-md hidden sm:block ">
       <div className="h-[130px] border-b-[0.25px] border-[#BDBDBD] w-full flex flex-col items-center justify-evenly">
         <Avatar
-          src={userData?.avatar}
+          src={userData?.pfpLink}
           size="lg"
           className="w-[70px] h-[70px]"
           fallback
@@ -33,6 +33,7 @@ export default function SideBarClient() {
             pg={pg}
             item={item}
             id={userData?.idUser}
+            pfp={userData?.pfpLink}
             key={index}
             t={t}
           />
@@ -42,10 +43,10 @@ export default function SideBarClient() {
   );
 }
 
-const BarItem = ({ item, pg, t, id }) => {
+const BarItem = ({ item, pg, t, id, pfp }) => {
   return (
     <Link
-      href={item.page + "?id=" + id}
+      href={item.page + "?id=" + id + "&pfp=" + pfp}
       className="cursor-pointer hover:scale-105 transition-all overflow-hidden select-none
                  lg:w-[98%] p-3 lg:p-5  
                  rounded-full lg:rounded-none"

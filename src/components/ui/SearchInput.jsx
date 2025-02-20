@@ -1,6 +1,20 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Input } from "@nextui-org/react";
 
 export default function SearchInput({ styling, placeHolder = "" }) {
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      // Redirect to the search page with the query
+      router.push(`/fr/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
   return (
     <div className={styling}>
       <Input
@@ -28,6 +42,9 @@ export default function SearchInput({ styling, placeHolder = "" }) {
           ],
         }}
         placeholder={placeHolder}
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyDown={handleKeyPress}
         startContent={
           <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
         }

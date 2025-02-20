@@ -32,7 +32,7 @@ export default function TopBar() {
     },
     {
       title: t("findPro"),
-      page: "#",
+      page: "/search",
     },
     {
       title: t("about"),
@@ -68,7 +68,7 @@ export default function TopBar() {
           <Link href="/">{t("home")}</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="#">{t("findPro")}</Link>
+          <Link href="/search">{t("findPro")}</Link>
         </NavbarItem>
         <NavbarItem>
           <Link href="/about">{t("about")}</Link>

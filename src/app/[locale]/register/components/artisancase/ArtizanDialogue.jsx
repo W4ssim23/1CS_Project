@@ -19,9 +19,9 @@ export default function ArtisanDialogue() {
     password2: "",
     job: "",
     is_certified: false,
-    is_assured: false,
+    is_assured: true,
     certification_files: [],
-    insurance_files: [],
+    certification_urls: [],
   });
   return (
     <>

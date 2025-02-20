@@ -1,10 +1,47 @@
-//sends a fetch to the server with a bounce , sets the variable of the context after recieving a responce
+"use client";
 
-export default function SearchArtisan() {
+import { useContext } from "react";
+import { ArtisanContext } from "../artisanContext";
+import { useDebouncedCallback } from "use-debounce";
+import { useTranslations } from "next-intl";
+
+export default function SearchClient() {
+  const { setData, setPage, setTotalPages, setSearch } =
+    useContext(ArtisanContext);
+
+  const t = useTranslations("/admin.Artisan");
+
+  const handleSearch = useDebouncedCallback(async (e) => {
+    const response = await fetch(
+      "https://onecs-back.onrender.com/app/" +
+        `admin/artisans-filtered/?name=${e.target.value}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    // console.log("response:", response);
+    if (response.ok) {
+      const data = await response.json();
+      // console.log("data:", data);
+      setData(data.artisans);
+      setPage(1);
+      setTotalPages(data.pagination.totalPages);
+      setSearch(e.target.value);
+    } else {
+      setData([]);
+      setPage(1);
+      setTotalPages(1);
+      setSearch(e.target.value);
+    }
+  }, 400);
+
   return (
     <div className="w-full flex items-center text-center ">
       <p className=" text-[16px] text-[#C4C4C4] bg-white p-4 px-6 hidden sm:block">
-        chercher
+        {t("searchArtisan")}
       </p>
       <div className="w-full h-full bg-[#FCFAFA] p-4 flex  items-center gap-4">
         <div>
@@ -23,8 +60,9 @@ export default function SearchArtisan() {
         </div>
         <input
           type="text"
-          placeholder="chercher les artisans par leurs noms"
+          placeholder={t("listArtisan")}
           className="w-full h-full bg-[#FCFAFA] focus:outline-none"
+          onChange={handleSearch}
         />
       </div>
     </div>

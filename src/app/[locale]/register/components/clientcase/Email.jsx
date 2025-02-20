@@ -19,7 +19,7 @@ export default function Email({ setStep, setData }) {
     setLoading(true);
     try {
       const response = await fetch(
-        process.env.NEXT_PUBLIC_API_URL + "email-taken/",
+        "https://onecs-back.onrender.com/app/" + "email-taken/",
         {
           method: "POST",
           headers: {

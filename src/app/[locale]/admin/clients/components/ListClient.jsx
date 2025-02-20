@@ -6,10 +6,19 @@ import { useState, useEffect, useContext } from "react";
 import { ClientContext } from "../clientContext";
 import { Button } from "@nextui-org/react";
 import { LoadingSpinner } from "@/components/ui";
+import { useTranslations } from "next-intl";
 
 export default function ListClient() {
-  const { page, setPage, clients, setClients, totalPages, setTotalPages } =
-    useContext(ClientContext);
+  const t = useTranslations("/admin.ListClient");
+  const {
+    page,
+    setPage,
+    clients,
+    setClients,
+    totalPages,
+    setTotalPages,
+    search,
+  } = useContext(ClientContext);
   const [loading, setLoading] = useState(true);
   const [paginloading, setPaginLoading] = useState(false);
 
@@ -18,7 +27,11 @@ export default function ListClient() {
       setPaginLoading(true);
       try {
         const response = await fetch(
-          process.env.NEXT_PUBLIC_API_URL + "admin/clients/?page=" + page,
+          "https://onecs-back.onrender.com/app/" +
+            "admin/clients/?page=" +
+            page +
+            "&name=" +
+            search,
           {
             method: "GET",
             headers: {
@@ -41,7 +54,7 @@ export default function ListClient() {
       }
     };
     getClient();
-  }, [page]);
+  }, [page, search, setClients, setTotalPages]);
 
   const handleNextPage = () => {
     if (page < totalPages) {
@@ -71,10 +84,10 @@ export default function ListClient() {
           className="px-4 py-2 mx-2 bg-[#FFA500] text-white rounded disabled:bg-gray-300"
           isLoading={paginloading}
         >
-          Previous
+          {t("previousButton")}
         </Button>
         <span className="px-4 py-2">
-          Page {page} of {totalPages}
+          {t("page")} {page} {t("of")} {totalPages}
         </span>
         <Button
           onClick={handleNextPage}
@@ -82,7 +95,7 @@ export default function ListClient() {
           className="px-4 py-2 mx-2 bg-[#FFA500] text-white rounded disabled:bg-gray-300"
           isLoading={paginloading}
         >
-          Next
+          {t("nextButton")}
         </Button>
       </div>
     </>
@@ -90,16 +103,16 @@ export default function ListClient() {
 }
 
 function GotNothing() {
+  const t = useTranslations("/admin.ListClient");
+
   return (
     <div className="bg-white w-full h-full flex flex-col items-center justify-center gap-3 text-[#4F4F4F] text-center min-h-[535px]">
       <Image src={nothing} alt="nothing" priority />
       <p className="font-semibold text-[20px]">
-        Aucun <span className="text-[#FFA500]">Client</span> en ce moment
+        {t("noArtisans")} <span className="text-[#FFA500]">{t("Artisan")}</span>{" "}
+        {t("moment")}
       </p>
-      <p>
-        Les clients apparaîtront ici une fois qu'ils se seront ajoutés à votre
-        site.
-      </p>
+      <p>{t("noArtisansDescription")}</p>
     </div>
   );
 }

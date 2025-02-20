@@ -1,15 +1,17 @@
 import React from "react";
 import { Button } from "@nextui-org/react";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function RejectButton({ setAppearence, id }) {
+  const t = useTranslations("/admin.ArtisanValidation");
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}refuser-artisan/${id}/`,
+        `https://onecs-back.onrender.com/app/refuser-artisan/${id}/`,
         {
           cache: "no-cache",
           method: "POST",
@@ -27,7 +29,6 @@ export default function RejectButton({ setAppearence, id }) {
       if (data.error) {
         console.log(data.message);
       } else {
-        // console.log(data);
         setAppearence(false);
       }
     } catch (e) {
@@ -36,14 +37,15 @@ export default function RejectButton({ setAppearence, id }) {
       setLoading(false);
     }
   };
+
   return (
     <Button
-      className=" bg-red-500 text-white px-4 py-2"
+      className="bg-red-500 text-white px-4 py-2"
       radius="lg"
       onPress={handleClick}
       isLoading={loading}
     >
-      Refuser
+      {t("rejectButton")}
     </Button>
   );
 }

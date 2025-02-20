@@ -1,20 +1,23 @@
 import { Vector, Vector2 } from "@/assets/svgs";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function TachesList({ data }) {
+  const t = useTranslations("/admin.DashboardPage");
+
   const tasks = data;
 
   return (
     <div className="w-80 bg-white p-4 rounded-xl shadow-md hover:shadow-2xl transition-all hover:-translate-y-1 ease-in-out duration-700">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold text-[#2B3674]">Mes Taches</h2>
+        <h2 className="text-lg font-semibold text-[#2B3674]">{t("tasks")}</h2>
         <button className="text-gray-500 hover:bg-gray-200 p-2 py-3 rounded-full">
           <Image src={Vector} alt="Vector" />
         </button>
       </div>
 
       {!tasks.length && (
-        <p className="text-gray-400 text-center my-10">Aucune tache</p>
+        <p className="text-gray-400 text-center my-10">{t("noTasks")}</p>
       )}
 
       <ul>

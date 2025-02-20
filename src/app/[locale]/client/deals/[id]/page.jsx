@@ -1,10 +1,12 @@
 import { Progress } from "@nextui-org/progress";
 import Tasks from "./components/Tasks";
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
 const colors = ["#FFA500", "#1F4690", "#3BBF5E"];
 
 export default async function DealProcess({ params, searchParams }) {
+  const t = await getTranslations("/client.DealProcess");
   const idClient = searchParams?.id;
   const idDeal = params?.id;
   const title = searchParams?.tit;
@@ -15,7 +17,7 @@ export default async function DealProcess({ params, searchParams }) {
   let dataa = null;
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}client/deals/${idClient}/${idDeal}`,
+      `https://onecs-back.onrender.com/app/client/deals/${idClient}/${idDeal}`,
       {
         cache: "no-cache",
         method: "GET",
@@ -39,7 +41,7 @@ export default async function DealProcess({ params, searchParams }) {
   if (!dataa) {
     return (
       <div className="w-full min-h-[90vh] flex items-center justify-center">
-        <p>Failed to load data. Please try again later.</p>
+        <p>{t("failedToLoad")}</p>
       </div>
     );
   }
@@ -56,17 +58,17 @@ export default async function DealProcess({ params, searchParams }) {
     title: title,
     progress: progress,
     tasks: {
-      "tranches restantes": dataa.restantes.map((task) => ({
+      [t("tasks.remainingTasks")]: dataa.restantes.map((task) => ({
         description: task.description,
         startDate: task.dateDebut,
         endDate: task.dateFin,
       })),
-      "tranches en cours": dataa.encour.map((task) => ({
+      [t("tasks.ongoingTasks")]: dataa.encour.map((task) => ({
         description: task.description,
         startDate: task.dateDebut,
         endDate: task.dateFin,
       })),
-      "tranches terminées": dataa.terminer.map((task) => ({
+      [t("tasks.completedTasks")]: dataa.terminer.map((task) => ({
         description: task.description,
         startDate: task.dateDebut,
         endDate: task.dateFin,
@@ -77,7 +79,7 @@ export default async function DealProcess({ params, searchParams }) {
   return (
     <div className="w-full min-h-[90vh] flex flex-col p-10 gap-8 text-2xl font-semibold">
       <h3>
-        Detail du suivi de{" "}
+        {t("title1")}{" "}
         <span className="text-[#FFA500]">"{transformedData.title}"</span>
       </h3>
       <Progress

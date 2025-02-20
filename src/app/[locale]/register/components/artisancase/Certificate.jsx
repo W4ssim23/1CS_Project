@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@nextui-org/react";
 import { FileUploader } from "react-drag-drop-files";
 import { useState } from "react";
@@ -7,15 +9,52 @@ export default function Certificate({ setStep, setData }) {
   const t = useTranslations("/register.RegisterForm");
   const [isCertified, setIsCertified] = useState("notYet");
   const [file, setFile] = useState(null);
-  const handleNext = () => {
+  const [uploading, setUploading] = useState(false);
+
+  const handleNext = async () => {
     if (isCertified === "true" && !file) return;
-    setData((prev) => ({
-      ...prev,
-      certificated: isCertified === "true",
-      certification_files: [file],
-    }));
-    setStep(6);
+
+    if (file) {
+      setUploading(true);
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = async () => {
+        const base64data = reader.result;
+        try {
+          const response = await fetch("/api/upload", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ file: base64data }),
+          });
+          const data = await response.json();
+          if (response.ok) {
+            setData((prev) => ({
+              ...prev,
+              is_certified: isCertified === "true",
+              certification_urls: [data.url],
+            }));
+            setStep(6);
+          } else {
+            console.error("Upload failed:", data.error);
+          }
+        } catch (error) {
+          console.error("Error uploading file:", error);
+        } finally {
+          setUploading(false);
+        }
+      };
+    } else {
+      setData((prev) => ({
+        ...prev,
+        certificated: isCertified === "true",
+        certification_files: [],
+      }));
+      setStep(6);
+    }
   };
+
   return (
     <div className="w-full h-full flex flex-col items-center justify-evenly min-w-[342px]">
       <h1 className="text-center font-medium text-lg">{t("certifiedTitle")}</h1>
@@ -53,10 +92,11 @@ export default function Certificate({ setStep, setData }) {
         />
       )}
       <Button
-        className=" bg-[#1F4690] text-white   max-w-[360px]  min-w-[222px]"
+        className="bg-[#1F4690] text-white max-w-[360px] min-w-[222px]"
         size="lg"
         radius="sm"
         onClick={handleNext}
+        isLoading={uploading}
       >
         {t("nextButton")}
       </Button>

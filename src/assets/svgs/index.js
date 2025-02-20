@@ -63,7 +63,10 @@ import port from "./port.svg";
 import clientb from "./clientb.svg";
 import menb from "./menb.svg";
 
+import redx10333 from "./redx10333.svg";
+
 export {
+  redx10333,
   registerPic,
   Logo,
   welcomeGuy,

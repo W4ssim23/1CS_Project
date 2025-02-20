@@ -6,19 +6,25 @@ import { useState, useEffect, useContext } from "react";
 import { ArtisanContext } from "../artisanContext";
 import { Button } from "@nextui-org/react";
 import { LoadingSpinner } from "@/components/ui";
+import { useTranslations } from "next-intl";
 
 export default function ListArtisan() {
-  const { page, setPage, data, setData, totalPages, setTotalPages } =
+  const { page, setPage, data, setData, totalPages, setTotalPages, search } =
     useContext(ArtisanContext);
   const [loading, setLoading] = useState(true);
   const [paginloading, setPaginLoading] = useState(false);
+  const t = useTranslations("/admin.ListArtisan");
 
   useEffect(() => {
     const getArtisan = async () => {
       setPaginLoading(true);
       try {
         const response = await fetch(
-          process.env.NEXT_PUBLIC_API_URL + "admin/artisans/?page=" + page,
+          "https://onecs-back.onrender.com/app/" +
+            "admin/artisans/?page=" +
+            page +
+            "&name=" +
+            search,
           {
             method: "GET",
             headers: {
@@ -72,10 +78,10 @@ export default function ListArtisan() {
           className="px-4 py-2 mx-2 bg-[#FFA500] text-white rounded disabled:bg-gray-300"
           isLoading={paginloading}
         >
-          Previous
+          {t("previousButton")}
         </Button>
         <span className="px-4 py-2">
-          Page {page} of {totalPages}
+          {t("page")} {page} {t("of")} {totalPages}
         </span>
         <Button
           onClick={handleNextPage}
@@ -83,7 +89,7 @@ export default function ListArtisan() {
           className="px-4 py-2 mx-2 bg-[#FFA500] text-white rounded disabled:bg-gray-300"
           isLoading={paginloading}
         >
-          Next
+          {t("nextButton")}
         </Button>
       </div>
     </>
@@ -91,16 +97,15 @@ export default function ListArtisan() {
 }
 
 function GotNothing() {
+  const t = useTranslations("/admin.ListArtisan");
   return (
     <div className=" bg-white w-full h-full flex flex-col items-center justify-center gap-3 text-[#4F4F4F] text-center min-h-[535px] ">
       <Image src={nothing} alt="nothing" priority />
       <p className=" font-semibold text-[20px]">
-        Aucun <span className="text-[#FFA500]">Artisan</span> en ce moment
+        {t("noArtisans")} <span className="text-[#FFA500]">{t("Artisan")}</span>{" "}
+        {t("moment")}
       </p>
-      <p>
-        Les artisans apparaîtront ici une fois qu'ils se seront ajoutés à votre
-        site.
-      </p>
+      <p>{t("noArtisansDescription")}</p>
     </div>
   );
 }

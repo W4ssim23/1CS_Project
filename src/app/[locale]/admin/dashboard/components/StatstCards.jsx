@@ -1,23 +1,26 @@
 import Image from "next/image";
 import { clientb, menb, handshake } from "@/assets/svgs";
+import { useTranslations } from "next-intl";
 
 export default function StatstCards({ data }) {
+  const t = useTranslations("/admin.DashboardPage.stats");
+
   // values would be fetched from the server
   const stats = [
     {
-      text: "Le total des Artisans",
+      text: t("totalArtisans"),
       value: data.totalArtisans,
       icon: menb,
       bg: "#FFF7C294",
     },
     {
-      text: "Le total des Clients",
+      text: t("totalClients"),
       value: data.totalClients,
       icon: clientb,
       bg: "#8FB6FF73",
     },
     {
-      text: "Le total des services",
+      text: t("totalServices"),
       value: data.totalDeals,
       icon: handshake,
       bg: "#33F6562B",

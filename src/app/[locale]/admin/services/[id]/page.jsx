@@ -41,7 +41,8 @@ const data = {
 
 const colors = ["#FFA500", "#1F4690", "#3BBF5E"];
 
-export default function DealProcess() {
+export default function DealProcess({ params }) {
+  console.log(params.id);
   return (
     <div className="w-full min-h-[90vh] flex flex-col p-10 gap-8 text-2xl font-semibold">
       <h3>

@@ -1,51 +1,63 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-
 import { Send } from "@/assets/svgs";
 import Image from "next/image";
 import { Avatar, Spinner } from "@nextui-org/react";
 import BackButton from "../components/BackButton";
-
 import { useRef, useState, useEffect, useContext } from "react";
-
 import { GlobalContext } from "@/app/[locale]/context";
 
 export default function Chat({ params }) {
-  //   console.log(params);
   const searchParams = useSearchParams();
   const title = searchParams.get("title");
   const pfp = searchParams.get("pfp");
 
   const { userData } = useContext(GlobalContext);
+  const [messages, setMessages] = useState([]);
 
-  // const [messages, setMessages] = useState([]);
+  const fetchMessages = async () => {
+    try {
+      const lastMessageId =
+        messages.length > 0 ? messages[messages.length - 1].id : null;
+      // console.log("Fetching messages with lastMessageId:", lastMessageId);
 
-  const messages = [
-    {
-      message: "Yo",
-      senderId: "1",
-      senderName: "Kanye West",
-      senderPfp:
-        "https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2022/10/kanye-west-triste.jpg",
-    },
-    {
-      message: "buy Yeezys",
-      senderId: "1",
-      senderName: "Kanye west",
-      senderPfp:
-        "https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2022/10/kanye-west-triste.jpg",
-    },
-    {
-      message: "ok hh",
-      senderId: userData?.id,
-      senderName: "alright",
-      senderPfp:
-        "https://lastfm.freetls.fastly.net/i/u/ar0/c727ac2a12a296b7f62549def8d6b537.jpg",
-    },
-  ];
+      const response = await fetch(
+        `https://onecs-back.onrender.com/app/chat/get_conversation_messages/${userData.idUser}/${params.chatId}/?last_message_id=${lastMessageId}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch messages");
+      }
+
+      const data = await response.json();
+      // console.log("API response data:", data);
+
+      // Filter out duplicate messages
+      setMessages((prevMessages) => {
+        const newMessages = data.messages.filter(
+          (newMsg) => !prevMessages.some((msg) => msg.id === newMsg.id)
+        );
+        return [...prevMessages, ...newMessages];
+      });
+    } catch (error) {
+      console.error("Error fetching messages:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMessages(); // Initial fetch
+
+    const interval = setInterval(fetchMessages, 1000); // Poll every 1 second
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, [userData.idUser, params.chatId]);
 
   const dummy = useRef();
+
+  useEffect(() => {
+    // console.log("Updated messages:", messages);
+  }, [messages]);
 
   useEffect(() => {
     try {
@@ -64,15 +76,15 @@ export default function Chat({ params }) {
       <Head title={title} pfp={pfp} />
       <Msg
         messages={messages || []}
-        currentUserId={userData.id}
+        currentUserId={userData.idUser}
         dummy={dummy}
       />
       <SendInput
-        pfp={userData.pfp}
+        pfp={userData.pfpLink}
         dummy={dummy}
         chatId={params.chatId}
         senderName={userData.firstName}
-        senderId={userData.id}
+        senderId={userData.idUser}
       />
     </main>
   );
@@ -83,10 +95,8 @@ const Head = ({ title, pfp }) => {
   return (
     <div className="flex items-center gap-3 px-6 py-7 w-full shadow-sm rounded-sm">
       <BackButton />
-      {/* pfp instead */}
       <Avatar fallback src={pfp} size="md" className="w-[45px] h-[45px]" />
       <p className="text-[#303972] text-[19px] font-[600] flex-1">{title}</p>
-      {/* <img className="cursor-pointer" src={dots} alt="" /> */}
       <div className="cursor-pointer">
         <DotsIcon />
       </div>
@@ -94,16 +104,16 @@ const Head = ({ title, pfp }) => {
   );
 };
 
-//items end
+// Msg component
 const Msg = ({ messages, currentUserId, dummy }) => {
   return (
     <div className="flex-1 p-5 flex gap-3 w-full flex-col overflow-y-auto">
       {messages.map((data, index) => {
-        if (data.senderId === currentUserId) {
+        if (data.receiver_name_id !== currentUserId) {
           return (
             <Sent
               key={index}
-              msg={data.message}
+              msg={data.description}
               last={index === messages.length - 1}
             />
           );
@@ -111,8 +121,8 @@ const Msg = ({ messages, currentUserId, dummy }) => {
         return (
           <Received
             key={index}
-            msg={data.message}
-            pfp={data.senderPfp}
+            msg={data.description}
+            pfp={data.pfp}
             name={data.senderName}
             last={index === messages.length - 1}
           />
@@ -123,9 +133,10 @@ const Msg = ({ messages, currentUserId, dummy }) => {
   );
 };
 
+// Received component
 const Received = ({ msg, last = false, pfp, name }) => {
   return (
-    <div className="w-fit max-w-[300px]  flex flex-col gap-0">
+    <div className="w-fit max-w-[300px] flex flex-col gap-0">
       <p className="pl-[60px] text-gray-500 text-[13px]">{name}</p>
       <div className="w-fit max-w-[300px] flex gap-2 sm:gap-4">
         <Avatar
@@ -147,10 +158,11 @@ const Received = ({ msg, last = false, pfp, name }) => {
   );
 };
 
+// Sent component
 const Sent = ({ msg, last = false }) => {
   return (
     <div
-      className={` bg-blue-700 w-fit p-3 self-end ${
+      className={`bg-blue-700 w-fit p-3 self-end ${
         last ? "rounded-tr-xl rounded-l-xl" : "rounded-xl"
       } text-white text-wrap break-words`}
       style={{ wordBreak: "break-word", overflowWrap: "break-word" }}
@@ -160,46 +172,55 @@ const Sent = ({ msg, last = false }) => {
   );
 };
 
+// SendInput component
 const SendInput = ({ pfp, dummy, chatId, senderName, senderId }) => {
   const [submitting, setSubmitting] = useState(false);
-
   const [message, setMessage] = useState("");
 
-  // const handleSubmitMessage = async () => {
-  //   if (message.trim() === "") return;
+  const handleSubmitMessage = async () => {
+    if (message.trim() === "") return;
 
-  //   setSubmitting(true);
+    setSubmitting(true);
 
-  //   try {
-  //     const db = getFirestore();
-  //     const messagesRef = collection(db, chatId);
+    try {
+      const response = await fetch(
+        "https://onecs-back.onrender.com/app/chat/add_message/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            description: message,
+            sender_id: senderId,
+            receiver_id: chatId,
+          }),
+        }
+      );
 
-  //     await addDoc(messagesRef, {
-  //       message: message,
-  //       createdAt: serverTimestamp(),
-  //       senderId,
-  //       senderName,
-  //       senderPfp: pfp,
-  //     });
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
 
-  //     setMessage("");
-  //     dummy.current.scrollIntoView({ behavior: "smooth" });
-  //   } catch (error) {
-  //     console.error("Error sending message: ", error);
-  //   } finally {
-  //     setSubmitting(false);
-  //   }
-  // };
+      // Clear the input field and scroll to the latest message
+      setMessage("");
+      dummy.current.scrollIntoView({ behavior: "smooth" });
+    } catch (error) {
+      console.error("Error sending message: ", error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      // handleSubmitMessage();
+      handleSubmitMessage();
     }
   };
 
   return (
-    <div className="relative flex px-4 justify-start items-center gap-3 py-4 sm:py-2  w-[98%] h-[65px]  rounded-full bg-[#F3F4FF] mt-auto mb-1 ml-2 ">
+    <div className="relative flex px-4 justify-start items-center gap-3 py-4 sm:py-2 w-[98%] h-[65px] rounded-full bg-[#F3F4FF] mt-auto mb-1 ml-2">
       <div>
         <Avatar fallback src={pfp} className="w-[48px] h-[48px]" />
       </div>
@@ -217,7 +238,7 @@ const SendInput = ({ pfp, dummy, chatId, senderName, senderId }) => {
       </div>
       <div
         className="cursor-pointer"
-        // onClick={handleSubmitMessage}
+        onClick={handleSubmitMessage}
         disabled={submitting}
       >
         {submitting && <Spinner />}
@@ -229,6 +250,7 @@ const SendInput = ({ pfp, dummy, chatId, senderName, senderId }) => {
   );
 };
 
+// SkeletonChat component
 const SkeletonChat = () => {
   return (
     <main className="flex flex-col items-center w-full h-full">
@@ -276,6 +298,7 @@ const SkeletonSendInput = () => {
   );
 };
 
+// DotsIcon component
 function DotsIcon() {
   return (
     <svg

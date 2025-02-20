@@ -4,51 +4,43 @@ import { useEffect, useState } from "react";
 import { usePathname } from "@/i18n/routing";
 import SearchBar from "./SearchBar";
 
-const exampleRooms = [
-  {
-    id: 1,
-    name: "Kanye West",
-    pfp: "https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2022/10/kanye-west-triste.jpg",
-  },
-];
-
-const MobileInbox = () => {
-  //rooms will be passed as an argument and fetched in the layout instead , same for loadind
-  const [rooms, setRooms] = useState(exampleRooms);
+const MobileInbox = ({ id }) => {
+  const [rooms, setRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    const fetchRooms = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          `https://onecs-back.onrender.com/app/chat/get_user_conversations/${id}/`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          console.log("Failed to fetch rooms");
+          setRooms([]);
+          return;
+        }
+
+        const data = await response.json();
+        setRooms(data.conversations);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRooms();
+  }, []);
+
   const pathname = usePathname();
-
-  // useEffect(() => {
-  //   const fetchRooms = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const response = await fetch("/api/chat", {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       });
-
-  //       if (!response.ok) {
-  //         console.log("Failed to fetch rooms");
-  //         setRooms([]);
-  //         return;
-  //       }
-
-  //       const data = await response.json();
-  //       setRooms(data.rooms);
-  //       setRoomsId(data.roomsId);
-  //     } catch (error) {
-  //       console.error(error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-  //   fetchRooms();
-  // }, []);
-
-  // console.log(pathname);
 
   if (pathname && pathname !== "/client/chat") return null;
 
@@ -64,7 +56,7 @@ const MobileInbox = () => {
           <div className="flex flex-col gap-3 rounded-tl-xl rounded-bl-xl items-start p-2 sm:bg-white">
             <div className="flex flex-col w-full">
               {rooms.map((room, index) => (
-                <Conversation data={room} key={index} />
+                <Conversation data={room} key={index} id={id} />
               ))}
             </div>
           </div>
@@ -85,20 +77,25 @@ import { Link } from "@/i18n/routing";
 import { Avatar } from "@nextui-org/react";
 
 //read and last message hour will be added later
-const Conversation = ({ data }) => {
+const Conversation = ({ data, id }) => {
   return (
     <Link
-      href={`chat/${data.id}?title=${data.name}&pfp=${data.pfp}`}
-      className="w-full"
+      href={`/client/chat/${data.other_user.id}?title=${data.other_user.first_name}&pfp=${data.other_user.pfp}&id=${id}`}
     >
       <div className=" cursor-pointer hover:bg-bgfakeWhite p-3  md:border-b-[2px] flex gap-2 py-4 justify-between  w-full">
-        {data.pfp ? (
-          <Avatar src={data.pfp} alt={data.name} size="md" />
+        {data.other_user.pfp ? (
+          <Avatar
+            src={data.other_user.pfp}
+            alt={data.other_user.first_name}
+            size="md"
+          />
         ) : (
           <div className="w-[45px] h-[45px] bg-primary rounded-full mr-2"></div>
         )}
         <div className="flex-1 flex flex-col gap-1 w-full">
-          <p className="text-[#303972] text-[16px] font-[600]">{data.name}</p>
+          <p className="text-[#303972] text-[16px] font-[600]">
+            {data.other_user.first_name}
+          </p>
           <p className="text-[#A098AE] text-[12px] font-[400]">
             {"click to get to the chat ...."}
           </p>

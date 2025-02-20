@@ -2,13 +2,16 @@
 
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, Tooltip, Legend, ArcElement } from "chart.js";
+import { useTranslations } from "next-intl";
 
 ChartJS.register(Tooltip, Legend, ArcElement);
 
 export default function Pourcentage({ dataa }) {
+  const t = useTranslations("/admin.Pourcentage");
+
   const data = [
-    { name: "Artisans", value: dataa.artisanPercentage, color: "#E91F63" },
-    { name: "Clients", value: dataa.clientPercentage, color: "#73A4FF" },
+    { name: t("artisans"), value: dataa.artisanPercentage, color: "#E91F63" },
+    { name: t("clients"), value: dataa.clientPercentage, color: "#73A4FF" },
   ];
 
   const totalUsers = dataa.totalArtisans + dataa.totalClients;
@@ -40,11 +43,8 @@ export default function Pourcentage({ dataa }) {
   return (
     <div className="bg-white rounded-lg shadow-md p-4 border border-gray-200 font-sans flex flex-col gap-2 hover:shadow-2xl transition-all hover:-translate-y-1 ease-in-out duration-700">
       <div className="flex justify-between items-center gap-2">
-        <h3 className="text-lg font-bold m-0">Pourcentage des utilisateurs</h3>
-        <div
-          title="Information about user percentages"
-          className="cursor-pointer"
-        >
+        <h3 className="text-lg font-bold m-0">{t("title")}</h3>
+        <div title={t("title")} className="cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="16"

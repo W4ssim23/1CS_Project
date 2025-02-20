@@ -11,12 +11,13 @@ export default function Created({ data }) {
   const t = useTranslations("/register.RegisterForm");
 
   const handleRegister = async () => {
+    console.log(data);
     if (hasRegistered) return;
     setHasRegistered(true);
     setLoading(true);
     try {
       const response = await fetch(
-        process.env.NEXT_PUBLIC_API_URL + "artisan-signup/",
+        "https://onecs-back.onrender.com/app/" + "artisan-signup/",
         {
           method: "POST",
           headers: {
@@ -78,7 +79,7 @@ export default function Created({ data }) {
         <span className="text-[#FFA500]">{t("createdPending2")}</span>{" "}
         {t("createdPending3")}{" "}
         <span className="text-[#FFA500]">{t("createdPending4")}</span>{" "}
-        {t("createdPending5")}
+        {t("createdPending5")}{" "}
         <span className="text-[#FFA500]">{t("createdPending6")}</span>.
       </h1>
       <Link href="/">

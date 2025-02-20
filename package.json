@@ -21,7 +21,10 @@
     "@mui/material": "^6.2.0",
     "@mui/x-charts": "^7.23.2",
     "@nextui-org/react": "^2.4.8",
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.6.0",
     "chart.js": "^4.4.7",
+    "cloudinary": "^2.5.1",
     "framer-motion": "^11.11.13",
     "next": "^14.2.17",
     "next-intl": "^3.25.3",
@@ -32,7 +35,9 @@
     "recharts": "^2.15.0",
     "rtl-detect": "^1.1.2",
     "sharp": "^0.33.5",
-    "tailwindcss-motion": "^1.0.0"
+    "stripe": "^17.6.0",
+    "tailwindcss-motion": "^1.0.0",
+    "use-debounce": "^10.0.4"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",

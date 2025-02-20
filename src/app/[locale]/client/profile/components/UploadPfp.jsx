@@ -9,19 +9,18 @@ import {
   ModalFooter,
 } from "@nextui-org/react";
 import { FileUploader } from "react-drag-drop-files";
-import { useState } from "react";
-// import { useSession } from "next-auth/react";
-import { useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { GlobalContext } from "@/app/[locale]/context";
+import { useTranslations } from "next-intl";
 
-export default function UploadPfP({ pfp }) {
+export default function UploadPfP({ pfp, id, setPfp, t }) {
   const [picture, setPicture] = useState(pfp);
   const [file, setFile] = useState(null);
-  //use context instead
-  //   const { data: session, update } = useSession();
-  const onCloseRef = useRef(null);
-
   const [uploading, setUploading] = useState(false);
   const [ableToUpload, setAbleToUpload] = useState(false);
+  const onCloseRef = useRef(null);
+
+  const { userData, setUserData } = useContext(GlobalContext);
 
   const handleImageChange = (file) => {
     setFile(file);
@@ -29,49 +28,68 @@ export default function UploadPfP({ pfp }) {
     if (!ableToUpload) setAbleToUpload(true);
   };
 
-  //   const handleSessionUpdate = async (pfpUrl) => {
-  //     // console.log("Updating session with new pfp:", pfpUrl);
-  //     await update({
-  //       ...session,
-  //       user: {
-  //         ...session.user,
-  //         pfp: pfpUrl,
-  //       },
-  //     });
-  //   };
+  const submit = async () => {
+    if (!file) return;
 
-  //  to be used in submit
-  const handleSessionUpdate = async () => console.log("update user Data");
+    setUploading(true);
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = async () => {
+      const base64data = reader.result;
+      try {
+        const response = await fetch("/api/pfp", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ file: base64data }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+          console.log("Upload successful:", data.url);
 
-  //   const submit = async (e) => {
-  //     e.preventDefault();
-  //     setUploading(true);
-  //     try {
-  //       const data = new FormData();
-  //       data.set("picture", file);
-  //       data.set("id", session.user.id);
-  //       const res = await fetch("api/profile/uploadpfp", {
-  //         method: "POST",
-  //         body: data,
-  //       });
+          try {
+            const response = await fetch(
+              `https://onecs-back.onrender.com/app/artisan/edit_artisan_profile/`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ pfp: data.url, id }),
+              }
+            );
+            const result = await response.json();
+            if (response.ok) {
+              console.log("good", result);
+              const updatedUserData = {
+                ...userData,
+                pfpLink: data.url,
+              };
+              setUserData(updatedUserData);
+              document.cookie = `userData=${JSON.stringify(
+                updatedUserData
+              )}; path=/;`;
 
-  //       // console.log(res);
+              setPfp(data.url);
 
-  //       if (res.ok) {
-  //         const resData = await res.json();
-  //         if (data) {
-  //           await handleSessionUpdate(resData.pfpUrl);
-  //           onCloseRef.current();
-  //         }
-  //       }
-
-  //       setUploading(false);
-  //     } catch (e) {
-  //       setUploading(false);
-  //       console.error(e);
-  //     }
-  //   };
-  const submit = async () => console.log("submitting");
+              onCloseRef.current();
+            } else {
+              console.error("Error:", result);
+            }
+          } catch (error) {
+            console.error("Error:", error);
+          }
+        } else {
+          console.error("Upload failed:", data.error);
+        }
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      } finally {
+        setUploading(false);
+      }
+    };
+  };
 
   return (
     <ModalContent>
@@ -80,7 +98,7 @@ export default function UploadPfP({ pfp }) {
         return (
           <>
             <ModalHeader className="flex flex-col gap-1">
-              modifier ma photo de profile
+              {t("uploadPfpModal.title")}
             </ModalHeader>
             <ModalBody className="flex flex-col items-center">
               <FileUploader
@@ -92,12 +110,12 @@ export default function UploadPfP({ pfp }) {
               <Avatar
                 fallback
                 src={picture}
-                className="rounded-full h-[150px] w-[150px] "
+                className="rounded-full h-[150px] w-[150px]"
               />
             </ModalBody>
             <ModalFooter className="flex justify-center gap-6">
               <Button color="danger" variant="flat" onPress={onClose}>
-                Annuler
+                {t("uploadPfpModal.cancelButton")}
               </Button>
               <Button
                 color="primary"
@@ -105,7 +123,7 @@ export default function UploadPfP({ pfp }) {
                 isLoading={uploading}
                 isDisabled={!ableToUpload}
               >
-                Enregistrer
+                {t("uploadPfpModal.saveButton")}
               </Button>
             </ModalFooter>
           </>

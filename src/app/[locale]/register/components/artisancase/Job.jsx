@@ -22,7 +22,7 @@ export default function Job({ setStep, setData }) {
         onChange={(e) => setJob(e.target.value)}
       >
         {jobs.map((job) => (
-          <SelectItem key={job.key}>{job.label}</SelectItem>
+          <SelectItem key={job}>{job}</SelectItem>
         ))}
       </Select>
       <Button
@@ -37,10 +37,4 @@ export default function Job({ setStep, setData }) {
   );
 }
 
-const jobs = [
-  { key: "maçon", label: "maçon" },
-  { key: "peintre", label: "peintre" },
-  { key: "éléctricien", label: "éléctricien" },
-  { key: "plombier", label: "plombier" },
-  { key: "menuisier", label: "menuisier" },
-];
+const jobs = ["Maçon", "Peintre", "Électricien", "Plombier", "Menuisier"];

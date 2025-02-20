@@ -30,6 +30,9 @@ export default async function middleware(request) {
       "/fr/register",
       "/ar/about",
       "/fr/about",
+      "/fr/register/api/upload",
+      "/ar/search",
+      "/fr/search",
     ];
 
     const targetPath = `/${language}`;

@@ -1,15 +1,17 @@
 import React from "react";
 import { Button } from "@nextui-org/react";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function AcceptButton({ setAppearence, id }) {
+  const t = useTranslations("/admin.ArtisanValidation");
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}validate-artisan/${id}/`,
+        `https://onecs-back.onrender.com/app/validate-artisan/${id}/`,
         {
           cache: "no-cache",
           method: "POST",
@@ -27,7 +29,6 @@ export default function AcceptButton({ setAppearence, id }) {
       if (data.error) {
         console.log(data.message);
       } else {
-        // console.log(data);
         setAppearence(false);
       }
     } catch (e) {
@@ -39,12 +40,12 @@ export default function AcceptButton({ setAppearence, id }) {
 
   return (
     <Button
-      className=" bg-green-500 text-white px-4 py-2"
+      className="bg-green-500 text-white px-4 py-2"
       onPress={handleClick}
       isLoading={loading}
       radius="lg"
     >
-      Accepter
+      {t("acceptButton")}
     </Button>
   );
 }

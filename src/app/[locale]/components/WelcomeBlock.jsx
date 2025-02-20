@@ -3,6 +3,7 @@ import { welcomeGuy } from "@/assets/svgs";
 import { Button } from "@nextui-org/react";
 
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export default function WelcomeBlock() {
   const t = useTranslations("/");
@@ -18,12 +19,14 @@ export default function WelcomeBlock() {
         <p className="text-center max-w-[480px] text-[18px] sm:text-[24px] font-semibold text-[#00000052] motion-preset-blur-right motion-duration-800">
           {t("enderTitle")}
         </p>
-        <Button
-          className="text-white bg-[#1F4690] w-[180px] h-[45px] hidden md:block motion-preset-blur-right motion-duration-900"
-          radius="sm"
-        >
-          {t("button")}
-        </Button>
+        <Link href="/about">
+          <Button
+            className="text-white bg-[#1F4690] w-[180px] h-[45px] hidden md:block motion-preset-blur-right motion-duration-900"
+            radius="sm"
+          >
+            {t("button")}
+          </Button>
+        </Link>
       </div>
       <div className="w-full md:w-[40%] flex items-center justify-center mt-8 md:mt-0">
         <Image

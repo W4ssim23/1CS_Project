@@ -11,6 +11,7 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
 
 export default function TheList({ clients }) {
   return (
@@ -28,13 +29,14 @@ export default function TheList({ clients }) {
 }
 
 function HeadList() {
+  const t = useTranslations("/admin.TheList");
   const columns = [
-    { value: "Nom", hidden: false },
-    { value: "Client Id", hidden: true, whenHide: "lg" },
-    { value: "Email", hidden: true, whenHide: "sm" },
-    { value: "Telephone", hidden: true, whenHide: "sm" },
-    { value: "Genre", hidden: true, whenHide: "lg" },
-    { value: "Action", hidden: false },
+    { value: t("name"), hidden: false },
+    { value: t("clientId"), hidden: true, whenHide: "lg" },
+    { value: t("email"), hidden: true, whenHide: "sm" },
+    { value: t("phone"), hidden: true, whenHide: "sm" },
+    { value: t("genre"), hidden: true, whenHide: "lg" },
+    { value: t("action"), hidden: false },
   ];
 
   return (
@@ -54,6 +56,7 @@ function HeadList() {
 }
 
 function ElementList({ client, bg }) {
+  const t = useTranslations("/admin.TheList");
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <div
@@ -62,7 +65,7 @@ function ElementList({ client, bg }) {
     >
       <div className="flex gap-1 w-full items-center">
         <Avatar
-          src={client.avatar}
+          src={client.pfp}
           size="small"
           alt="avatar"
           className="min-w-[40px] mr-1"
@@ -84,7 +87,7 @@ function ElementList({ client, bg }) {
       </div>
       <div className="w-full flex items-center justify-center">
         <Button className="bg-[#B9D7F1] text-white" onClick={onOpen}>
-          Suprimer
+          {t("deleteButton")}
         </Button>
         <>
           <Modal
@@ -111,11 +114,13 @@ function SuprimerModule({ id }) {
 
   const [loading, setLoading] = useState(false);
 
+  const t = useTranslations("/admin.TheList");
+
   const deleteClient = async () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}admin/clients/delete/`,
+        `https://onecs-back.onrender.com/app/admin/clients/delete/`,
         {
           method: "POST",
           headers: {
@@ -143,17 +148,17 @@ function SuprimerModule({ id }) {
         return (
           <>
             <ModalHeader className="flex flex-col gap-1">
-              Delete Client
+              {t("deleteTitle")}
             </ModalHeader>
             <ModalBody className="flex flex-col items-center">
-              <p>You Sure ?</p>
+              <p>{t("deleteText")}</p>
             </ModalBody>
             <ModalFooter className="flex justify-center gap-6">
               <Button color="primary" variant="flat" onPress={onClose}>
-                Annuler
+                {t("deleteCancel")}
               </Button>
               <Button color="danger" onClick={deleteClient} isLoading={loading}>
-                Confirmer
+                {t("deleteConfirm")}
               </Button>
             </ModalFooter>
           </>

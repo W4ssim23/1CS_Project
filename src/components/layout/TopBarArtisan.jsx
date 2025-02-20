@@ -36,7 +36,7 @@ export default function TopBarArtisan() {
   const handleLogout = async () => {
     setLoading(true);
     const response = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + "user-logout/",
+      "https://onecs-back.onrender.com/app/" + "user-logout/",
       {
         method: "POST",
         headers: {
@@ -85,7 +85,7 @@ export default function TopBarArtisan() {
         </NavbarItem>
         <Avatar
           size="sm"
-          src={userData?.pfp}
+          src={userData?.pfpLink}
           width={30}
           height={30}
           className="cursor-pointer min-w-[35px] min-h-[35px]"

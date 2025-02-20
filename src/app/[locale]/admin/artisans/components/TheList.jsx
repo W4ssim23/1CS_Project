@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react"; // Import useRef from React
+import { useRef } from "react";
 import {
   Avatar,
   Button,
@@ -11,6 +11,7 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
 
 export default function TheList({ artisans }) {
   return (
@@ -28,13 +29,14 @@ export default function TheList({ artisans }) {
 }
 
 function HeadList() {
+  const t = useTranslations("/admin.TheListArtisan");
   const columns = [
-    { value: "Nom", hidden: false },
-    { value: "Artisan Id", hidden: true, whenHide: "lg" },
-    { value: "Email", hidden: true, whenHide: "sm" },
-    { value: "Telephone", hidden: true, whenHide: "sm" },
-    { value: "Status", hidden: true, whenHide: "sm" },
-    { value: "Action", hidden: false },
+    { value: t("name"), hidden: false },
+    { value: t("artisanId"), hidden: true, whenHide: "lg" },
+    { value: t("email"), hidden: true, whenHide: "sm" },
+    { value: t("phone"), hidden: true, whenHide: "sm" },
+    { value: t("status"), hidden: true, whenHide: "sm" },
+    { value: t("action"), hidden: false },
   ];
 
   return (
@@ -54,6 +56,7 @@ function HeadList() {
 }
 
 function ElementList({ artisan, bg }) {
+  const t = useTranslations("/admin.TheListArtisan");
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <div
@@ -62,7 +65,7 @@ function ElementList({ artisan, bg }) {
     >
       <div className="flex gap-1 w-full items-center min-w-[16.6%]">
         <Avatar
-          src={artisan.avatar}
+          src={artisan.pfp}
           size="small"
           alt="avatar"
           className="min-w-[40px] mr-1"
@@ -84,7 +87,7 @@ function ElementList({ artisan, bg }) {
       </div>
       <div className="w-full flex items-center justify-center">
         <Button className="bg-[#B9D7F1] text-white" onClick={onOpen}>
-          Suprimer
+          {t("deleteButton")}
         </Button>
         <>
           <Modal
@@ -110,11 +113,13 @@ function SuprimerModule({ id }) {
 
   const [loading, setLoading] = useState(false);
 
+  const t = useTranslations("/admin.TheListArtisan");
+
   const deleteArtisan = async () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}admin/artisans/delete/`,
+        `https://onecs-back.onrender.com/app/admin/artisans/delete/`,
         {
           method: "POST",
           headers: {
@@ -142,21 +147,21 @@ function SuprimerModule({ id }) {
         return (
           <>
             <ModalHeader className="flex flex-col gap-1">
-              Delete Artisan
+              {t("deleteTitle")}
             </ModalHeader>
             <ModalBody className="flex flex-col items-center">
-              <p>You Sure ?</p>
+              <p>{t("deleteText")}</p>
             </ModalBody>
             <ModalFooter className="flex justify-center gap-6">
               <Button color="primary" variant="flat" onPress={onClose}>
-                Annuler
+                {t("deleteCancel")}
               </Button>
               <Button
                 color="danger"
                 onClick={deleteArtisan}
                 isLoading={loading}
               >
-                Confirmer
+                {t("deleteConfirm")}
               </Button>
             </ModalFooter>
           </>

@@ -1,33 +1,37 @@
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { bank, profile_add, frame30085 } from "@/assets/svgs";
+import { useTranslations } from "next-intl";
 
-export default async function AdminPage() {
+export default function AdminPage() {
+  const t = useTranslations("/admin.AdminPage");
+
   const elements = [
     {
       icon: profile_add,
-      title: "Ajouter un client",
-      text: "Ajoutez un nouveau client en remplissant les informations nécessaires pour faciliter la gestion et le suivi de leurs demandes.",
+      title: t("addClient.title"),
+      text: t("addClient.text"),
       link: "/admin/clients",
     },
     {
       icon: bank,
-      title: "Ajouter un artisan",
-      text: "Ajoutez un nouvel artisan en renseignant ses informations pour l'intégrer à notre réseau et faciliter la gestion de ses services.",
+      title: t("addArtisan.title"),
+      text: t("addArtisan.text"),
       link: "/admin/artisans",
     },
     {
       icon: frame30085,
-      title: "Ajouter un service",
-      text: "Ajoutez un nouveau service en précisant les détails nécessaires pour le rendre disponible et accessible à nos clients.",
+      title: t("addService.title"),
+      text: t("addService.text"),
       link: "/admin/services",
     },
   ];
+
   return (
-    <div className="w-full  flex flex-col items-center gap-16 sm:gap-28 text-[#4F4F4F]">
-      <div className="w-full  flex flex-col items-center gap-10">
-        <h1 className=" font-bold text-[22px]  sm:text-[25px] max-w-[700px] text-center">
-          Bienvenue sur le tableau de bord de l'administrateur de DZ-Artisan !
+    <div className="w-full flex flex-col items-center gap-16 sm:gap-28 text-[#4F4F4F]">
+      <div className="w-full flex flex-col items-center gap-10">
+        <h1 className="font-bold text-[22px] sm:text-[25px] max-w-[700px] text-center">
+          {t("welcome")}
         </h1>
       </div>
       <div className="flex flex-col gap-8 sm:gap-4">
@@ -41,7 +45,6 @@ export default async function AdminPage() {
 
 function Element({ icon, title, text, link }) {
   return (
-    //padding right more than left
     <div className="flex flex-col gap-4 items-center sm:items-start text-center sm:text-start">
       <Link href={link}>
         <div className="flex gap-6 font-semibold">

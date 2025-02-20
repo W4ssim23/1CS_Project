@@ -18,7 +18,7 @@ export default function SideBarAdmin() {
     <nav className="min-w-[20%] bg-[#3A5BA0] shadow-md hidden sm:block ">
       <div className="h-[130px] border-b-[0.25px] border-[#BDBDBD] w-full flex flex-col items-center justify-evenly">
         <Avatar
-          src={userData?.avatar}
+          src={userData?.pfpLink}
           size="lg"
           className="w-[70px] h-[70px]"
           fallback

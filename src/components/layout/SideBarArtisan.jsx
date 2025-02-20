@@ -18,7 +18,7 @@ export default function SideBarArtisan() {
     <nav className="min-w-[20%] bg-[#3A5BA0] shadow-md hidden sm:block ">
       <div className="h-[130px] border-b-[0.25px] border-[#BDBDBD] w-full flex flex-col items-center justify-evenly">
         <Avatar
-          src={userData?.avatar}
+          src={userData?.pfpLink}
           size="lg"
           className="w-[70px] h-[70px]"
           fallback
@@ -29,17 +29,25 @@ export default function SideBarArtisan() {
       </div>
       <ul className="flex flex-col items-center w-full gap-4 lg:gap-0 pt-5">
         {itemsArtisan.map((item, index) => (
-          <BarItem pg={pg} item={item} key={index} t={t} />
+          <BarItem
+            pg={pg}
+            item={item}
+            job={userData?.job}
+            pfp={userData?.pfpLink}
+            id={userData?.idUser}
+            key={index}
+            t={t}
+          />
         ))}
       </ul>
     </nav>
   );
 }
 
-const BarItem = ({ item, pg, t }) => {
+const BarItem = ({ item, pg, t, job, id, pfp }) => {
   return (
     <Link
-      href={item.page}
+      href={item.page + "?job=" + job + "&id=" + id + "&pfp=" + pfp}
       className="cursor-pointer hover:scale-105 transition-all overflow-hidden select-none
                  lg:w-[98%] p-3 lg:p-5  
                  rounded-full lg:rounded-none"

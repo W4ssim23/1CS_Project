@@ -8,46 +8,48 @@ import {
   LinearScale,
   Tooltip,
 } from "chart.js";
+import { useTranslations } from "next-intl";
 
-// Register the required Chart.js components
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip);
 
 const options = {
   responsive: true,
   plugins: {
-    tooltip: {
-      enabled: true,
-    },
+    tooltip: { enabled: true },
   },
   scales: {
     x: {
       grid: { display: false },
       ticks: { font: { size: 12 }, color: "#888" },
     },
-    y: {
-      display: false,
-    },
+    y: { display: false },
   },
 };
 
 export default function Visitors({ dataa }) {
-  const days = ["05", "10", "15", "20", "25", "31"];
+  const t = useTranslations("/admin.DashboardPage");
 
   const visitorsWithDates = dataa.visitors.map((visitor) => ({
     date: new Date(visitor.date),
     visits: visitor.visits,
   }));
 
-  const visits = days.map((day, index) => {
-    const startDate =
-      index === 0 ? null : new Date(`2025-01-${days[index - 1]}`);
-    const endDate = new Date(`2025-01-${day}`);
+  // Create labels for intervals of 4 days: 4, 8, ..., up to the max possible day
+  const maxDay = 31;
+  const dayIntervals = Array.from({ length: Math.ceil(maxDay / 4) }, (_, i) =>
+    String(Math.min((i + 1) * 4, maxDay)).padStart(2, "0")
+  );
+
+  // Aggregate visits for each 4-day interval
+  const visits = dayIntervals.map((dayLabel, index) => {
+    const startDay = index * 4 + 1;
+    const endDay = Math.min(startDay + 3, maxDay);
 
     const filteredVisitors = visitorsWithDates.filter((visitor) => {
-      return (
-        (!startDate || visitor.date > startDate) && visitor.date <= endDate
-      );
+      const visitorDay = visitor.date.getDate();
+      return visitorDay >= startDay && visitorDay <= endDay;
     });
+
     return filteredVisitors.reduce((sum, visitor) => sum + visitor.visits, 0);
   });
 
@@ -61,10 +63,10 @@ export default function Visitors({ dataa }) {
     totalPeople === 0 ? 0 : (VisitorsNumber / totalPeople) * 100;
 
   const data = {
-    labels: days,
+    labels: dayIntervals,
     datasets: [
       {
-        label: "Visitors",
+        label: t("membres"),
         data: visits,
         backgroundColor: function (context) {
           const chart = context.chart;
@@ -90,9 +92,9 @@ export default function Visitors({ dataa }) {
 
   return (
     <div className="border border-gray-300 rounded-lg bg-white sm:w-[500px] w-full p-4 shadow-md hover:shadow-2xl transition-all hover:-translate-y-1 ease-in-out duration-700">
-      <h3 className="text-lg font-medium text-[#787878] mb-2">This month</h3>
+      <h3 className="text-lg font-medium text-[#787878] mb-2">{t("month")}</h3>
       <p className="text-2xl font-bold text-black">
-        + {VisitorsNumber} Membres{" "}
+        + {VisitorsNumber} {t("membres")}{" "}
         <span className="text-sm text-green-500 font-semibold">
           +{VisitorsPercentage.toFixed(2)}%
         </span>

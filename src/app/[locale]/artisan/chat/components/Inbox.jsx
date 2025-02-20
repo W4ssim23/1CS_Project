@@ -4,52 +4,41 @@ import { useEffect, useState } from "react";
 import Conversation from "./Conversation";
 import SearchBar from "./SearchBar";
 
-const exampleRooms = [
-  {
-    id: 1, //conversation id and not the user id
-    name: "Kanye West",
-    pfp: "https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2022/10/kanye-west-triste.jpg",
-  },
-  {
-    id: 2,
-    name: "Frankou",
-    pfp: "https://lastfm.freetls.fastly.net/i/u/ar0/c727ac2a12a296b7f62549def8d6b537.jpg",
-  },
-];
-
-const Inbox = () => {
-  //rooms will be passed as an argument and fetched in the layout instead
-  const [rooms, setRooms] = useState(exampleRooms);
+const Inbox = ({ id }) => {
+  const [rooms, setRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const fetchRooms = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const response = await fetch("/api/chat", {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       });
+  useEffect(() => {
+    const fetchRooms = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          `https://onecs-back.onrender.com/app/chat/get_user_conversations/${id}/`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
-  //       if (!response.ok) {
-  //         console.log("Failed to fetch rooms");
-  //         setRooms([]);
-  //         return;
-  //       }
+        if (!response.ok) {
+          console.log("Failed to fetch rooms");
+          setRooms([]);
+          return;
+        }
 
-  //       const data = await response.json();
-  //       setRooms(data.rooms);
-  //       setRoomsId(data.roomsId);
-  //     } catch (error) {
-  //       console.error(error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-  //   fetchRooms();
-  // }, []);
+        const data = await response.json();
+        setRooms(data.conversations);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRooms();
+  }, []);
 
   if (isLoading || !rooms) return <SkeletonInbox />;
 
@@ -65,7 +54,7 @@ const Inbox = () => {
         <div className="flex flex-col gap-3 bg-bgfakeWhite rounded-tl-xl rounded-bl-xl items-center sm:items-start p-2 sm:bg-white">
           <div className="flex flex-col">
             {rooms.map((room, index) => (
-              <Conversation data={room} key={index} />
+              <Conversation data={room} key={index} id={id} />
             ))}
           </div>
         </div>

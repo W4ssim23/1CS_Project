@@ -6,7 +6,7 @@ export default async function DemandesPage({ searchParams }) {
   let usersData = null;
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}admin/demandes/?page=${page}`,
+      `https://onecs-back.onrender.com/app/admin/demandes/?page=${page}`,
       {
         cache: "no-cache",
         method: "GET",

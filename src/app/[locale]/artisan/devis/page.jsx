@@ -1,52 +1,44 @@
 import DemandesList from "./components/DemandesList";
+import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
-//fetched from the server
-const exampleData = [
-  {
-    demandeId: 1,
-    userName: "Zouitene Ouassim",
-    avatar:
-      "https://lastfm.freetls.fastly.net/i/u/ar0/c727ac2a12a296b7f62549def8d6b537.jpg",
-    title: "I have a table that needs to be repaired",
-    files: [
-      {
-        link: "https://www.youtube.com/watch?v=qAsHVwl-MU4",
-        name: "details du services",
-      },
-    ],
-  },
-  {
-    demandeId: 2,
-    userName: "Kanye west",
-    avatar:
-      "https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2022/10/kanye-west-triste.jpg",
-    title:
-      "Water leak in the kitchen, I need a plumber to fix it as soon as possible",
-    files: [],
-  },
-  {
-    demandeId: 3,
-    userName: "Akira Akao",
-    avatar:
-      "https://i.pinimg.com/474x/53/4f/29/534f2998608e8132cd84fc8c18030c77.jpg",
-    title: "I need a carpenter to make a new wardrobe for my bedroom",
-    files: [
-      {
-        link: "https://www.youtube.com/watch?v=qAsHVwl-MU4",
-        name: "details du services",
-      },
-      {
-        link: "https://www.youtube.com/watch?v=ivCY3Ec4iaU",
-        name: "autre details du services",
-      },
-    ],
-  },
-];
+export default async function DemandesPage({ searchParams }) {
+  const t = await getTranslations("/artisan.DemandesPage");
+  const job = searchParams?.job;
+  if (!job) {
+    redirect("/");
+  }
 
-export default async function DemandesPage() {
+  let userData = null;
+  try {
+    const response = await fetch(
+      `https://onecs-back.onrender.com/app/artisan/devis/${job}/`,
+      {
+        cache: "no-cache",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
+    if (!response.ok) {
+      const data = await response.json();
+      console.log(data.message);
+    }
+    const data = await response.json();
+    if (data.error) {
+      console.log(data.message);
+    } else {
+      userData = data.devis;
+    }
+  } catch (e) {
+    console.log(e);
+  }
+
   return (
     <div className="w-full min-h-[90vh] flex flex-col items-center py-5">
-      <DemandesList demandes={exampleData} />
+      <DemandesList demandes={userData} searchParams={searchParams} t={t} />{" "}
     </div>
   );
 }

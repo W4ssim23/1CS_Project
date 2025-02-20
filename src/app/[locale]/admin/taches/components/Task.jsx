@@ -1,9 +1,11 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { Options, Note } from "@/assets/svgs";
+import { Note } from "@/assets/svgs";
 import Image from "next/image";
+import DeleteTask from "./DeleteTask";
+import { useState } from "react";
 
-export default function Task({ id, title, discription, nmbr, isDragging }) {
+export default function Task({ id, title, description, isDragging }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
 
@@ -12,6 +14,10 @@ export default function Task({ id, title, discription, nmbr, isDragging }) {
     transition,
     opacity: isDragging ? 0 : 1,
   };
+
+  const [deleted, setDeleted] = useState(false);
+
+  if (deleted) return null;
 
   return (
     <div
@@ -23,14 +29,14 @@ export default function Task({ id, title, discription, nmbr, isDragging }) {
     >
       <div className=" w-full flex items-center justify-between gap-1">
         <h1 className="text-[#223759]">{title}</h1>
-        <Image src={Options} alt="options" />
+        <DeleteTask taskId={id} setDeleted={setDeleted} />
       </div>
       <p className=" text-sm text-[#6F6F70] w-[80%] font-light">
-        {discription}
+        {description}
       </p>
       <div className="flex gap-2">
         <Image src={Note} alt="note" />
-        <p className=" text-[#6F6F70] font-extralight text-sm">{nmbr}</p>
+        <p className=" text-[#6F6F70] font-extralight text-sm">{id}</p>
       </div>
     </div>
   );

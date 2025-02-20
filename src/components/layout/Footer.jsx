@@ -25,7 +25,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:underline">
+              <Link href="/search" className="hover:underline">
                 {t("findPro")}
               </Link>
             </li>
