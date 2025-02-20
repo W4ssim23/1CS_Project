@@ -2,6 +2,8 @@
 
 This project is a web application built with Next.js, Tailwind CSS, and Docker. It includes features such as user authentication, image uploads to Cloudinary, and price estimation using Google Generative AI.
 
+It was developed for the Génie Logiciel module in the first year of specialization (1CS). The goal was to create a platform where artisans can offer their services to clients, who can access them at reasonable prices thanks to the power of AI.
+
 ## Table of Contents
 
 - [Installation](#installation)
